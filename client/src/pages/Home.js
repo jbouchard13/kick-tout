@@ -26,10 +26,19 @@ function Home(props) {
           <Figure>
             <Figure.Image
               height={180}
-              alt="171x180"
+              alt="logo"
               src="../assets/images/kick-tout.gif"
             />
-
+          </Figure>
+          <Figure.Caption>
+            tout - attempt to sell something, typically by pestering people in an aggressive or bold manner.
+  </Figure.Caption>
+          <Figure>
+            <Figure.Image
+              width={800}
+              alt="sneaks"
+              src="../assets/images/sneaks.gif"
+            />
           </Figure>
           <h1></h1>
           {isAuth ? (
