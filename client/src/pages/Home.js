@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../AuthContext";
 import "../App.css";
 import { Container, Row, Button, Col } from "react-bootstrap";
+import Figure from 'react-bootstrap/Figure';
 import Axios from "axios";
 
 function Home(props) {
-  
+
   const { isAuth, logout } = useContext(AuthContext);
 
   const [secret, setSecret] = useState("");
@@ -22,7 +23,15 @@ function Home(props) {
     <Container className="signup">
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
-          <h1>Home Page</h1>
+          <Figure>
+            <Figure.Image
+              height={180}
+              alt="171x180"
+              src="../assets/images/kick-tout.gif"
+            />
+
+          </Figure>
+          <h1></h1>
           {isAuth ? (
             <>
               <Button
@@ -46,27 +55,27 @@ function Home(props) {
               </Button>
             </>
           ) : (
-            <>
-              <Button
-                className="m-1"
-                onClick={e => {
-                  e.preventDefault();
-                  props.history.push("/login");
-                }}
-              >
-                Login
+              <>
+                <Button
+                  className="m-1"
+                  onClick={e => {
+                    e.preventDefault();
+                    props.history.push("/login");
+                  }}
+                >
+                  Login
               </Button>
-              <Button
-                className="m-1"
-                onClick={e => {
-                  e.preventDefault();
-                  props.history.push("/signup");
-                }}
-              >
-                Signup
+                <Button
+                  className="m-1"
+                  onClick={e => {
+                    e.preventDefault();
+                    props.history.push("/signup");
+                  }}
+                >
+                  Signup
               </Button>
-            </>
-          )}
+              </>
+            )}
           <Button
             className="m-1"
             onClick={e => {
