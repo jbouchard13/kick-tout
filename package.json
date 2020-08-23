@@ -20,27 +20,30 @@
   },
   "homepage": "https://github.com/kylewhittemore/react-sequelize-template#readme",
   "dependencies": {
-    "axios": "^0.19.1",
+    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^4.5.2",
+    "caniuse-lite": "^1.0.30001116",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-session": "^1.17.0",
-    "morgan": "^1.9.1",
+    "express-session": "^1.17.1",
+    "morgan": "^1.10.0",
     "mysql2": "^2.1.0",
-    "nodemon": "^2.0.2",
+    "nodemon": "^2.0.4",
     "passport": "^0.4.1",
+    "passport-heroku-addon": "^0.1.0",
     "passport-local": "^1.0.0",
-    "react-bootstrap": "^1.0.0-beta.16",
-    "sequelize": "^5.21.3"
+    "react-bootstrap": "^1.3.0",
+    "react-router-dom": "^5.2.0",
+    "sequelize": "^5.22.3"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.17.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^1.7.0"
   }
 }

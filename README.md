@@ -1,4 +1,4 @@
-# **React-Sequelize with Passport Authentication**
+# **React Project 3**
 
 ## A full-stack application template complete with passport local strategy authentication
 ### **Stack:**
