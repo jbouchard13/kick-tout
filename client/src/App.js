@@ -3,7 +3,7 @@ import { Route, Switch, BrowserRouter as Router, Redirect } from "react-router-d
 import { AuthProvider, AuthContext } from "./AuthContext";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 // import Members from "./pages/Members";
 import Feed from "./pages/Feed";
 import Profile from './pages/Profile'
@@ -30,7 +30,7 @@ function App() {
     <Route
       {...rest}
       render={props =>
-        isAuth ? <Component {...props} /> : <Redirect to="/login" />
+        isAuth ? <Component {...props} /> : <Redirect to="/" />
       }
     />
   );
@@ -39,7 +39,6 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" render={props => <Home {...props} />} />
-        <Route exact path="/login" render={props => <Login {...props} />} />
         <Route exact path="/signup" render={props => <Signup {...props} />} />
         <PrivateRoute exact path="/feed" component={Feed} />
         <PrivateRoute exact path="/profile" component={Profile} />
