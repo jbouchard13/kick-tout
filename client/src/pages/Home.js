@@ -5,6 +5,7 @@ import { Container, Row, Button, Col } from "react-bootstrap";
 import Figure from 'react-bootstrap/Figure';
 import Axios from "axios";
 
+
 function Home(props) {
 
   const { isAuth, logout } = useContext(AuthContext);
@@ -25,13 +26,23 @@ function Home(props) {
         <Col md={{ span: 8, offset: 2 }}>
           <Figure>
             <Figure.Image
+              className="logo"
               height={180}
-              alt="171x180"
+              alt="logo"
               src="../assets/images/kick-tout.gif"
             />
-
           </Figure>
-          <h1></h1>
+          <Figure.Caption>
+            tout - attempt to sell something, typically by pestering people in an aggressive or bold manner.
+  </Figure.Caption>
+          <Figure>
+            <Figure.Image
+              className="sneaks"
+              width={800}
+              alt="sneaks"
+              src="../assets/images/sneaks.gif"
+            />
+          </Figure>
           {isAuth ? (
             <>
               <Button
