@@ -14,7 +14,7 @@ function Login(props) {
   console.log("login auth: ", isAuth)
 
   return (
-      isAuth ? <Redirect to='/' />
+      isAuth ? <Redirect to='/feed' />
         :
         <Container className="signup">
           <Row>
