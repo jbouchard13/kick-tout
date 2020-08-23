@@ -5,6 +5,7 @@ import { Container, Row, Button, Col } from "react-bootstrap";
 import Figure from 'react-bootstrap/Figure';
 import Axios from "axios";
 
+
 function Home(props) {
 
   const { isAuth, logout } = useContext(AuthContext);
@@ -25,6 +26,7 @@ function Home(props) {
         <Col md={{ span: 8, offset: 2 }}>
           <Figure>
             <Figure.Image
+              className="logo"
               height={180}
               alt="logo"
               src="../assets/images/kick-tout.gif"
@@ -35,12 +37,12 @@ function Home(props) {
   </Figure.Caption>
           <Figure>
             <Figure.Image
+              className="sneaks"
               width={800}
               alt="sneaks"
               src="../assets/images/sneaks.gif"
             />
           </Figure>
-          <h1></h1>
           {isAuth ? (
             <>
               <Button
