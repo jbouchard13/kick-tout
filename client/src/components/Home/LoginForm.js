@@ -62,10 +62,6 @@ const LoginForm = props => {
                 e.preventDefault();
                 props.history.push('/signup')
             }}>Signup</Button>
-            <Button className='m-1' onClick={e => {
-                e.preventDefault();
-                props.history.push('/')
-            }}>Home</Button>
         </Form>
     )
 }
