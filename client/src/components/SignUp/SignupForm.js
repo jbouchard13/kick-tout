@@ -80,7 +80,7 @@ const Signup = props => {
     const postNewUser = newUser => {
         Axios.post('/api/auth/signup', newUser)
             .then(() => {
-                props.history.push('/login')
+                props.history.push('/')
             })
             .catch(err => console.log(err))
     }

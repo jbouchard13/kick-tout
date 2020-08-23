@@ -3,8 +3,6 @@ import { Route, Switch, BrowserRouter as Router, Redirect } from "react-router-d
 import { AuthProvider, AuthContext } from "./AuthContext";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
-// import Login from "./pages/Login";
-// import Members from "./pages/Members";
 import Feed from "./pages/Feed";
 import Profile from './pages/Profile'
 import EditProfile from './pages/EditProfile';
