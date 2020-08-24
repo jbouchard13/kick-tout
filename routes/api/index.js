@@ -100,17 +100,73 @@ router.delete('/api/posts/:postId/:userId', (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json((message: 'an error occurred'));
+      res.status(500).json({ message: 'an error occurred' });
     });
 });
 
 // --------------------- FAVORITES ----------------------------
 
 // route for getting user's favorited posts by user id (GET)
-// ----- will return the posts that a user has tracked
+// ----- will return the post id from the saved post
+// ----- will use the post id to search the posts table for the post data
+router.get('/api/favorites/:userId', (req, res) => {
+  db.Favorite.findAll({
+    where: {
+      userId: req.params.userId,
+    },
+  })
+
+    // takes each favorite entry's post id and returns all posts from post table
+    .then((favorite) => {
+      db.Post.findAll({
+        where: {
+          postId: favorite.postId,
+        },
+
+        // returns the post data to populate the user's favorite post section
+      }).then((favoritePosts) => {
+        res.status(200).json(favoritePosts);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occurred' });
+    });
+});
+
+// route for adding to the user's favorited posts (POST)
+// ----- will contain user id and post id
+router.post('/api/favorites/:postId/:userId', (req, res) => {
+  db.Favorite.create({
+    postId: req.params.postId,
+    userId: req.params.userId,
+  })
+    .then(() => {
+      res.status(200).json({ message: 'post saved to favorites' });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occured' });
+    });
+});
 
 // route for removing favorited posts by user id (DELETE)
 // ----- will remove the selected post that a user has tracked
+router.delete('/api/favorites/:postId/:userId', (req, res) => {
+  db.Favorite.destroy({
+    where: {
+      postId: req.params.postId,
+      userId: req.params.userId,
+    },
+  })
+    .then(() => {
+      res.status(200).json({ message: 'favorite removed successfully' });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occured' });
+    });
+});
 
 // --------------------- COLLECTION ----------------------------
 
