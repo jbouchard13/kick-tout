@@ -2,27 +2,107 @@ const router = require('express').Router();
 const db = require('../../models');
 const isAuthenticated = require('../../config/middleware/isAuthenticated');
 
-// router.get('/secrets', isAuthenticated, (req, res) => {
-//   res.json('Talk is cheap. Show me the code. -Linus Torvalds');
-// });
-
 // ----------------------- POSTS -------------------------------
 
 // route to get sales/trade/buy post from other users. will contain user id (GET)
 // ----- will return all of the posts with their respective user id for the initial feed page load
+router.get('/api/posts/', (req, res) => {
+  db.Post.findAll({})
+    .then((posts) => {
+      res.status(200).json(posts);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: 'an error occurred' });
+    });
+});
 
 // route for getting posts by search result, will contain user id (GET)
 // ----- will return all posts that fit the searched criteria and will contain the user id
+// ----- unsure if this will actually be implemented
+router.get('/api/posts/:query', (req, res) => {
+  db.Post.findAll({
+    where: {
+      name: req.params.query,
+    },
+  })
+    .then((results) => {
+      res.status(200).json(results);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occured' });
+    });
+});
 
 // route for adding new sales/trade posts (POST)
 // ----- user's can create new sales/trade/buy posts. will post with the user's id
+router.post('/api/posts/:userId', (req, res) => {
+  db.Post.create({
+    name: req.body.name,
+    content: req.body.content,
+    brand: req.body.brand,
+    type: req.body.type,
+    condition: req.body.condition,
+    value: req.body.value,
+    photoSrc: req.body.photoSrc,
+    userId: req.params.userId,
+  })
+    .then(() => {
+      res.status(200).res.json({ message: 'post added successfully' });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).res.json({ message: 'an error occurred' });
+    });
+});
 
 // route for updated existing posts (PUT)
-// ----- user's can edit their own posts by their user id
+// ----- user's can edit their own posts by their user id and post id
+router.put('/api/posts/:postId/:userId', (req, res) => {
+  db.Post.update(
+    {
+      name: req.body.name,
+      content: req.body.content,
+      brand: req.body.brand,
+      type: req.body.type,
+      condition: req.body.condition,
+      value: req.body.value,
+      photoSrc: req.body.photoSrc,
+    },
+    {
+      where: {
+        postId: req.params.postId,
+        userId: req.params.userId,
+      },
+    }
+  )
+    .then(() => {
+      res.status(200).json({ message: 'post updated successfully' });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occurred' });
+    });
+});
 
 // route for deleting existing posts (DELETE)
-// ----- user's can delete posts manually, by user id
+// ----- user's can delete posts manually, by user id and post id
 // ----- may also need to be done automatically if item is bought/sold/traded
+router.delete('/api/posts/:postId/:userId', (req, res) => {
+  db.Post.destroy({
+    where: {
+      postId: req.params.postId,
+      userId: req.params.userId,
+    },
+  })
+    .then(() => {
+      res.status(200).json({ message: 'post deleted successfully' });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json((message: 'an error occurred'));
+    });
+});
 
 // --------------------- FAVORITES ----------------------------
 
