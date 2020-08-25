@@ -10,20 +10,24 @@ import Col from 'react-bootstrap/Col'
 import CardContainer from '../components/Feed/CardContainer';
 import FavoritesBar from '../components/Feed/FavoritesBar';
 import Filter from '../components/Feed/Filter';
+// import Navigation from '../components/Navigation/Navigation';
+// import Footer from '../components/Footer/Footer';
+
+
 
 function Feed(props) {
   const { logout } = useContext(AuthContext);
 
   return (
     <>
-  <h1>NAV BAR HERE WITH BUTTONS</h1>
+      <h1>Nav goes here</h1>
       <Container fluid>
-      <Row>
+        <Row>
           <Col sm={10}>Container header</Col>
           <Col sm={2}>
             <Filter />
           </Col>
-      </Row>
+        </Row>
 
         <Row>
           <Col sm={3}>
@@ -33,14 +37,14 @@ function Feed(props) {
             <CardContainer />
           </Col>
         </Row>
-</Container>
-<h1>FOOTER HERE WITH CHAT</h1>
+      </Container>
+      <h1>Footer goes here</h1>
 
 
 
 
 
- {/* these should move into nav bar instead    */}
+      {/* these should move into nav bar instead    */}
 
       <Button
         className="m-1"

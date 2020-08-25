@@ -6,13 +6,13 @@ export default function CardContainer() {
   const style = {
     border: "black solid 2px",
   };
-return (
-  <div style={style}>
-<CardDeck>
-      <ShoeCard />
-      <ShoeCard />
-      <ShoeCard />
-    </CardDeck>
+  return (
+    <div style={style}>
+      <CardDeck>
+        <ShoeCard />
+        <ShoeCard />
+        <ShoeCard />
+      </CardDeck>
     </div>
   );
 }
