@@ -30,7 +30,7 @@ router.get('/api/posts/:query', (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: 'an error occured' });
+      res.status(500).json({ message: 'an error occurred' });
     });
 });
 
@@ -71,7 +71,7 @@ router.put('/api/posts/:postId/:userId', (req, res) => {
     },
     {
       where: {
-        postId: req.params.postId,
+        id: req.params.postId,
         userId: req.params.userId,
       },
     }
@@ -91,7 +91,7 @@ router.put('/api/posts/:postId/:userId', (req, res) => {
 router.delete('/api/posts/:postId/:userId', (req, res) => {
   db.Post.destroy({
     where: {
-      postId: req.params.postId,
+      id: req.params.postId,
       userId: req.params.userId,
     },
   })
@@ -120,7 +120,7 @@ router.get('/api/favorites/:userId', (req, res) => {
     .then((favorite) => {
       db.Post.findAll({
         where: {
-          postId: favorite.postId,
+          id: favorite.postId,
         },
 
         // returns the post data to populate the user's favorite post section
@@ -138,7 +138,7 @@ router.get('/api/favorites/:userId', (req, res) => {
 // ----- will contain user id and post id
 router.post('/api/favorites/:postId/:userId', (req, res) => {
   db.Favorite.create({
-    postId: req.params.postId,
+    id: req.params.postId,
     userId: req.params.userId,
   })
     .then(() => {
@@ -146,7 +146,7 @@ router.post('/api/favorites/:postId/:userId', (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: 'an error occured' });
+      res.status(500).json({ message: 'an error occurred' });
     });
 });
 
@@ -155,7 +155,7 @@ router.post('/api/favorites/:postId/:userId', (req, res) => {
 router.delete('/api/favorites/:postId/:userId', (req, res) => {
   db.Favorite.destroy({
     where: {
-      postId: req.params.postId,
+      id: req.params.postId,
       userId: req.params.userId,
     },
   })
@@ -164,7 +164,7 @@ router.delete('/api/favorites/:postId/:userId', (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: 'an error occured' });
+      res.status(500).json({ message: 'an error occurred' });
     });
 });
 
@@ -172,26 +172,148 @@ router.delete('/api/favorites/:postId/:userId', (req, res) => {
 
 // route for getting user's collection info by user id (GET)
 // ----- will return all of the collection results for the user by their user id
+router.get('/api/collections/:userId', (req, res) => {
+  db.Collection.findAll({
+    where: {
+      userId: req.params.userId,
+    },
+  })
+    .then((collectionItems) => {
+      res.status(200).json(collectionItems);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occurred' });
+    });
+});
 
 // route for adding to user's collection by user id (POST)
 // ----- users can add new item's to their collection through a form
+router.post('/api/collections/:userId', (req, res) => {
+  db.Collection.create({
+    photoSrc: req.body.photoSrc,
+    brand: req.body.brand,
+    type: req.body.type,
+    size: req.body.size,
+    condition: req.body.condition,
+    userId: req.params.userId,
+  })
+    .then(() => {
+      res
+        .status(200)
+        .json({ message: 'item added to collection successfully' });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occurred' });
+    });
+});
 
 // route for updating user's collection entries by user id and collection id (PUT)
 // ----- users can update info in their collection entries
 // ----- will be done with the collection entry's id
+router.put('/api/collections/:collectionId/:userId', (req, res) => {
+  db.Collection.update(
+    {
+      photoSrc: req.body.photoSrc,
+      brand: req.body.brand,
+      type: req.body.type,
+      size: req.body.size,
+      condition: req.body.condition,
+    },
+    {
+      where: {
+        id: req.params.collectionId,
+        userId: req.params.userId,
+      },
+    }
+  )
+    .then(() => {
+      res.status(200).json({ message: 'collection item updated successfully' });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occurred' });
+    });
+});
 
 // route for deleting item's from user's collection by user id and collection id (DELETE)
 // ----- will delete the selected collection entry by user id and collection id
+router.delete('/api/collections/:collectionId/:userId', (req, res) => {
+  db.Collection.destroy({
+    where: {
+      id: req.params.collectionId,
+      userId: req.params.userId,
+    },
+  })
+    .then(() => {
+      res.status(200).json({ message: 'collection item deleted successfully' });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occurred' });
+    });
+});
 
 // -------------------- PROFILE ---------------------------------
 
 // route for getting user's profile info by id (GET)
+router.get('/api/profiles/:userId', (req, res) => {
+  db.Profile.findAll({
+    where: {
+      userId: req.params.userId,
+    },
+  })
+    .then((profileData) => {
+      res.status(200).json(profileData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occurred' });
+    });
+});
 
 // route for creating user's profile with user id (POST)
 // ----- profile should be created initially when new user is made
 // ----- will contain blank info at first
+router.post('/api/profiles/:userId', (req, res) => {
+  db.Profile.create({
+    bio: '',
+    profileImg: '',
+    preferred: '',
+    userId: req.params.userId,
+  })
+    .then(() => {
+      res.status(200).json({ message: 'user profile created' });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occurred' });
+    });
+});
 
 // route for updating user's profile by id (PUT)
 // ----- this will be done on the user's bio page through a form
+router.put('/api/profiles/:userId', (req, res) => {
+  db.Profile.update(
+    {
+      bio: req.body.bio,
+      profileImg: req.body.profileImg,
+      preferred: req.body.preferred,
+    },
+    {
+      where: {
+        userId: req.params.userId,
+      },
+    }
+  )
+    .then(() => {
+      res.status(200).json({ message: 'user profile updated' });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occured' });
+    });
+});
 
 module.exports = router;
