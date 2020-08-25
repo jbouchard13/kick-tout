@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     fontStyle: "italic",
   }
-  
+
 }));
 
 export default function Footer() {
@@ -29,11 +29,11 @@ export default function Footer() {
 
   return (
     <BottomNavigation position="sticky" className={classes.root}>
-        <Grid justify="center" alignItems="center" container>
-          <Grid item>
-            <Typography className={classes.title}>Kick-Tout 2020 <CopyrightIcon /></Typography>
-          </Grid>
+      <Grid justify="center" alignItems="center" container>
+        <Grid item>
+          <Typography className={classes.title}>Kick-Tout 2020 <CopyrightIcon /></Typography>
         </Grid>
+      </Grid>
     </BottomNavigation>
   );
 }

@@ -23,41 +23,40 @@ function Home(props) {
 
   return (
     isAuth ? <Redirect to='/feed' />
-            : 
-    <Container className="signup">
-      <Row>
-        <Col md={{ span: 8, offset: 2 }}>
-          <Figure>
-            <Figure.Image
-              className="logo"
-              height={180}
-              alt="logo"
-              src="../assets/images/kick-tout.gif"
-            />
-          </Figure>
-          <Figure.Caption>
-            tout - attempt to sell something, typically by pestering people in an aggressive or bold manner.
-  </Figure.Caption>
-          <Figure>
-            <Figure.Image
-              className="sneaks"
-              width={800}
-              alt="sneaks"
-              src="../assets/images/sneaks.gif"
-            />
-          </Figure>
-        </Col>
-      </Row>
-      <Row>
+      :
       <Container className="signup">
-          <Row>
-            <Col md={{ span: 8, offset: 2 }}>
-              <LoginForm {...props}/>
-            </Col>
-          </Row>
-        </Container>
-      </Row>
-    </Container>
+        <Row>
+          <Col md={{ span: 8, offset: 2 }}>
+            <Figure>
+              <Figure.Image
+                className="logo"
+                height={180}
+                alt="logo"
+                src="../assets/images/kick-tout.gif"
+              />
+            </Figure>
+            <Figure.Caption>
+              tout - attempt to sell something, typically by pestering people in an aggressive or bold manner.</Figure.Caption>
+            <Figure>
+              <Figure.Image
+                className="sneaks"
+                width={800}
+                alt="sneaks"
+                src="../assets/images/sneaks.gif"
+              />
+            </Figure>
+          </Col>
+        </Row>
+        <Row>
+          <Container className="signup">
+            <Row>
+              <Col md={{ span: 8, offset: 2 }}>
+                <LoginForm {...props} />
+              </Col>
+            </Row>
+          </Container>
+        </Row>
+      </Container>
   );
 }
 
