@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
 import Axios from 'axios';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const Signup = props => {
+    const history = useHistory();
 
     const emptyUser = { firstNameInput: '', lastNameInput: '', emailInput: '', passwordInput: '' }
-    const errorMessage = 'invalid credentials'
 
     const [formData, setFormData] = useState(emptyUser)
-    const [credsAreInvalid, setCredsAreInvalid] = useState('')
+    // const [credsAreInvalid, setCredsAreInvalid] = useState('')
     const [firstNameColor, setFirstNameColor] = useState('')
     const [lastNameColor, setLastNameColor] = useState('')
     const [emailColor, setEmailColor] = useState('')
@@ -20,7 +25,7 @@ const Signup = props => {
         const { name, value } = event.target
         setFormData({ ...formData, [name]: value });
     }
-
+    
     const handleFormSubmit = event => {
         event.preventDefault()
 
@@ -36,8 +41,9 @@ const Signup = props => {
         if (validateUserInput(newUser)) {
             postNewUser(newUser)
             setFormData(emptyUser)
+
         } else {
-            setCredsAreInvalid(errorMessage)
+            toast.error("Invalid Credentials");
         }
     }
 
@@ -80,13 +86,18 @@ const Signup = props => {
     const postNewUser = newUser => {
         Axios.post('/api/auth/signup', newUser)
             .then(() => {
-                props.history.push('/')
+                console.log(newUser)
+                history.push('/', {
+                    message: "Account Successfully Created",
+                    })
             })
             .catch(err => console.log(err))
     }
 
+    
     return (
         <Form onSubmit={handleFormSubmit}>
+            <ToastContainer />
             <Form.Group controlId="inputFirstName">
                 <Form.Label className={firstNameColor}>FirstName</Form.Label>
                 <Form.Control name="firstNameInput" type="text" placeholder="" value={formData.firstNameInput} onChange={handleInputChange} />
@@ -105,11 +116,6 @@ const Signup = props => {
             <Form.Group controlId="inputPassword">
                 <Form.Label className={passwordColor}>Password</Form.Label>
                 <Form.Control name="passwordInput" type="password" placeholder="Password" value={formData.passwordInput} onChange={handleInputChange} />
-            </Form.Group>
-            <Form.Group>
-                <Form.Text className="text-danger">
-                    {credsAreInvalid}
-                </Form.Text>
             </Form.Group>
             <Button variant="primary" type="submit">
                 Submit

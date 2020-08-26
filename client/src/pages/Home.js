@@ -1,13 +1,29 @@
-import React, { useContext, useState } from "react";
-import { Redirect } from 'react-router-dom';
+import React, { useContext, useEffect } from "react";
+import { Redirect, useHistory } from 'react-router-dom';
 import { AuthContext } from "../AuthContext";
 import "../App.css";
-import { Container, Row, Button, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Figure from 'react-bootstrap/Figure';
 import LoginForm from '../components/Home/LoginForm';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Home(props) {
+  const history = useHistory();
+  const displayHistoryMessage = () => {
+    if (history.location.state &&
+      history.location.state.hasOwnProperty('message')
+    ) {
+      console.log("saved")
+       toast.success(history.location.state.message);
+    }
+  }
+
+  useEffect(() => {
+    displayHistoryMessage();
+  }, []);
+  
 
   const { isAuth } = useContext(AuthContext);
 
@@ -25,6 +41,7 @@ function Home(props) {
     isAuth ? <Redirect to='/feed' />
             : 
     <Container className="signup">
+      <ToastContainer/>
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
           <Figure>
