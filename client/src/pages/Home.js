@@ -2,9 +2,12 @@ import React, { useContext, useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from "../AuthContext";
 import "../App.css";
-import { Container, Row, Button, Col } from "react-bootstrap";
-import Figure from 'react-bootstrap/Figure';
+import { Container, Row, Col, Carousel, Figure } from "react-bootstrap";
+
 import LoginForm from '../components/Home/LoginForm';
+import ImgCarousel from '../components/Home/ImgCarousel';
+
+
 
 
 function Home(props) {
@@ -35,16 +38,13 @@ function Home(props) {
                 src="../assets/images/kick-tout.gif"
               />
             </Figure>
-            <Figure.Caption>
-              tout - attempt to sell something, typically by pestering people in an aggressive or bold manner.</Figure.Caption>
+            <Figure.Caption className="tout">
+              tout - attempt to sell something, typically by pestering people in an aggressive or bold manner.
+              </Figure.Caption>
             <Figure>
-              <Figure.Image
-                className="sneaks"
-                width={800}
-                alt="sneaks"
-                src="../assets/images/sneaks.gif"
-              />
+
             </Figure>
+            <ImgCarousel />
           </Col>
         </Row>
         <Row>
@@ -61,3 +61,6 @@ function Home(props) {
 }
 
 export default Home;
+
+
+
