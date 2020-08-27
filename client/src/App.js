@@ -12,6 +12,7 @@ import EditProfile from './pages/EditProfile';
 // router, but in the end we export App wrapped in the context provider
 
 function App() {
+
   // Here we subscribe the authentication context using the useContext hook
   // we use isAuth to determine whether the user is logged in, and setIsAuth
   // to change their status on logout.
