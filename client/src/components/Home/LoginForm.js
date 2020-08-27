@@ -36,10 +36,12 @@ const LoginForm = props => {
             .then(user => {
                 console.log("login response ", user)
                 setIsAuth(true)
-                history.push("/feed", {message: "Login Was Successfull"
+                history.push('/feed', {
+                    message: "Login Was Successful",
                 })
             })
             .catch(err => {
+                console.log(err)
                 toast.error("Invalid Credentials")
             })
     }

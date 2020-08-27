@@ -88,7 +88,7 @@ const Signup = props => {
             .then(() => {
                 console.log(newUser)
                 history.push('/', {
-                    message: "Account Successfully Created",
+                    message: "Account Successfully Created!",
                     })
             })
             .catch(err => console.log(err))
