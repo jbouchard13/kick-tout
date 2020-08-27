@@ -21,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    condition: {
+    shoeCondition: {
       type: DataTypes.STRING,
       allowNull: false,
     },

@@ -6,7 +6,7 @@ const isAuthenticated = require('../../config/middleware/isAuthenticated');
 
 // route to get sales/trade/buy post from other users. will contain user id (GET)
 // ----- will return all of the posts with their respective user id for the initial feed page load
-router.get('/api/posts/', (req, res) => {
+router.get('/posts', (req, res) => {
   db.Post.findAll({})
     .then((posts) => {
       res.status(200).json(posts);
@@ -19,7 +19,7 @@ router.get('/api/posts/', (req, res) => {
 // route for getting posts by search result, will contain user id (GET)
 // ----- will return all posts that fit the searched criteria and will contain the user id
 // ----- unsure if this will actually be implemented
-router.get('/api/posts/:query', (req, res) => {
+router.get('/posts/:query', (req, res) => {
   db.Post.findAll({
     where: {
       name: req.params.query,
@@ -36,7 +36,7 @@ router.get('/api/posts/:query', (req, res) => {
 
 // route for adding new sales/trade posts (POST)
 // ----- user's can create new sales/trade/buy posts. will post with the user's id
-router.post('/api/posts/:userId', (req, res) => {
+router.post('/posts/:userId', (req, res) => {
   db.Post.create({
     name: req.body.name,
     content: req.body.content,
@@ -58,7 +58,7 @@ router.post('/api/posts/:userId', (req, res) => {
 
 // route for updated existing posts (PUT)
 // ----- user's can edit their own posts by their user id and post id
-router.put('/api/posts/:postId/:userId', (req, res) => {
+router.put('/posts/:postId/:userId', (req, res) => {
   db.Post.update(
     {
       name: req.body.name,
@@ -88,7 +88,7 @@ router.put('/api/posts/:postId/:userId', (req, res) => {
 // route for deleting existing posts (DELETE)
 // ----- user's can delete posts manually, by user id and post id
 // ----- may also need to be done automatically if item is bought/sold/traded
-router.delete('/api/posts/:postId/:userId', (req, res) => {
+router.delete('/posts/:postId/:userId', (req, res) => {
   db.Post.destroy({
     where: {
       id: req.params.postId,
@@ -109,7 +109,7 @@ router.delete('/api/posts/:postId/:userId', (req, res) => {
 // route for getting user's favorited posts by user id (GET)
 // ----- will return the post id from the saved post
 // ----- will use the post id to search the posts table for the post data
-router.get('/api/favorites/:userId', (req, res) => {
+router.get('/favorites/:userId', (req, res) => {
   db.Favorite.findAll({
     where: {
       userId: req.params.userId,
@@ -117,10 +117,17 @@ router.get('/api/favorites/:userId', (req, res) => {
   })
 
     // takes each favorite entry's post id and returns all posts from post table
-    .then((favorite) => {
+    .then((favorites) => {
+      const postIds = [];
+      favorites.forEach((favorite) => {
+        // push each favorite's postId to the array above
+        postIds.push(favorite.postId);
+      });
+
+      // search for the posts that the user saved using the postIds
       db.Post.findAll({
         where: {
-          id: favorite.postId,
+          id: postIds,
         },
 
         // returns the post data to populate the user's favorite post section
@@ -136,9 +143,9 @@ router.get('/api/favorites/:userId', (req, res) => {
 
 // route for adding to the user's favorited posts (POST)
 // ----- will contain user id and post id
-router.post('/api/favorites/:postId/:userId', (req, res) => {
+router.post('/favorites/:postId/:userId', (req, res) => {
   db.Favorite.create({
-    id: req.params.postId,
+    postId: req.params.postId,
     userId: req.params.userId,
   })
     .then(() => {
@@ -152,7 +159,7 @@ router.post('/api/favorites/:postId/:userId', (req, res) => {
 
 // route for removing favorited posts by user id (DELETE)
 // ----- will remove the selected post that a user has tracked
-router.delete('/api/favorites/:postId/:userId', (req, res) => {
+router.delete('/favorites/:postId/:userId', (req, res) => {
   db.Favorite.destroy({
     where: {
       id: req.params.postId,
@@ -172,7 +179,7 @@ router.delete('/api/favorites/:postId/:userId', (req, res) => {
 
 // route for getting user's collection info by user id (GET)
 // ----- will return all of the collection results for the user by their user id
-router.get('/api/collections/:userId', (req, res) => {
+router.get('/collections/:userId', (req, res) => {
   db.Collection.findAll({
     where: {
       userId: req.params.userId,
@@ -189,7 +196,7 @@ router.get('/api/collections/:userId', (req, res) => {
 
 // route for adding to user's collection by user id (POST)
 // ----- users can add new item's to their collection through a form
-router.post('/api/collections/:userId', (req, res) => {
+router.post('/collections/:userId', (req, res) => {
   db.Collection.create({
     photoSrc: req.body.photoSrc,
     brand: req.body.brand,
@@ -212,7 +219,7 @@ router.post('/api/collections/:userId', (req, res) => {
 // route for updating user's collection entries by user id and collection id (PUT)
 // ----- users can update info in their collection entries
 // ----- will be done with the collection entry's id
-router.put('/api/collections/:collectionId/:userId', (req, res) => {
+router.put('/collections/:collectionId/:userId', (req, res) => {
   db.Collection.update(
     {
       photoSrc: req.body.photoSrc,
@@ -239,7 +246,7 @@ router.put('/api/collections/:collectionId/:userId', (req, res) => {
 
 // route for deleting item's from user's collection by user id and collection id (DELETE)
 // ----- will delete the selected collection entry by user id and collection id
-router.delete('/api/collections/:collectionId/:userId', (req, res) => {
+router.delete('/collections/:collectionId/:userId', (req, res) => {
   db.Collection.destroy({
     where: {
       id: req.params.collectionId,
@@ -258,7 +265,7 @@ router.delete('/api/collections/:collectionId/:userId', (req, res) => {
 // -------------------- PROFILE ---------------------------------
 
 // route for getting user's profile info by id (GET)
-router.get('/api/profiles/:userId', (req, res) => {
+router.get('/profiles/:userId', (req, res) => {
   db.Profile.findAll({
     where: {
       userId: req.params.userId,
@@ -276,7 +283,7 @@ router.get('/api/profiles/:userId', (req, res) => {
 // route for creating user's profile with user id (POST)
 // ----- profile should be created initially when new user is made
 // ----- will contain blank info at first
-router.post('/api/profiles/:userId', (req, res) => {
+router.post('/profiles/:userId', (req, res) => {
   db.Profile.create({
     bio: '',
     profileImg: '',
@@ -294,7 +301,7 @@ router.post('/api/profiles/:userId', (req, res) => {
 
 // route for updating user's profile by id (PUT)
 // ----- this will be done on the user's bio page through a form
-router.put('/api/profiles/:userId', (req, res) => {
+router.put('/profiles/:userId', (req, res) => {
   db.Profile.update(
     {
       bio: req.body.bio,

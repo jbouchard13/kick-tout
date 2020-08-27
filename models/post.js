@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    condition: {
+    shoeCondition: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -37,7 +37,6 @@ module.exports = function (sequelize, DataTypes) {
   // create association between posts and the user who created them
   Post.associate = (models) => {
     Post.belongsTo(models.User);
-    Post.belongsTo(models.Favorite);
   };
 
   return Post;
