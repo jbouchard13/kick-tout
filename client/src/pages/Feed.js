@@ -10,6 +10,11 @@ import CardContainer from '../components/Feed/CardContainer';
 import FavoritesBar from '../components/Feed/FavoritesBar';
 import Filter from '../components/Feed/Filter';
 
+// import Navigation from '../components/Navigation/Navigation';
+// import Footer from '../components/Footer/Footer';
+
+
+
 function Feed(props) {
   const history = useHistory();
 
