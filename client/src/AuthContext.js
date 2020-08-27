@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
                 }
             })
     }
-
+    
     const logout = async () => {
         Axios.get("/api/auth/logout")
             .then(() => {
