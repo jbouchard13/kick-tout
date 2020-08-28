@@ -11,7 +11,6 @@ function EditProfile(props) {
 
   return (
     <div>
-      {/* <h1>Nav goes here</h1> */}
       <h1>Edit Profile</h1>
 
       <Container fluid>
@@ -29,10 +28,9 @@ function EditProfile(props) {
           </Col>
         </Row>
       </Container>
-      {/* <h1>Footer goes here</h1> */}
 
 
-
+      {/* these should move into nav bar instead    */}
       <Button
         className="m-1"
         onClick={() => {

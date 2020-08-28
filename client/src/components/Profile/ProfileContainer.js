@@ -1,15 +1,13 @@
 import React from 'react';
 
-// import Form from "../components/Profile/Form"
+import ProfileTabs from "./ProfileTabs"
 
 
 export default function ProfileContainer() {
-    const style = {
-        border: "black solid 2px",
-    };
+
     return (
-        <div style={style}>
-            {/* <Form /> */}
+        <div>
+            <ProfileTabs />
         </div>
     );
 }
