@@ -47,13 +47,13 @@ function Profile(props) {
       </Button>
       <Button
         className="m-1"
-        onClick={(e) => {
+        onClick={e => {
           e.preventDefault();
-          props.history.push('/editprofile');
+          props.history.push("/feed");
         }}
       >
-        Edit Profile
-      </Button>
+        Feed
+            </Button>
     </div>
   );
 }

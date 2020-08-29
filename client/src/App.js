@@ -5,8 +5,6 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Feed from "./pages/Feed";
 import Profile from './pages/Profile'
-import EditProfile from './pages/EditProfile';
-import Chat from './components/Chat/Chat';
 
 // Even though this is the App.js file, in the end we are not exactly exporting
 // the App component.  We actually set up the app component to implement our react
