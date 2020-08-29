@@ -11,7 +11,6 @@ function LogoutButton() {
   return (
     <div>
       <Button
-        className="m-1 bg-white text-dark"
         onClick={() => {
           logout();
         }}
