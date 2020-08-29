@@ -1,8 +1,30 @@
+require('dotenv').config();
 const router = require('express').Router();
 const Sequelize = require('sequelize');
+const formData = require('express-form-data');
+const cloudinary = require('cloudinary');
+
+const { Op } = Sequelize;
 const db = require('../../models');
 const isAuthenticated = require('../../config/middleware/isAuthenticated');
-const { Op } = Sequelize;
+
+// ----------------------- IMAGE UPLOAD -----------------------
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
+
+router.post('/upload', (req, res) => {
+  console.log(req.body);
+  // const values = Object.values(req.files);
+  // const promises = values.map((image) => {
+  //   console.log(image);
+  // });
+  // Promise.all(promises).then((results) => {
+  //   res.json(results);
+  // });
+});
 
 // ----------------------- POSTS -------------------------------
 
@@ -206,17 +228,18 @@ router.get('/collections/:userId', (req, res) => {
 
 // route for adding a users name to the feed page
 router.get('/users/:id', (req, res) => {
-  db.users.find({
-    where: {
-      id: req.params.id,
-    },
-  })
+  db.users
+    .find({
+      where: {
+        id: req.params.id,
+      },
+    })
     .then((firstName) => {
       res.status(200).json(firstName);
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({message: 'user not found'})
+      res.status(500).json({ message: 'user not found' });
     });
 });
 
