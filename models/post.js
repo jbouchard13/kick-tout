@@ -1,6 +1,6 @@
 // table containing sale/trade/buy posts
 
-// will have values for name, content(description of post), brand, type(trade, sale, looking for), condition, $ value, photo source
+// will have values for name, content(description of post), size, brand, type(trade, sale, looking for), condition, $ value, photo source
 
 // unique to user by id
 
@@ -12,6 +12,9 @@ module.exports = function (sequelize, DataTypes) {
     },
     content: {
       type: DataTypes.TEXT,
+    },
+    size: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     brand: {

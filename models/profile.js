@@ -13,7 +13,6 @@ module.exports = function (sequelize, DataTypes) {
     // user's profile icon, can be null
     profileImg: {
       type: DataTypes.STRING,
-      unique: true,
     },
     // user's preferred items, can be null
     preferred: {

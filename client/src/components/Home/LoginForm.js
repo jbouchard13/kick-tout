@@ -36,7 +36,7 @@ const LoginForm = props => {
             .then(user => {
                 console.log("login response ", user)
                 setIsAuth(true)
-                history.push('/feed', {
+                history.push('/feed',{
                     message: "Login Was Successful",
                 })
             })
