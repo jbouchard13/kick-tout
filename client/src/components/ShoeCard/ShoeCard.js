@@ -8,7 +8,7 @@ export class ShoeCard extends Component {
   render() {
     return (
       <div>
-        <Card style={{ width: '18rem' }}>
+        <Card className="shoeCard">
           <Card.Img variant='top' src={this.props.photoSrc} />
           <Card.Body>
             <Card.Title>{this.props.name}</Card.Title>

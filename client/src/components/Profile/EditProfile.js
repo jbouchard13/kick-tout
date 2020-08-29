@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 
-export class UserForm extends Component {
+export class EditProfile extends Component {
   render() {
     return (
       <div>
-        <Form>
+        <Form className="form">
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
@@ -30,4 +30,4 @@ export class UserForm extends Component {
   }
 }
 
-export default UserForm;
+export default EditProfile;

@@ -5,7 +5,7 @@ export class ProfileInfo extends Component {
     render() {
         return (
             <div>
-                <Form>
+                <Form className="form">
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridEmail">
                             <Form.Label>Email</Form.Label>
@@ -53,8 +53,7 @@ export class ProfileInfo extends Component {
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
-                        Submit
-  </Button>
+                        Submit</Button>
                 </Form>
             </div>
         )

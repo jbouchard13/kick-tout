@@ -5,3 +5,23 @@
 .tout {
   text-align: center;
 }
+
+.profilePic {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.profileTab {
+  padding-left: 16px;
+  padding-top: 10px;
+}
+
+.editProfileTab {
+  padding-left: 16px;
+}
+
+.form {
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
