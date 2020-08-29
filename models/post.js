@@ -12,7 +12,6 @@ module.exports = function (sequelize, DataTypes) {
     },
     content: {
       type: DataTypes.TEXT,
-      allowNull: false,
     },
     size: {
       type: DataTypes.STRING,
