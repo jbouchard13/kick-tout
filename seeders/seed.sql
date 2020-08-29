@@ -11,6 +11,7 @@
 
 USE kickTout;
 -- set the above code to USE (your local db name)
+USE kickTout;
 
 INSERT INTO users (firstName, lastName, email, password, createdAt, updatedAt)
 VALUES
