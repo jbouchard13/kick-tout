@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Container, Row, Col, Figure } from "react-bootstrap";
 import ImgCarousel from '../components/Home/ImgCarousel';
 
+
 import LoginForm from '../components/Home/LoginForm';
 
 
