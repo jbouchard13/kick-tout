@@ -10,7 +10,7 @@ import CardContainer from '../components/Feed/CardContainer';
 import FavoritesBar from '../components/Feed/FavoritesBar';
 import Filter from '../components/Feed/Filter';
 
-// import Navigation from '../components/Navigation/Navigation';
+import Navigation from '../components/Navigation/Navigation';
 // import Footer from '../components/Footer/Footer';
 
 
@@ -36,9 +36,7 @@ function Feed(props) {
 
     return (
       <>
-        <h1>Nav goes here
-        
-        </h1>
+        <Navigation />
         <Container fluid>
         <ToastContainer />
           <Row>
@@ -57,7 +55,7 @@ function Feed(props) {
             </Col>
           </Row>
         </Container>
-        <h1>Footer goes here</h1>
+        {/* <Footer /> */}
   
   
   

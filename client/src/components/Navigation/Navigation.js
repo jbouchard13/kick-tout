@@ -10,8 +10,7 @@ import {
 import { Switch, Route, Link } from 'react-router-dom';
 import LogoutButton from "../LogoutButton"
 
-//add logo to nav bar
-//work on footer
+
 
 
 export class Navigation extends React.Component {
@@ -23,7 +22,7 @@ export class Navigation extends React.Component {
             Kick-Tout
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse className=" justify-content-end">
+          <Navbar.Collapse className="justify-content-end">
             <Nav className="mr-auto">
               <Nav.Link as={Link} to="/">
                 Home
@@ -31,9 +30,6 @@ export class Navigation extends React.Component {
               <Nav.Link as={Link} to="/editprofile">Link</Nav.Link>
               <NavDropdown title="My Account" id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/editprofile">
-                  Edit Profile
-                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
                   <LogoutButton />
@@ -48,3 +44,4 @@ export class Navigation extends React.Component {
 }
 
 export default Navigation;
+
