@@ -15,7 +15,7 @@ function LogoutButton() {
         onClick={() => {
           logout();
         }}
-      >
+        variant="dark">
         Logout
       </Button>
     </div>

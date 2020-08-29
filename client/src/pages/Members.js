@@ -30,7 +30,7 @@ const Members = props => {
               logout();
               setSecret("");
             }}
-          >
+            variant="dark">
             Logout
           </Button>
           <Button
@@ -38,10 +38,10 @@ const Members = props => {
             onClick={() => {
               props.history.push("/");
             }}
-          >
+            variant="dark">
             Home
           </Button>
-          <Button className="m-1" onClick={getSecret}>
+          <Button className="m-1" onClick={getSecret} variant="dark">
             Show Secret
           </Button>
         </Col>

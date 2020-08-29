@@ -1,3 +1,15 @@
+body {
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.App {
+	text-align: center;
+	display: flex;
+	min-height: 100vh;
+	align-items: center;
+}
+
 .signup {
   padding-top: 20px;
 }
@@ -24,4 +36,8 @@
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.button {
+  background-color: black;
 }

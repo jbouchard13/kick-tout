@@ -45,7 +45,7 @@ function EditProfile(props) {
           e.preventDefault();
           props.history.push("/feed");
         }}
-      >
+        variant="dark">
         Feed
             </Button>
       <Button
@@ -54,7 +54,7 @@ function EditProfile(props) {
           e.preventDefault();
           props.history.push("/profile");
         }}
-      >
+        variant="dark">
         Profile
             </Button>
     </div>

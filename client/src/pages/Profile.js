@@ -43,7 +43,7 @@ function Profile(props) {
         onClick={() => {
           logout();
         }}
-      >
+        variant="dark">
         Logout
       </Button>
       <Button
@@ -52,7 +52,7 @@ function Profile(props) {
           e.preventDefault();
           props.history.push("/feed");
         }}
-      >
+        variant="dark">
         Feed
             </Button>
     </div>
