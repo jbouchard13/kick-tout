@@ -194,6 +194,22 @@ router.get('/collections/:userId', (req, res) => {
     });
 });
 
+// route for adding a users name to the feed page
+router.get('/users/:id', (req, res) => {
+  db.users.find({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((firstName) => {
+      res.status(200).json(firstName);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({message: 'user not found'})
+    });
+});
+
 // route for adding to user's collection by user id (POST)
 // ----- users can add new item's to their collection through a form
 router.post('/collections/:userId', (req, res) => {
