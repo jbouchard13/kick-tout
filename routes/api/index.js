@@ -1,6 +1,8 @@
 const router = require('express').Router();
+const Sequelize = require('sequelize');
 const db = require('../../models');
 const isAuthenticated = require('../../config/middleware/isAuthenticated');
+const { Op } = Sequelize;
 
 // ----------------------- POSTS -------------------------------
 
@@ -12,6 +14,7 @@ router.get('/posts', (req, res) => {
       res.status(200).json(posts);
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({ message: 'an error occurred' });
     });
 });
@@ -22,7 +25,11 @@ router.get('/posts', (req, res) => {
 router.get('/posts/:query', (req, res) => {
   db.Post.findAll({
     where: {
-      name: req.params.query,
+      name: {
+        // allows search parameters to be partial
+        // example: search for 'nike' will return all shoe posts containing the word nike, regardless of the full name
+        [Op.substring]: req.params.query,
+      },
     },
   })
     .then((results) => {
@@ -37,22 +44,24 @@ router.get('/posts/:query', (req, res) => {
 // route for adding new sales/trade posts (POST)
 // ----- user's can create new sales/trade/buy posts. will post with the user's id
 router.post('/posts/:userId', (req, res) => {
+  console.log(req.body);
   db.Post.create({
     name: req.body.name,
     content: req.body.content,
+    size: req.body.size,
     brand: req.body.brand,
     type: req.body.type,
-    condition: req.body.condition,
+    shoeCondition: req.body.shoeCondition,
     value: req.body.value,
     photoSrc: req.body.photoSrc,
-    userId: req.params.userId,
+    UserId: req.params.userId,
   })
     .then(() => {
-      res.status(200).res.json({ message: 'post added successfully' });
+      res.status(200).json({ message: 'post added successfully' });
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).res.json({ message: 'an error occurred' });
+      res.status(500).json({ message: 'an error occurred' });
     });
 });
 
@@ -63,16 +72,17 @@ router.put('/posts/:postId/:userId', (req, res) => {
     {
       name: req.body.name,
       content: req.body.content,
+      size: req.body.size,
       brand: req.body.brand,
       type: req.body.type,
-      condition: req.body.condition,
+      shoeCondition: req.body.shoeCondition,
       value: req.body.value,
       photoSrc: req.body.photoSrc,
     },
     {
       where: {
         id: req.params.postId,
-        userId: req.params.userId,
+        UserId: req.params.userId,
       },
     }
   )
@@ -92,7 +102,7 @@ router.delete('/posts/:postId/:userId', (req, res) => {
   db.Post.destroy({
     where: {
       id: req.params.postId,
-      userId: req.params.userId,
+      UserId: req.params.userId,
     },
   })
     .then(() => {
@@ -112,7 +122,7 @@ router.delete('/posts/:postId/:userId', (req, res) => {
 router.get('/favorites/:userId', (req, res) => {
   db.Favorite.findAll({
     where: {
-      userId: req.params.userId,
+      UserId: req.params.userId,
     },
   })
 
@@ -146,7 +156,7 @@ router.get('/favorites/:userId', (req, res) => {
 router.post('/favorites/:postId/:userId', (req, res) => {
   db.Favorite.create({
     postId: req.params.postId,
-    userId: req.params.userId,
+    UserId: req.params.userId,
   })
     .then(() => {
       res.status(200).json({ message: 'post saved to favorites' });
@@ -163,7 +173,7 @@ router.delete('/favorites/:postId/:userId', (req, res) => {
   db.Favorite.destroy({
     where: {
       id: req.params.postId,
-      userId: req.params.userId,
+      UserId: req.params.userId,
     },
   })
     .then(() => {
@@ -182,7 +192,7 @@ router.delete('/favorites/:postId/:userId', (req, res) => {
 router.get('/collections/:userId', (req, res) => {
   db.Collection.findAll({
     where: {
-      userId: req.params.userId,
+      UserId: req.params.userId,
     },
   })
     .then((collectionItems) => {
@@ -219,7 +229,7 @@ router.post('/collections/:userId', (req, res) => {
     type: req.body.type,
     size: req.body.size,
     condition: req.body.condition,
-    userId: req.params.userId,
+    UserId: req.params.userId,
   })
     .then(() => {
       res
@@ -247,7 +257,7 @@ router.put('/collections/:collectionId/:userId', (req, res) => {
     {
       where: {
         id: req.params.collectionId,
-        userId: req.params.userId,
+        UserId: req.params.userId,
       },
     }
   )
@@ -266,7 +276,7 @@ router.delete('/collections/:collectionId/:userId', (req, res) => {
   db.Collection.destroy({
     where: {
       id: req.params.collectionId,
-      userId: req.params.userId,
+      UserId: req.params.userId,
     },
   })
     .then(() => {
@@ -284,7 +294,7 @@ router.delete('/collections/:collectionId/:userId', (req, res) => {
 router.get('/profiles/:userId', (req, res) => {
   db.Profile.findAll({
     where: {
-      userId: req.params.userId,
+      UserId: req.params.userId,
     },
   })
     .then((profileData) => {
@@ -300,11 +310,12 @@ router.get('/profiles/:userId', (req, res) => {
 // ----- profile should be created initially when new user is made
 // ----- will contain blank info at first
 router.post('/profiles/:userId', (req, res) => {
+  console.log(req.params.userId);
   db.Profile.create({
     bio: '',
-    profileImg: '',
+    profileImg: '../assets/images/profile-img.png',
     preferred: '',
-    userId: req.params.userId,
+    UserId: req.params.userId,
   })
     .then(() => {
       res.status(200).json({ message: 'user profile created' });
@@ -326,7 +337,7 @@ router.put('/profiles/:userId', (req, res) => {
     },
     {
       where: {
-        userId: req.params.userId,
+        UserId: req.params.userId,
       },
     }
   )
