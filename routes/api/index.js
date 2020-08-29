@@ -284,11 +284,12 @@ router.get('/profiles/:userId', (req, res) => {
 // ----- profile should be created initially when new user is made
 // ----- will contain blank info at first
 router.post('/profiles/:userId', (req, res) => {
+  console.log(req.params.userId);
   db.Profile.create({
     bio: '',
-    profileImg: '',
+    profileImg: '../assets/images/profile-img.png',
     preferred: '',
-    userId: req.params.userId,
+    UserId: req.params.userId,
   })
     .then(() => {
       res.status(200).json({ message: 'user profile created' });
