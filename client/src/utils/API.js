@@ -1,6 +1,11 @@
 import axios from 'axios';
 
 export default {
+// path to get user
+getUser: () => {
+  return axios.get(`/api/users/${id}`);
+},
+
   // path to get posts
   getAllPosts: () => {
     return axios.get('/api/posts');

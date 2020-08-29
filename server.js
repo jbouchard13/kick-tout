@@ -6,9 +6,24 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const db = require('./models');
 const routes = require('./routes');
+const socketio = require('socket.io');
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+// Socket Io middleware
+// ===========================================
+const server = require('http').createServer(app);
+const io = socketio(server);
+
+io.on('connection', (socket) => {
+  console.log('We have a new connection')
+
+  socket.on('disconnect', () => {
+    console.log('User has left!');
+  })
+});
 
 /// added mysql and dotEnv
 

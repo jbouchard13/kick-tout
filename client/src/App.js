@@ -6,6 +6,8 @@ import Signup from "./pages/Signup";
 import Feed from "./pages/Feed";
 import Profile from './pages/Profile'
 
+// import Chat from './components/Chat/Chat';
+
 // Even though this is the App.js file, in the end we are not exactly exporting
 // the App component.  We actually set up the app component to implement our react
 // router, but in the end we export App wrapped in the context provider
@@ -40,6 +42,7 @@ function App() {
         <Route exact path="/signup" render={props => <Signup {...props} />} />
         <PrivateRoute exact path="/feed" component={Feed} />
         <PrivateRoute exact path="/profile" component={Profile} />
+        {/* <PrivateRoute exact path="/chat" component={Chat} /> */}
       </Switch>
     </Router>
   );
