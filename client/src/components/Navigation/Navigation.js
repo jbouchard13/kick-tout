@@ -39,7 +39,7 @@ export class Navigation extends React.Component {
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <LogoutButton />
+                  <LogoutButton varient="dark" />
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
