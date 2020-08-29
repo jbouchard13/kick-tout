@@ -4,6 +4,7 @@ import { Button, Col, Row, Container } from "react-bootstrap";
 import "../App.css";
 
 import ProfileContainer from '../components/Profile/ProfileContainer';
+import Navigation from '../components/Navigation/Navigation';
 
 
 // import Navigation from '../components/Navigation/Navigation';
@@ -15,7 +16,7 @@ function Profile(props) {
 
   return (
     <div>
-      {/* <Navigation /> */}
+      <Navigation />
       <h1>Profile Page</h1>
       <Container fluid>
         <Row>

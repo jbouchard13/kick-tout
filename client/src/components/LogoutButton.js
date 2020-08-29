@@ -3,13 +3,15 @@ import { AuthContext } from '../AuthContext';
 import { Button } from 'react-bootstrap';
 import '../App.css';
 
-function LogoutButton(props) {
+
+
+function LogoutButton() {
   const { logout } = useContext(AuthContext);
 
   return (
     <div>
       <Button
-        className="m-1"
+        className="m-1 bg-white text-dark"
         onClick={() => {
           logout();
         }}

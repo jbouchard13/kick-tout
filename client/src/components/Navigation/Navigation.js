@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-} from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, FormControl, Button } from 'react-bootstrap';
 import { Switch, Route, Link } from 'react-router-dom';
-import LogoutButton from "../LogoutButton"
-
-
-
+import LogoutButton from '../LogoutButton';
 
 export class Navigation extends React.Component {
   render() {
@@ -19,17 +9,34 @@ export class Navigation extends React.Component {
       <div>
         <Navbar bg="white" expand="lg">
           <Navbar.Brand as={Link} to="/">
-            Kick-Tout
+            <img
+              className="logo"
+              height="30"
+              alt="logo"
+              src="../assets/images/kick-tout.gif"
+            />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse className="justify-content-end">
-            <Nav className="mr-auto">
-              <Nav.Link as={Link} to="/">
-                Home
+            <Nav className="justify-content-end">
+              <Nav.Link as={Link} to="/feed" className=" text-dark">
+                Feed
               </Nav.Link>
-              <Nav.Link as={Link} to="/editprofile">Link</Nav.Link>
-              <NavDropdown title="My Account" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
+              <Nav.Link as={Link} to="/#" className=" text-dark">
+                Add Post
+              </Nav.Link>
+              <NavDropdown
+                title="My Account"
+                id="basic-nav-dropdown"
+                className="text-dark"
+              >
+                <NavDropdown.Item
+                  as={Link}
+                  to="/profile"
+                  className=" text-dark"
+                >
+                  Profile
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
                   <LogoutButton />
@@ -44,4 +51,3 @@ export class Navigation extends React.Component {
 }
 
 export default Navigation;
-
