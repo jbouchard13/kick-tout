@@ -9,3 +9,8 @@
     align-self: center;
     margin: 5px;
 }
+
+.filter {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
