@@ -1,0 +1,11 @@
+.shoeCard {
+    width: 300px;
+    margin: 5px;
+    align-content: center;
+}
+
+.favCard {
+    width: 289px;
+    align-self: center;
+    margin: 5px
+}

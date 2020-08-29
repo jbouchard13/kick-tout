@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { AuthContext } from "../AuthContext";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import "../App.css";
+import "../components/Feed/feed.css";
+
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
