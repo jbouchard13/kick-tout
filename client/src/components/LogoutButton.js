@@ -3,8 +3,6 @@ import { AuthContext } from '../AuthContext';
 import { Button } from 'react-bootstrap';
 import '../App.css';
 
-
-
 function LogoutButton() {
   const { logout } = useContext(AuthContext);
 

@@ -12,6 +12,7 @@ import CardContainer from '../components/Feed/CardContainer';
 import FavoritesBar from '../components/Feed/FavoritesBar';
 import Filter from '../components/Feed/Filter';
 
+
 import Navigation from '../components/Navigation/Navigation';
 // import Footer from '../components/Footer/Footer';
 
@@ -42,7 +43,7 @@ function Feed(props) {
       <Container fluid>
         <ToastContainer />
         <Row>
-          <Col sm={10}>Container header</Col>
+          <Col sm={10}></Col>
           <Col sm={2}>
             <Filter />
           </Col>
@@ -53,36 +54,11 @@ function Feed(props) {
             <FavoritesBar />
           </Col>
           <Col sm={9}>
-            <CardContainer />
+            <CardContainer fluid />
           </Col>
         </Row>
       </Container>
-      <h1>Footer goes here</h1>
-
-
-
-
-
-      {/* these should move into nav bar instead    */}
-
-      <Button
-        className="m-1"
-        onClick={() => {
-          logout();
-        }}
-        variant="dark">
-        Logout
-        </Button>
-      <Button
-        className="m-1"
-        onClick={(e) => {
-          e.preventDefault();
-          props.history.push('/profile');
-        }}
-        variant="dark">
-        Profile
-        </Button>
-    </>
+      {/* <Footer />   */}  </>
   );
 }
 

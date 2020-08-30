@@ -20,7 +20,7 @@ function Profile(props) {
       <h1>Profile Page</h1>
       <Container fluid>
         <Row>
-          <Col sm={10}>Container header</Col>
+          <Col sm={10}></Col>
           <Col sm={2}>
           </Col>
         </Row>
@@ -34,27 +34,6 @@ function Profile(props) {
         </Row>
       </Container>
       {/* <Footer /> */}
-
-
-      {/* these should move into nav bar instead    */}
-
-      <Button
-        className="m-1"
-        onClick={() => {
-          logout();
-        }}
-        variant="dark">
-        Logout
-      </Button>
-      <Button
-        className="m-1"
-        onClick={e => {
-          e.preventDefault();
-          props.history.push("/feed");
-        }}
-        variant="dark">
-        Feed
-            </Button>
     </div>
   );
 }

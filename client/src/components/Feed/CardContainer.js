@@ -18,7 +18,7 @@ export default function CardContainer() {
   }, []);
 
   const style = {
-    border: 'black solid 2px',
+    // border: 'black solid 2px',
   };
 
   return (

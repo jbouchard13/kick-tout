@@ -1,11 +1,20 @@
 .shoeCard {
     width: 300px;
-    margin: 5px;
+    margin: 55px;
     align-content: center;
+    border-color: black;
+    box-shadow: 3px 5px 5px grey;
 }
 
 .favCard {
     width: 289px;
     align-self: center;
     margin: 5px;
+    border-color: black;
+    box-shadow: 3px 5px 5px grey;
+}
+
+.filter {
+    padding-top: 20px;
+    /* padding-bottom: 20px; */
 }
