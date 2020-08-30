@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { AuthContext } from "../AuthContext";
-import { Button, Container, Row, Col } from "react-bootstrap";
-import "../App.css";
-import "../components/Feed/feed.css";
+import { AuthContext } from '../AuthContext';
+import { Button, Container, Row, Col } from 'react-bootstrap';
+import '../App.css';
+import '../components/Feed/feed.css';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,7 +13,6 @@ import FavoritesBar from '../components/Feed/FavoritesBar';
 import Filter from '../components/Feed/Filter';
 import UserGreeting from '../components/Home/UserGreeting';
 import CreatePostForm from '../components/PostManagement/CreatePostForm';
-
 
 import Navigation from '../components/Navigation/Navigation';
 // import Footer from '../components/Footer/Footer';
@@ -30,7 +29,7 @@ function Feed(props) {
     }
   };
   // console log necessary to display notification
-  console.log(displayHistoryMessage())
+  console.log(displayHistoryMessage());
 
   useEffect(() => {
     displayHistoryMessage();
@@ -60,7 +59,8 @@ function Feed(props) {
         </Row>
         <CreatePostForm />
       </Container>
-      {/* <Footer />   */}  </>
+      {/* <Footer />   */}{' '}
+    </>
   );
 }
 

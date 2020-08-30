@@ -8,35 +8,38 @@ export default function CreatePostForm() {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('postImage', state.image);
+    // formData.append('api_key', '389643679416671');
+
+    axios.post('/api/upload', formData).then((response) => {
+      console.log(response);
+    });
+    // axios
+    //   .post('https://api.cloudinary.com/v1_1/kicktout/image/upload', formData)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     alert('file uploaded');
+    //   })
+    //   .catch((err) => {
+    //     console.log('error:', err);
+    //   });
   };
 
   const onChange = (e) => {
     console.log(e.target.files[0]);
-    const formData = new FormData();
-
-    formData.append('test', e.target.files[0]);
-    formData.forEach((value, key) => {
-      console.log(value, key);
+    setState({
+      image: e.target.files[0],
     });
-    axios
-      .post('/api/upload', formData)
-      .then((response) => {
-        console.log(response);
-        alert('file uploaded');
-        setState({
-          image: response,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <form>
       <h1>File Upload</h1>
       <input type='file' name='myImage' onChange={onChange} />
-      <button type='submit'>Upload</button>
+      <button type='submit' onClick={onFormSubmit}>
+        Upload
+      </button>
     </form>
   );
 }

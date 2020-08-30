@@ -1,7 +1,6 @@
 require('dotenv').config();
 const router = require('express').Router();
 const Sequelize = require('sequelize');
-const formData = require('express-form-data');
 const cloudinary = require('cloudinary');
 
 const { Op } = Sequelize;
@@ -16,7 +15,15 @@ cloudinary.config({
 });
 
 router.post('/upload', (req, res) => {
-  console.log(req.body);
+  console.log(req.files);
+  cloudinary.uploader.upload(req.files.postImage.path, (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log(result);
+    res.json(result);
+  });
   // const values = Object.values(req.files);
   // const promises = values.map((image) => {
   //   console.log(image);
