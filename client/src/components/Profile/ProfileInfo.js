@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, Col } from "react-bootstrap";
+import { Form, Col } from "react-bootstrap";
 
 export class ProfileInfo extends Component {
     render() {
@@ -21,7 +21,7 @@ export class ProfileInfo extends Component {
                     </Form.Group>
 
                     <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>About me</Form.Label>
+                        <Form.Label>About Me</Form.Label>
                     </Form.Group>
 
                 </Form>

@@ -29,7 +29,7 @@ export class EditProfile extends Component {
           </Form.Group>
 
           <Button type="submit" variant="dark">
-            Submit</Button>
+            Update Profile</Button>
         </Form>
       </div>
     )
