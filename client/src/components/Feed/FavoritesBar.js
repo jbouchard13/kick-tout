@@ -6,7 +6,7 @@ import FavCard from './FavCard';
 export class FavoritesBar extends Component {
   render() {
     const style = {
-      border: "black solid 2px",
+      // border: "black solid 2px",
     };
     return (
       <div style={style}>

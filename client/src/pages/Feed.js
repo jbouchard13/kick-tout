@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { AuthContext } from '../AuthContext';
-import { Button, Container, Row, Col } from 'react-bootstrap';
-import '../App.css';
+import { AuthContext } from "../AuthContext";
+import { Button, Container, Row, Col } from "react-bootstrap";
+import "../App.css";
+import "../components/Feed/feed.css";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -12,7 +14,8 @@ import Filter from '../components/Feed/Filter';
 import UserGreeting from '../components/Home/UserGreeting';
 import CreatePostForm from '../components/PostManagement/CreatePostForm';
 
-// import Navigation from '../components/Navigation/Navigation';
+
+import Navigation from '../components/Navigation/Navigation';
 // import Footer from '../components/Footer/Footer';
 
 function Feed(props) {
@@ -27,7 +30,7 @@ function Feed(props) {
     }
   };
   // console log necessary to display notification
-  console.log(displayHistoryMessage());
+  console.log(displayHistoryMessage())
 
   useEffect(() => {
     displayHistoryMessage();
@@ -37,12 +40,11 @@ function Feed(props) {
 
   return (
     <>
-      <h1>Nav goes here</h1>
+      <Navigation />
       <Container fluid>
         <ToastContainer />
-        <UserGreeting />
         <Row>
-          <Col sm={10}>Container header</Col>
+          <Col sm={10}></Col>
           <Col sm={2}>
             <Filter />
           </Col>
@@ -53,33 +55,12 @@ function Feed(props) {
             <FavoritesBar />
           </Col>
           <Col sm={9}>
-            <CardContainer />
+            <CardContainer fluid />
           </Col>
         </Row>
         <CreatePostForm />
       </Container>
-      <h1>Footer goes here</h1>
-
-      {/* these should move into nav bar instead    */}
-
-      <Button
-        className='m-1'
-        onClick={() => {
-          logout();
-        }}
-      >
-        Logout
-      </Button>
-      <Button
-        className='m-1'
-        onClick={(e) => {
-          e.preventDefault();
-          props.history.push('/profile');
-        }}
-      >
-        Profile
-      </Button>
-    </>
+      {/* <Footer />   */}  </>
   );
 }
 

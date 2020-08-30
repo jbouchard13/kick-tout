@@ -3,8 +3,8 @@ import Dropdown from 'react-bootstrap/Dropdown'
 
 export default function Filter() {
   return <>
-    <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+    <Dropdown className="filter">
+      <Dropdown.Toggle variant="dark" id="dropdown-basic">
         Filter by
   </Dropdown.Toggle>
 

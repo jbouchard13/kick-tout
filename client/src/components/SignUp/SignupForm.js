@@ -147,7 +147,7 @@ const Signup = (props) => {
           onChange={handleInputChange}
         />
       </Form.Group>
-      <Button variant='primary' type='submit'>
+      <Button variant='primary' type='submit' variant="dark">
         Submit
       </Button>
       <Button
@@ -156,7 +156,7 @@ const Signup = (props) => {
           e.preventDefault();
           props.history.push('/');
         }}
-      >
+        variant="dark">
         Home
       </Button>
     </Form>

@@ -1,28 +1,55 @@
-import React, { useContext, useState } from "react";
-import { Container, Row, Button, Col } from "react-bootstrap";
+import React, { Component } from 'react';
+import { Navbar, Nav, NavDropdown, FormControl, Button } from 'react-bootstrap';
+import { Switch, Route, Link } from 'react-router-dom';
+import LogoutButton from '../LogoutButton';
 
-<Router>
-    <Container className="p-0" fluid={true}>
-        <Navbar className="nav-effect" bg="transparent" expand="lg">
-            <Navbar.Brand className="text-white">Kicked-Tout</Navbar.Brand>
-            <Navbar.Toggle className="border-0" aria-controls="navbar-toggle" />
-            <Navbar.Collapse id="navbar-toggle">
-                <Nav className="ml-auto">
-                    <Link className="nav-link text-white item-grow" to="/">
-                        Feed
-                </Link>
-                    <Link className="nav-link text-white item-grow" to="/profile">
-                        My Profile
-                </Link>
-                    <Link className="nav-link text-white item-grow" to="/login">
-                        Login
-                </Link>
-                </Nav>
-            </Navbar.Collapse>
+import "./Navigation.css";
+
+export class Navigation extends React.Component {
+  render() {
+    return (
+      <div>
+        <Navbar bg="dark" expand="lg">
+          <Navbar.Brand as={Link} to="/">
+            <img
+              className="logo"
+              height="40"
+              alt="logo"
+              src="../assets/images/kick-tout-white.gif"
+            />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse className="justify-content-end">
+            <Nav className="justify-content-end">
+              <Nav.Link as={Link} to="/feed" className="text-white">
+                Feed
+              </Nav.Link>
+              <Nav.Link as={Link} to="/#" className="text-white">
+                Add Post
+              </Nav.Link>
+              <NavDropdown
+                title="My Account"
+                id="basic-nav-dropdown"
+                className="text-white"
+              >
+                <NavDropdown.Item
+                  as={Link}
+                  to="/profile"
+                  className="text-dark"
+                >
+                  Profile
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <LogoutButton varient="dark" />
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
-        <Route path="/" exact render={() => <Feed title={this.state.home.title} subTitle={this.state.home.subTitle} text={this.state.home.text} />} />
-        <Route path="/profile" render={() => <Profile title={this.state.about.title} />} />
-        <Route path="/login" render={() => <Login title={this.state.contact.title} />} />
-        <Footer />
-    </Container>
-</Router>
+      </div>
+    );
+  }
+}
+
+export default Navigation;

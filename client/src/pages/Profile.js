@@ -4,6 +4,7 @@ import { Button, Col, Row, Container } from "react-bootstrap";
 import "../App.css";
 
 import ProfileContainer from '../components/Profile/ProfileContainer';
+import Navigation from '../components/Navigation/Navigation';
 
 
 // import Navigation from '../components/Navigation/Navigation';
@@ -15,11 +16,11 @@ function Profile(props) {
 
   return (
     <div>
-      {/* <Navigation /> */}
+      <Navigation />
       <h1>Profile Page</h1>
       <Container fluid>
         <Row>
-          <Col sm={10}>Container header</Col>
+          <Col sm={10}></Col>
           <Col sm={2}>
           </Col>
         </Row>
@@ -33,27 +34,6 @@ function Profile(props) {
         </Row>
       </Container>
       {/* <Footer /> */}
-
-
-      {/* these should move into nav bar instead    */}
-
-      <Button
-        className="m-1"
-        onClick={() => {
-          logout();
-        }}
-      >
-        Logout
-      </Button>
-      <Button
-        className="m-1"
-        onClick={e => {
-          e.preventDefault();
-          props.history.push("/feed");
-        }}
-      >
-        Feed
-            </Button>
     </div>
   );
 }

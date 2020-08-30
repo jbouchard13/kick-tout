@@ -8,7 +8,7 @@ export class FavCard extends Component {
     render() {
         return (
             <div>
-                <Card style={{ width: '12rem' }}>
+                <Card className="favCard">
                     <Card.Img variant="top" src="../assets/images/nike-tulip-pink.png" />
                     <ul className="list-group list-group-flush">
                         <li href="#" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faUser} /> Seller Profile</li>

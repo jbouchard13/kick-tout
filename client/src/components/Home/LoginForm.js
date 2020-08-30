@@ -4,8 +4,10 @@ import { AuthContext } from '../../AuthContext';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import Axios from 'axios';
-import {ToastContainer, toast} from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const LoginForm = props => {
     const history = useHistory();
@@ -36,7 +38,7 @@ const LoginForm = props => {
             .then(user => {
                 console.log("login response ", user)
                 setIsAuth(true)
-                history.push('/feed',{
+                history.push('/feed', {
                     message: "Login Was Successful",
                 })
             })
@@ -57,13 +59,13 @@ const LoginForm = props => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control name="passwordInput" type="password" placeholder="Password" value={formData.passwordInput} onChange={handleInputChange} />
             </Form.Group>
-            <Button className='m-1' variant="primary" type="submit">
+            <Button className='m-1' variant="primary" type="submit" variant="dark">
                 Submit
             </Button>
             <Button className='m-1' onClick={e => {
                 e.preventDefault();
                 props.history.push('/signup')
-            }}>Signup</Button>
+            }} variant="dark">Signup</Button>
         </Form>
     )
 }
