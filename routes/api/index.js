@@ -1,8 +1,33 @@
+require('dotenv').config();
 const router = require('express').Router();
 const Sequelize = require('sequelize');
+const cloudinary = require('cloudinary').v2;
+
+const { Op } = Sequelize;
 const db = require('../../models');
 const isAuthenticated = require('../../config/middleware/isAuthenticated');
-const { Op } = Sequelize;
+
+// ----------------------- IMAGE UPLOAD -----------------------
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
+
+const uploadPhoto = (image) => {
+  return new Promise((resolve, reject) => {
+    cloudinary.uploader.upload(image.path, (err, imageResult) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(imageResult.secure_url);
+    });
+  });
+};
+
+router.post('/upload', (req, res) => {
+  console.log(req.files);
+});
 
 // ----------------------- POSTS -------------------------------
 
@@ -19,10 +44,27 @@ router.get('/posts', (req, res) => {
     });
 });
 
+// route for getting posts by specific users
+// ----- will return all posts from the specified userId
+router.get('/posts/:userId', (req, res) => {
+  db.Post.findAll({
+    where: {
+      UserId: req.params.userId,
+    },
+  })
+    .then((posts) => {
+      res.status(200).json(posts);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occurred' });
+    });
+});
+
 // route for getting posts by search result, will contain user id (GET)
 // ----- will return all posts that fit the searched criteria and will contain the user id
 // ----- unsure if this will actually be implemented
-router.get('/posts/:query', (req, res) => {
+router.get('/posts/search/:query', (req, res) => {
   db.Post.findAll({
     where: {
       name: {
@@ -44,24 +86,55 @@ router.get('/posts/:query', (req, res) => {
 // route for adding new sales/trade posts (POST)
 // ----- user's can create new sales/trade/buy posts. will post with the user's id
 router.post('/posts/:userId', (req, res) => {
-  console.log(req.body);
-  db.Post.create({
-    name: req.body.name,
-    content: req.body.content,
-    size: req.body.size,
-    brand: req.body.brand,
-    type: req.body.type,
-    shoeCondition: req.body.shoeCondition,
-    value: req.body.value,
-    photoSrc: req.body.photoSrc,
-    UserId: req.params.userId,
-  })
-    .then(() => {
-      res.status(200).json({ message: 'post added successfully' });
+  // if no photo submitted
+  if (req.files.image === undefined) {
+    // will create new post without an image
+    db.Post.create({
+      name: req.body.name,
+      content: '',
+      size: req.body.size,
+      brand: req.body.brand,
+      type: req.body.type,
+      shoeCondition: req.body.shoeCondition,
+      value: req.body.value,
+      photoSrc: '',
+      UserId: req.params.userId,
+    })
+      .then((newPost) => {
+        res.status(200).json(newPost);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ message: 'an error occurred' });
+      });
+    return;
+  }
+  // else it'll upload the image to cloud storage and save the post to the db
+  uploadPhoto(req.files.image)
+    .then((result) => {
+      console.log(result);
+      db.Post.create({
+        name: req.body.name,
+        content: '',
+        size: req.body.size,
+        brand: req.body.brand,
+        type: req.body.type,
+        shoeCondition: req.body.shoeCondition,
+        value: req.body.value,
+        photoSrc: result,
+        UserId: req.params.userId,
+      })
+        .then((newPost) => {
+          res.status(200).json(newPost);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ message: 'an error occurred' });
+        });
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: 'an error occurred' });
+      res.status(500).json({ message: 'error with image upload' });
     });
 });
 
@@ -106,7 +179,17 @@ router.delete('/posts/:postId/:userId', (req, res) => {
     },
   })
     .then(() => {
-      res.status(200).json({ message: 'post deleted successfully' });
+      db.Post.findAll({
+        where: {
+          UserId: req.params.userId,
+        },
+      })
+        .then((posts) => {
+          res.status(200).json(posts);
+        })
+        .catch((err) => {
+          res.status(500).json({ message: 'an error occured' });
+        });
     })
     .catch((err) => {
       console.log(err);
@@ -206,17 +289,18 @@ router.get('/collections/:userId', (req, res) => {
 
 // route for adding a users name to the feed page
 router.get('/users/:id', (req, res) => {
-  db.users.find({
-    where: {
-      id: req.params.id,
-    },
-  })
+  db.users
+    .find({
+      where: {
+        id: req.params.id,
+      },
+    })
     .then((firstName) => {
       res.status(200).json(firstName);
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({message: 'user not found'})
+      res.status(500).json({ message: 'user not found' });
     });
 });
 

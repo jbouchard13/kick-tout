@@ -1,4 +1,5 @@
 const express = require('express');
+const formData = require('express-form-data');
 const session = require('express-session');
 const path = require('path');
 const logger = require('morgan');
@@ -7,7 +8,6 @@ const bodyParser = require('body-parser');
 const db = require('./models');
 const routes = require('./routes');
 const socketio = require('socket.io');
-
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -18,12 +18,15 @@ const server = require('http').createServer(app);
 const io = socketio(server);
 
 io.on('connection', (socket) => {
-  console.log('We have a new connection')
+  console.log('We have a new connection');
 
   socket.on('disconnect', () => {
     console.log('User has left!');
-  })
+  });
 });
+
+// image data will be parsed
+app.use(formData.parse());
 
 /// added mysql and dotEnv
 
