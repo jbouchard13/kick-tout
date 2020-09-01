@@ -6,23 +6,8 @@ import axios from 'axios';
 import API from '../../utils/API';
 
 export default function CreatePostForm() {
-  //   const [state, setState] = useState({
-  //     type: 'Buy',
-  //     image: null,
-  //     name: '',
-  //     size: '4',
-  //     brand: '',
-  //     shoeCondition: 'Very Poor',
-  //     value: '',
-  //     UserId: '',
-  //   });
-  //   const [form, setForm] = useState({
-  //     name: '',
-  //     size: '4',
-  //     brand: '',
-  //     shoeCondition: 'Very Poor',
-  //     value: '',
-  //   });
+  // had to separate out all of the state items for some reason
+  // not sure why but it works now, code isn't very dry because of it though
   const [type, setType] = useState('Buy');
   const [name, setName] = useState('');
   const [size, setSize] = useState('4');
@@ -32,6 +17,7 @@ export default function CreatePostForm() {
   const [image, setImage] = useState(null);
   const [UserId, setUserId] = useState('');
 
+  // when component mounts it calls for the user data to get the user id
   useEffect(() => {
     axios.get('/api/auth/user_data').then((response) => {
       console.log(response.data);
@@ -56,7 +42,7 @@ export default function CreatePostForm() {
       });
       return;
     }
-
+    // creates a form object to contain the image when sent to the back end
     const formData = new FormData();
     await formData.append('image', image);
     await formData.append('type', type);
@@ -80,6 +66,7 @@ export default function CreatePostForm() {
       });
   };
 
+  // ---------- all of the input changing functions ----------
   const typeOnChange = (e) => {
     let value = e.target.value;
 
