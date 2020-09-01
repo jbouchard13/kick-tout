@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../App.css';
 import API from "../../utils/API";
 import FavCard from './FavCard';
-
+import API from "../../utils/API";
 const userId = 6
 export class FavoritesBar extends Component {
   constructor(props) {
@@ -25,8 +25,6 @@ export class FavoritesBar extends Component {
         {this.state.favorites.map((favorite) => {
           console.log(favorite)
           return (
-
-            //in favcard: function 
             <FavCard id={favorite.id} userId={favorite.userId} photoSrc={favorite.photoSrc} />
           )
         })}
