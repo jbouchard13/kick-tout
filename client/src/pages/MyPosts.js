@@ -31,7 +31,7 @@ export default function MyPosts() {
     const postId = e.target.dataset.postid;
     API.deletePost(postId, userId)
       .then((posts) => {
-        setPostsArray(posts);
+        setPostsArray(posts.data);
       })
       .catch((err) => {
         console.log(err);
