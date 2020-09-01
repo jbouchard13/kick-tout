@@ -12,7 +12,6 @@ import CardContainer from '../components/Feed/CardContainer';
 import FavoritesBar from '../components/Feed/FavoritesBar';
 import Filter from '../components/Feed/Filter';
 import UserGreeting from '../components/Home/UserGreeting';
-import CreatePostForm from '../components/PostManagement/CreatePostForm';
 
 import Navigation from '../components/Navigation/Navigation';
 // import Footer from '../components/Footer/Footer';
@@ -57,7 +56,6 @@ function Feed(props) {
             <CardContainer fluid />
           </Col>
         </Row>
-        <CreatePostForm />
       </Container>
       {/* <Footer />   */}{' '}
     </>

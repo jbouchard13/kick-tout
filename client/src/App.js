@@ -1,10 +1,16 @@
-import React, { useContext } from "react";
-import { Route, Switch, BrowserRouter as Router, Redirect } from "react-router-dom";
-import { AuthProvider, AuthContext } from "./AuthContext";
-import Home from "./pages/Home";
-import Signup from "./pages/Signup";
-import Feed from "./pages/Feed";
-import Profile from './pages/Profile'
+import React, { useContext } from 'react';
+import {
+  Route,
+  Switch,
+  BrowserRouter as Router,
+  Redirect,
+} from 'react-router-dom';
+import { AuthProvider, AuthContext } from './AuthContext';
+import Home from './pages/Home';
+import Signup from './pages/Signup';
+import Feed from './pages/Feed';
+import Profile from './pages/Profile';
+import CreatePost from './pages/CreatePost';
 
 // import Chat from './components/Chat/Chat';
 
@@ -13,24 +19,23 @@ import Profile from './pages/Profile'
 // router, but in the end we export App wrapped in the context provider
 
 function App() {
-
   // Here we subscribe the authentication context using the useContext hook
   // we use isAuth to determine whether the user is logged in, and setIsAuth
   // to change their status on logout.
 
   const { isAuth, setIsAuth } = useContext(AuthContext);
-  console.log("App auth: ", isAuth);
+  console.log('App auth: ', isAuth);
 
-  // here we are ceating a private route wrapper to prevent front end routing to 
+  // here we are ceating a private route wrapper to prevent front end routing to
   // restricted pages.  The ({ component: Component, ...rest })  argument that is
-  // passed to this functional component is essentially the same as just passing 
-  // props, but using object destucturing.  the ...rest is literally the rest of 
-  // the props that were not destructured. 
+  // passed to this functional component is essentially the same as just passing
+  // props, but using object destucturing.  the ...rest is literally the rest of
+  // the props that were not destructured.
   const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
-      render={props =>
-        isAuth ? <Component {...props} /> : <Redirect to="/" />
+      render={(props) =>
+        isAuth ? <Component {...props} /> : <Redirect to='/' />
       }
     />
   );
@@ -38,10 +43,11 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={props => <Home {...props} />} />
-        <Route exact path="/signup" render={props => <Signup {...props} />} />
-        <PrivateRoute exact path="/feed" component={Feed} />
-        <PrivateRoute exact path="/profile" component={Profile} />
+        <Route exact path='/' render={(props) => <Home {...props} />} />
+        <Route exact path='/signup' render={(props) => <Signup {...props} />} />
+        <PrivateRoute exact path='/feed' component={Feed} />
+        <PrivateRoute exact path='/profile' component={Profile} />
+        <PrivateRoute exact path='/create-post' component={CreatePost} />
         {/* <PrivateRoute exact path="/chat" component={Chat} /> */}
       </Switch>
     </Router>

@@ -1,7 +1,7 @@
 require('dotenv').config();
 const router = require('express').Router();
 const Sequelize = require('sequelize');
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2;
 
 const { Op } = Sequelize;
 const db = require('../../models');
@@ -14,23 +14,20 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
+const uploadPhoto = (image) => {
+  return new Promise((resolve, reject) => {
+    cloudinary.uploader.upload(image.path, (err, imageResult) => {
+      if (err) {
+        console.log('err', err);
+        reject('failed');
+      }
+      resolve(imageResult.secure_url);
+    });
+  });
+};
+
 router.post('/upload', (req, res) => {
   console.log(req.files);
-  cloudinary.uploader.upload(req.files.postImage.path, (err, result) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    console.log(result);
-    res.json(result);
-  });
-  // const values = Object.values(req.files);
-  // const promises = values.map((image) => {
-  //   console.log(image);
-  // });
-  // Promise.all(promises).then((results) => {
-  //   res.json(results);
-  // });
 });
 
 // ----------------------- POSTS -------------------------------
@@ -51,7 +48,7 @@ router.get('/posts', (req, res) => {
 // route for getting posts by search result, will contain user id (GET)
 // ----- will return all posts that fit the searched criteria and will contain the user id
 // ----- unsure if this will actually be implemented
-router.get('/posts/:query', (req, res) => {
+router.get('/posts/search/:query', (req, res) => {
   db.Post.findAll({
     where: {
       name: {
@@ -73,24 +70,31 @@ router.get('/posts/:query', (req, res) => {
 // route for adding new sales/trade posts (POST)
 // ----- user's can create new sales/trade/buy posts. will post with the user's id
 router.post('/posts/:userId', (req, res) => {
-  console.log(req.body);
-  db.Post.create({
-    name: req.body.name,
-    content: req.body.content,
-    size: req.body.size,
-    brand: req.body.brand,
-    type: req.body.type,
-    shoeCondition: req.body.shoeCondition,
-    value: req.body.value,
-    photoSrc: req.body.photoSrc,
-    UserId: req.params.userId,
-  })
-    .then(() => {
-      res.status(200).json({ message: 'post added successfully' });
+  uploadPhoto(req.files.image)
+    .then((result) => {
+      console.log(result);
+      db.Post.create({
+        name: req.body.name,
+        content: '',
+        size: req.body.size,
+        brand: req.body.brand,
+        type: req.body.type,
+        shoeCondition: req.body.shoeCondition,
+        value: req.body.value,
+        photoSrc: result,
+        UserId: req.params.userId,
+      })
+        .then((newPost) => {
+          res.status(200).json(newPost);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ message: 'an error occurred' });
+        });
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: 'an error occurred' });
+      res.status(500).json({ message: 'error with image upload' });
     });
 });
 
