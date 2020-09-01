@@ -27,13 +27,17 @@ export class ShoeCard extends Component {
               className="list-group-item list-group-item-action"
               //Click event to collect the user ID and post ID of Favorited item and push into the Favorites record
               onClick={(e) => {
+                const userId = this.props.userId;
+                const postId = this.props.postId;
                 console.log(
                   'User ID: ' +
                     this.props.userId +
                     'Post ID: ' +
                     this.props.postId
                 );
-                API.getProfile().then((posts) =>{console.log(posts)});
+                API.addFavorite(postId, userId);
+
+                
               }}
             >
               <FontAwesomeIcon icon={faHeart} /> Favorite

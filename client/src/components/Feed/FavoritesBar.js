@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import '../../App.css';
-
+import API from "../../utils/API";
 import FavCard from './FavCard';
 
+const userId = 6
 export class FavoritesBar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { favorites: [] }
+  }
+  componentDidMount() {
+    API.getFavorites(userId).then((favorites) => {
+      this.setState({ favorites: favorites.data })
+    })
+  }
+
   render() {
     const style = {
       // border: "black solid 2px",
@@ -11,12 +22,18 @@ export class FavoritesBar extends Component {
     return (
       <div style={style}>
         <h1>Favorites</h1>
-        <FavCard />
+        {this.state.favorites.map((favorite) => {
+          console.log(favorite)
+          return (
+
+            //in favcard: function 
+            <FavCard id={favorite.id} userId={favorite.userId} photoSrc={favorite.photoSrc} />
+          )
+        })}
       </div>
     );
   }
 }
-
 
 
 export default FavoritesBar
