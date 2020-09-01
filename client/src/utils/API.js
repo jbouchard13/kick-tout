@@ -11,6 +11,11 @@ export default {
     return axios.get('/api/posts');
   },
 
+  // path to get all posts made by the user
+  getPostsByUser: (userId) => {
+    return axios.get(`/api/posts/${userId}`);
+  },
+
   // path to get posts by search
   getPostsByQuery: (query) => {
     return axios.get(`/api/posts/search/${query}`);

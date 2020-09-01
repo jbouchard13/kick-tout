@@ -44,6 +44,23 @@ router.get('/posts', (req, res) => {
     });
 });
 
+// route for getting posts by specific users
+// ----- will return all posts from the specified userId
+router.get('/posts/:userId', (req, res) => {
+  db.Post.findAll({
+    where: {
+      UserId: req.params.userId,
+    },
+  })
+    .then((posts) => {
+      res.status(200).json(posts);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: 'an error occurred' });
+    });
+});
+
 // route for getting posts by search result, will contain user id (GET)
 // ----- will return all posts that fit the searched criteria and will contain the user id
 // ----- unsure if this will actually be implemented
@@ -162,7 +179,17 @@ router.delete('/posts/:postId/:userId', (req, res) => {
     },
   })
     .then(() => {
-      res.status(200).json({ message: 'post deleted successfully' });
+      db.Post.findAll({
+        where: {
+          UserId: req.params.userId,
+        },
+      })
+        .then((posts) => {
+          res.status(200).json(posts);
+        })
+        .catch((err) => {
+          res.status(500).json({ message: 'an error occured' });
+        });
     })
     .catch((err) => {
       console.log(err);

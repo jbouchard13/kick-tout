@@ -27,6 +27,9 @@ export class Navigation extends React.Component {
               <Nav.Link as={Link} to='/create-post' className='text-white'>
                 Add Post
               </Nav.Link>
+              <Nav.Link as={Link} to='/my-posts' className='text-white'>
+                My Posts
+              </Nav.Link>
               <NavDropdown
                 title='My Account'
                 id='basic-nav-dropdown'

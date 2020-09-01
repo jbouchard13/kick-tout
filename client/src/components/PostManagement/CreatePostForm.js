@@ -28,6 +28,8 @@ export default function CreatePostForm() {
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
+    const parsedValue = parseInt(value);
+    console.log(parsedValue);
     // check if name and brand are filled out
     if (name === '' || brand === '') {
       toast.error('Please fill out all of the fields and try again', {
@@ -36,7 +38,7 @@ export default function CreatePostForm() {
       return;
     }
     // check if value is a number
-    if (typeof value !== 'number') {
+    if (isNaN(parsedValue) === true) {
       toast.error('Please enter a number for the value', {
         autoClose: 5000,
       });
