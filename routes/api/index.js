@@ -18,8 +18,7 @@ const uploadPhoto = (image) => {
   return new Promise((resolve, reject) => {
     cloudinary.uploader.upload(image.path, (err, imageResult) => {
       if (err) {
-        console.log('err', err);
-        reject('failed');
+        reject(err);
       }
       resolve(imageResult.secure_url);
     });
@@ -70,6 +69,30 @@ router.get('/posts/search/:query', (req, res) => {
 // route for adding new sales/trade posts (POST)
 // ----- user's can create new sales/trade/buy posts. will post with the user's id
 router.post('/posts/:userId', (req, res) => {
+  // if no photo submitted
+  if (req.files.image === undefined) {
+    // will create new post without an image
+    db.Post.create({
+      name: req.body.name,
+      content: '',
+      size: req.body.size,
+      brand: req.body.brand,
+      type: req.body.type,
+      shoeCondition: req.body.shoeCondition,
+      value: req.body.value,
+      photoSrc: '',
+      UserId: req.params.userId,
+    })
+      .then((newPost) => {
+        res.status(200).json(newPost);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ message: 'an error occurred' });
+      });
+    return;
+  }
+  // else it'll upload the image to cloud storage and save the post to the db
   uploadPhoto(req.files.image)
     .then((result) => {
       console.log(result);

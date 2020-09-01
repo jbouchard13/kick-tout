@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import API from '../../utils/API';
 
@@ -40,6 +42,21 @@ export default function CreatePostForm() {
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
+    // check if name and brand are filled out
+    if (name === '' || brand === '') {
+      toast.error('Please fill out all of the fields and try again', {
+        autoClose: 5000,
+      });
+      return;
+    }
+    // check if value is a number
+    if (typeof value !== 'number') {
+      toast.error('Please enter a number for the value', {
+        autoClose: 5000,
+      });
+      return;
+    }
+
     const formData = new FormData();
     await formData.append('image', image);
     await formData.append('type', type);
@@ -51,13 +68,15 @@ export default function CreatePostForm() {
 
     API.createPost(UserId, formData)
       .then((response) => {
-        console.log(response);
-        formData.forEach((key, value) => {
-          console.log(key, value);
+        toast.success('Post created', {
+          autoClose: 2000,
         });
+        setTimeout(() => {
+          window.location.replace('/feed');
+        }, 2000);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error('An error occurred');
       });
   };
 
@@ -111,6 +130,7 @@ export default function CreatePostForm() {
   return (
     <div>
       <Form className='form'>
+        <ToastContainer position='top-right' />
         <Form.Group controlId='formGridPostType'>
           <Form.Label>Post Type</Form.Label>
           <Form.Control
