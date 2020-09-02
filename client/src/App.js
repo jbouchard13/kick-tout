@@ -50,7 +50,7 @@ function App() {
         <PrivateRoute exact path='/profile' component={Profile} />
         <PrivateRoute exact path='/create-post' component={CreatePost} />
         <PrivateRoute exact path='/my-posts' component={MyPosts} />
-        {/* <PrivateRoute exact path="/chat" component={Chat} /> */}
+        
       </Switch>
     </Router>
   );
