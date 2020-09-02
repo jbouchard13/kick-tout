@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CardContainer from '../components/Feed/CardContainer';
 import FavoritesBar from '../components/Feed/FavoritesBar';
 import Filter from '../components/Feed/Filter';
-import UserGreeting from '../components/Home/UserGreeting';
+import UserGreeting from '../components/Feed/UserGreeting';
 
 import Navigation from '../components/Navigation/Navigation';
 // import Footer from '../components/Footer/Footer';
@@ -40,6 +40,7 @@ function Feed(props) {
     <>
       <Navigation />
       <Container fluid>
+        <UserGreeting />
         <ToastContainer />
         <Row>
           <Col sm={10}></Col>
