@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Navigation from '../components/Navigation/Navigation';
 import PostCard from '../components/PostCard/PostCard';
+import EditPostForm from '../components/PostManagement/EditPostForm';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import API from '../utils/API';
@@ -11,6 +12,10 @@ import API from '../utils/API';
 export default function MyPosts() {
   const [postsArray, setPostsArray] = useState([]);
   const [userId, setUserId] = useState('');
+  const [postForm, setPostForm] = useState();
+  const [image, setImage] = useState();
+  const [editingPost, setEditingPost] = useState(false);
+  const [postId, setPostId] = useState('');
 
   useEffect(() => {
     axios.get('/api/auth/user_data').then((response) => {
@@ -23,7 +28,7 @@ export default function MyPosts() {
 
   const handleEdit = (e) => {
     const postId = e.target.dataset.postid;
-    console.log(postId);
+    setEditingPost(true);
   };
 
   const handleDelete = (e) => {
@@ -39,10 +44,8 @@ export default function MyPosts() {
   };
 
   return (
-    <>
+    <div>
       <Navigation />
-      <h2>Your posts</h2>
-      <p>Here you can keep keep track of, update, and delete your postings.</p>
       <CardDeck>
         {postsArray.map((post) => (
           <PostCard
@@ -60,6 +63,6 @@ export default function MyPosts() {
           />
         ))}
       </CardDeck>
-    </>
+    </div>
   );
 }
