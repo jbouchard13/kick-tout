@@ -17,15 +17,12 @@ export default function CardContainer() {
     });
   }, []);
 
-  const style = {
-    // border: 'black solid 2px',
-  };
 
   return (
-    <div style={style}>
+    <div>
       <CardDeck>
         {postState.postsArray.map((post) => (
-          <ShoeCard
+          <ShoeCard className="shoeCard"
             photoSrc={post.photoSrc}
             name={post.name}
             shoeCondition={post.shoeCondition}
@@ -36,10 +33,8 @@ export default function CardContainer() {
             postId={post.id}
           />
         ))}
-        {/* <ShoeCard />
-        <ShoeCard />
-        <ShoeCard /> */}
       </CardDeck>
     </div>
   );
 }
+
