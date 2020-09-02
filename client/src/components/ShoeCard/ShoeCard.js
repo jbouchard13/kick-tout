@@ -4,8 +4,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import API from '../../utils/API';
+import axios from 'axios';
+
 
 export class ShoeCard extends Component {
+  constructor(props) {
+    super(props)
+    this.currentUserId = 0;
+  }
+
+  componentDidMount() {
+    axios.get('/api/auth/user_data').then((response) => {
+      console.log(response.data.id);
+      this.currentUserId = response.data.id;
+    });
+  }
+
+
   render() {
     return (
       <div>
@@ -27,17 +42,15 @@ export class ShoeCard extends Component {
               className="list-group-item list-group-item-action"
               //Click event to collect the user ID and post ID of Favorited item and push into the Favorites record
               onClick={(e) => {
-                const userId = this.props.userId;
+                const userId = this.currentUserId;
                 const postId = this.props.postId;
                 console.log(
                   'User ID: ' +
-                    this.props.userId +
+                    this.currentUserId +
                     'Post ID: ' +
                     this.props.postId
                 );
-                API.addFavorite(postId, userId);
-
-                
+                API.addFavorite(postId, userId)
               }}
             >
               <FontAwesomeIcon icon={faHeart} /> Favorite
