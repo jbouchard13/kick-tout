@@ -41,3 +41,13 @@ body {
 .button {
   background-color: black;
 }
+
+#postCard {
+  width: 300px;
+  height: 600px;
+  margin: 55px;
+  /* align-content: center; */
+  border-color: darkgrey;
+  box-shadow: 3px 5px 5px grey;
+}
+

@@ -41,6 +41,11 @@ export default {
     return axios.get(`/api/favorites/${userId}`);
   },
 
+  // path for getting all postID records from favorites table
+  // getFavoritesByPostId: (postId) => {
+  //   return axios.get(`/api/favorites/${postId}`);
+  // },
+
   // path for adding to user's favorite posts
   addFavorite: (postId, userId) => {
     return axios.post(`/api/favorites/${postId}/${userId}`);

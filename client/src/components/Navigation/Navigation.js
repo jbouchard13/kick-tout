@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavDropdown, FormControl, Button } from 'react-bootstrap';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Navbar, Nav, NavDropdown} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import LogoutButton from '../LogoutButton';
 
 import './Navigation.css';
