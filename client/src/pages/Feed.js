@@ -50,7 +50,7 @@ function Feed(props) {
 
         <Row>
           <Col sm={3}>
-            <FavoritesBar />
+            {/* <FavoritesBar /> */}
           </Col>
           <Col sm={9}>
             <CardContainer fluid />
