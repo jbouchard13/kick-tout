@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Tab, Row, Col, Nav, Image } from 'react-bootstrap';
+import { Tab, Row, Col, Nav, Image, Form } from 'react-bootstrap';
 import API from '../../utils/API';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import EditProfile from './EditProfile';
 import ProfileInfo from './ProfileInfo';
@@ -9,6 +11,13 @@ import ProfileInfo from './ProfileInfo';
 export default function ProfileTabs() {
   const style = {
     border: 'black solid 2px',
+  };
+
+  const imageStyle = {
+    borderRadius: '50%',
+    overflow: 'hidden',
+    width: '200px',
+    height: '200px',
   };
 
   const [userData, setUserData] = useState({
@@ -36,6 +45,23 @@ export default function ProfileTabs() {
     });
   }, []);
 
+  const imageOnChange = (e) => {
+    console.log(e.target.files[0]);
+    const formData = new FormData();
+    formData.append('image', e.target.files[0]);
+
+    axios
+      .post(`/api/upload/${userData.userId}`, formData)
+      .then((image) => {
+        console.log(image.data);
+        setUserData({ profileImg: image.data });
+        toast.success('Image uploaded successfully');
+      })
+      .catch((err) => {
+        toast.error('Error while updating image');
+      });
+  };
+
   const handleOnChange = (e) => {
     let value = e.target.value;
     const name = e.target.name;
@@ -44,13 +70,38 @@ export default function ProfileTabs() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    API.updateProfile(userData.userId, userData).then((response) => {
-      console.log(response);
-    });
+    // ensure all necessary fields are filled out
+    if (
+      userData.firstName === '' ||
+      userData.lastName === '' ||
+      userData.email === ''
+    ) {
+      toast.error('Please fill out all of the fields and try again', {
+        autoClose: 5000,
+      });
+      return;
+    }
+
+    API.updateProfile(userData.userId, userData)
+      .then((response) => {
+        console.log(response);
+        toast.success('Profile updated', {
+          autoClose: 2000,
+        });
+      })
+      .catch((err) => {
+        console.log(err.response);
+        if (err.response.data === 'enter valid email') {
+          toast.error('Please enter a valid email');
+        } else {
+          toast.error('An error occurred');
+        }
+      });
   };
 
   return (
     <div style={style}>
+      <ToastContainer position='top-right' />
       <Tab.Container
         id='uncontrolled-tab-example'
         defaultActiveKey='yourprofile'
@@ -70,11 +121,16 @@ export default function ProfileTabs() {
               </Nav.Item>
               <Col xs={6} md={4}>
                 <Image
+                  style={imageStyle}
                   className='profilePic'
                   src={userData.profileImg}
-                  rounded
                 />
               </Col>
+              <Form.File
+                id='profileImageUpload'
+                label='Update Image'
+                onChange={imageOnChange}
+              ></Form.File>
             </Nav>
           </Col>
           <Col sm={9}>

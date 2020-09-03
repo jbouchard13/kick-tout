@@ -28,6 +28,16 @@ export class EditProfile extends Component {
             </Form.Group>
           </Form.Row>
 
+          <Form.Group controlId='formGridEmail'>
+            <Form.Label>Contact Email</Form.Label>
+            <Form.Control
+              name='email'
+              value={this.props.email}
+              type='text'
+              onChange={this.props.handleOnChange}
+            />
+          </Form.Group>
+
           <Form.Group controlId='formGridAddress1'>
             <Form.Label>Location</Form.Label>
             <Form.Control placeholder='Where ya from?' />

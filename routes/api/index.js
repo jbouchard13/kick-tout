@@ -25,8 +25,28 @@ const uploadPhoto = (image) => {
   });
 };
 
-router.post('/upload', (req, res) => {
-  console.log(req.files);
+router.post('/upload/:userId', (req, res) => {
+  console.log(req.files.image);
+  uploadPhoto(req.files.image).then((image) => {
+    console.log(image);
+    db.Profile.update(
+      {
+        profileImg: image,
+      },
+      {
+        where: {
+          UserId: req.params.userId,
+        },
+      }
+    )
+      .then(() => {
+        res.status(200).json(image);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json('an error occurred');
+      });
+  });
 });
 
 // ----------------------- POSTS -------------------------------
@@ -443,11 +463,16 @@ router.put('/profiles/:userId', (req, res) => {
         })
         .catch((err) => {
           console.log(err);
-          res.status(500).json({ message: 'an error occured' });
+          res.status(500).json({ message: 'an error occurred' });
         });
     })
     .catch((err) => {
-      res.status(500).json({ message: 'an error occured' });
+      console.log(err.errors);
+      if (err.errors[0].message === 'Validation isEmail on email failed') {
+        res.status(500).json('enter valid email');
+      } else {
+        res.status(500).json({ message: 'an error occurred' });
+      }
     });
 });
 
