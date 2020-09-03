@@ -12,6 +12,8 @@ import Feed from './pages/Feed';
 import Profile from './pages/Profile';
 import CreatePost from './pages/CreatePost';
 import MyPosts from './pages/MyPosts';
+import Favorites from './pages/Favorites';
+
 
 // import Chat from './components/Chat/Chat';
 
@@ -50,6 +52,8 @@ function App() {
         <PrivateRoute exact path='/profile' component={Profile} />
         <PrivateRoute exact path='/create-post' component={CreatePost} />
         <PrivateRoute exact path='/my-posts' component={MyPosts} />
+        <PrivateRoute exact path='/favorites' component={Favorites} />
+
         {/* <PrivateRoute exact path="/chat" component={Chat} /> */}
       </Switch>
     </Router>

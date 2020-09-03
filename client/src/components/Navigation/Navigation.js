@@ -30,6 +30,9 @@ export class Navigation extends React.Component {
               <Nav.Link as={Link} to='/my-posts' className='text-white'>
                 My Posts
               </Nav.Link>
+              <Nav.Link as={Link} to='/favorites' className='text-white'>
+                My Favorites
+              </Nav.Link>
               <NavDropdown
                 title='My Account'
                 id='basic-nav-dropdown'
