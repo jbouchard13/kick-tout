@@ -28,7 +28,12 @@ export default function MyPosts() {
 
   const handleEdit = (e) => {
     const postId = e.target.dataset.postid;
+    console.log(postId);
     setEditingPost(true);
+  };
+
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
   };
 
   const handleDelete = (e) => {
@@ -47,21 +52,23 @@ export default function MyPosts() {
     <div>
       <Navigation />
       <CardDeck>
-        {postsArray.map((post) => (
-          <PostCard
-            key={post.id}
-            photoSrc={post.photoSrc}
-            name={post.name}
-            shoeCondition={post.shoeCondition}
-            content={post.content}
-            size={post.size}
-            value={post.value}
-            userId={post.UserId}
-            postId={post.id}
-            handleEdit={handleEdit}
-            handleDelete={handleDelete}
-          />
-        ))}
+        {editingPost && <EditPostForm />}
+        {!editingPost &&
+          postsArray.map((post) => (
+            <PostCard
+              key={post.id}
+              photoSrc={post.photoSrc}
+              name={post.name}
+              shoeCondition={post.shoeCondition}
+              content={post.content}
+              size={post.size}
+              value={post.value}
+              userId={post.UserId}
+              postId={post.id}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+            />
+          ))}
       </CardDeck>
     </div>
   );
