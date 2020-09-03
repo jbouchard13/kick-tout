@@ -413,23 +413,40 @@ router.post('/profiles/:userId', (req, res) => {
 // route for updating user's profile by id (PUT)
 // ----- this will be done on the user's bio page through a form
 router.put('/profiles/:userId', (req, res) => {
-  db.Profile.update(
+  db.User.update(
     {
-      bio: req.body.bio,
-      profileImg: req.body.profileImg,
-      preferred: req.body.preferred,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
     },
     {
       where: {
-        UserId: req.params.userId,
+        id: req.params.userId,
       },
     }
   )
     .then(() => {
-      res.status(200).json({ message: 'user profile updated' });
+      db.Profile.update(
+        {
+          bio: req.body.bio,
+          profileImg: req.body.profileImg,
+          preferred: req.body.preferred,
+        },
+        {
+          where: {
+            UserId: req.params.userId,
+          },
+        }
+      )
+        .then(() => {
+          res.status(200).json({ message: 'user profile updated' });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ message: 'an error occured' });
+        });
     })
     .catch((err) => {
-      console.log(err);
       res.status(500).json({ message: 'an error occured' });
     });
 });

@@ -27,13 +27,27 @@ export default function ProfileTabs() {
           firstName: user.data.firstName,
           lastName: user.data.lastName,
           email: user.data.email,
-          bio: profile.data.bio,
-          profileImg: profile.data.profileImg,
+          bio: profile.data[0].bio,
+          profileImg: profile.data[0].profileImg,
+          userId: user.data.id,
         });
         console.log(user.data, profile.data[0]);
       });
     });
   }, []);
+
+  const handleOnChange = (e) => {
+    let value = e.target.value;
+    const name = e.target.name;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    API.updateProfile(userData.userId, userData).then((response) => {
+      console.log(response);
+    });
+  };
 
   return (
     <div style={style}>
@@ -74,7 +88,14 @@ export default function ProfileTabs() {
                 />
               </Tab.Pane>
               <Tab.Pane eventKey='editprofile'>
-                <EditProfile />
+                <EditProfile
+                  firstName={userData.firstName}
+                  lastName={userData.lastName}
+                  email={userData.email}
+                  bio={userData.bio}
+                  handleOnChange={handleOnChange}
+                  handleSubmit={handleSubmit}
+                />
               </Tab.Pane>
             </Tab.Content>
           </Col>
