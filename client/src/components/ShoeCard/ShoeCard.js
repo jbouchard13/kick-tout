@@ -5,6 +5,8 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import API from '../../utils/API';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export class ShoeCard extends Component {
@@ -19,7 +21,6 @@ export class ShoeCard extends Component {
       this.currentUserId = response.data.id;
     });
   }
-
 
   render() {
     return (
@@ -50,7 +51,17 @@ export class ShoeCard extends Component {
                     'Post ID: ' +
                     this.props.postId
                 );
-                API.addFavorite(postId, userId)
+                API.addFavorite(postId, userId).then((response) => {
+                  toast.success('Saved!', {
+                    autoClose: 1000,
+                  });
+                  setTimeout(() => {
+                    window.location.replace('/feed');
+                  }, 1000);
+                })
+                .catch((err) => {
+                  toast.error('An error occurred');
+                });
               }}
             >
               <FontAwesomeIcon icon={faHeart} /> Favorite
