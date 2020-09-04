@@ -64,6 +64,23 @@ router.get('/posts', (req, res) => {
     });
 });
 
+// route to get a single post by post id
+// ----- for getting data to update post
+router.get('/posts/by-post/:postId', (req, res) => {
+  db.Post.findOne({
+    where: {
+      id: req.params.postId,
+    },
+  })
+    .then((post) => {
+      res.status(200).json(post);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json('an error occurred');
+    });
+});
+
 // route for getting posts by specific users
 // ----- will return all posts from the specified userId
 router.get('/posts/:userId', (req, res) => {
@@ -161,31 +178,84 @@ router.post('/posts/:userId', (req, res) => {
 // route for updated existing posts (PUT)
 // ----- user's can edit their own posts by their user id and post id
 router.put('/posts/:postId/:userId', (req, res) => {
-  db.Post.update(
-    {
-      name: req.body.name,
-      content: req.body.content,
-      size: req.body.size,
-      brand: req.body.brand,
-      type: req.body.type,
-      shoeCondition: req.body.shoeCondition,
-      value: req.body.value,
-      photoSrc: req.body.photoSrc,
-    },
-    {
-      where: {
-        id: req.params.postId,
-        UserId: req.params.userId,
+  // if no image change, just update post values in db
+  if (req.files.image === undefined) {
+    db.Post.update(
+      {
+        name: req.body.name,
+        content: req.body.content,
+        size: req.body.size,
+        brand: req.body.brand,
+        type: req.body.type,
+        shoeCondition: req.body.shoeCondition,
+        value: req.body.value,
       },
-    }
-  )
-    .then(() => {
-      res.status(200).json({ message: 'post updated successfully' });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ message: 'an error occurred' });
-    });
+      {
+        where: {
+          id: req.params.postId,
+          UserId: req.params.userId,
+        },
+      }
+    )
+      .then(() => {
+        db.Post.findAll({
+          where: {
+            UserId: req.params.userId,
+          },
+        })
+          .then((posts) => {
+            res.status(200).json(posts);
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json({ message: 'an error occured' });
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ message: 'an error occurred' });
+      });
+    return;
+  }
+  // if image was submitted, upload it to cloud, then handle db update
+  uploadPhoto(req.files.image).then((image) => {
+    db.Post.update(
+      {
+        name: req.body.name,
+        content: req.body.content,
+        size: req.body.size,
+        brand: req.body.brand,
+        type: req.body.type,
+        shoeCondition: req.body.shoeCondition,
+        value: req.body.value,
+        photoSrc: image,
+      },
+      {
+        where: {
+          id: req.params.postId,
+          UserId: req.params.userId,
+        },
+      }
+    )
+      .then(() => {
+        db.Post.findAll({
+          where: {
+            UserId: req.params.userId,
+          },
+        })
+          .then((posts) => {
+            res.status(200).json(posts);
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json({ message: 'an error occured' });
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ message: 'an error occurred' });
+      });
+  });
 });
 
 // route for deleting existing posts (DELETE)

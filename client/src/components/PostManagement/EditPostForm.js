@@ -10,7 +10,12 @@ export default function EditPostForm(props) {
       <ToastContainer position='top-right' />
       <Form.Group controlId='formGridPostType'>
         <Form.Label>Post Type</Form.Label>
-        <Form.Control name='type' value={props.type} as='select'>
+        <Form.Control
+          name='type'
+          value={props.type}
+          as='select'
+          onChange={props.handleEditOnChange}
+        >
           <option>Buy</option>
           <option>Sell</option>
           <option>Trade</option>
@@ -18,7 +23,11 @@ export default function EditPostForm(props) {
       </Form.Group>
 
       <Form.Group controlId='formGridImage'>
-        <Form.File id='postImageUpload' label='Add Image'></Form.File>
+        <Form.File
+          id='postImageUpload'
+          label='Add Image'
+          onChange={props.handleImageOnChange}
+        ></Form.File>
       </Form.Group>
 
       <Form.Group controlId='formGridName'>
@@ -28,12 +37,18 @@ export default function EditPostForm(props) {
           name='name'
           value={props.name}
           placeholder='Enter Item Name'
+          onChange={props.handleEditOnChange}
         />
       </Form.Group>
 
       <Form.Group controlId='formGridSize'>
         <Form.Label>Size</Form.Label>
-        <Form.Control name='size' value={props.size} as='select'>
+        <Form.Control
+          name='size'
+          value={props.size}
+          as='select'
+          onChange={props.handleEditOnChange}
+        >
           <option>4</option>
           <option>4 1/2</option>
           <option>5</option>
@@ -68,6 +83,7 @@ export default function EditPostForm(props) {
           name='brand'
           value={props.brand}
           placeholder='Enter Item Brand'
+          onChange={props.handleEditOnChange}
         />
       </Form.Group>
 
@@ -77,6 +93,7 @@ export default function EditPostForm(props) {
           name='shoeCondition'
           value={props.shoeCondition}
           as='select'
+          onChange={props.handleEditOnChange}
         >
           <option>Very Poor</option>
           <option>Poor</option>
@@ -93,12 +110,16 @@ export default function EditPostForm(props) {
           name='value'
           value={props.value}
           placeholder='Enter Item Value'
+          onChange={props.handleEditOnChange}
         />
         <Form.Text>Please enter numbers only</Form.Text>
       </Form.Group>
 
-      <Button type='submit' variant='dark' onClick={console.log('clicked')}>
+      <Button type='submit' variant='dark' onClick={props.handleEditSubmit}>
         Submit edits
+      </Button>
+      <Button type='submit' variant='dark' onClick={props.handleCancel}>
+        Cancel changes
       </Button>
     </Form>
   );

@@ -54,7 +54,7 @@ export default function ProfileTabs() {
       .post(`/api/upload/${userData.userId}`, formData)
       .then((image) => {
         console.log(image.data);
-        setUserData({ profileImg: image.data });
+        setUserData({ ...userData, profileImg: image.data });
         toast.success('Image uploaded successfully');
       })
       .catch((err) => {
