@@ -25,8 +25,28 @@ const uploadPhoto = (image) => {
   });
 };
 
-router.post('/upload', (req, res) => {
-  console.log(req.files);
+router.post('/upload/:userId', (req, res) => {
+  console.log(req.files.image);
+  uploadPhoto(req.files.image).then((image) => {
+    console.log(image);
+    db.Profile.update(
+      {
+        profileImg: image,
+      },
+      {
+        where: {
+          UserId: req.params.userId,
+        },
+      }
+    )
+      .then(() => {
+        res.status(200).json(image);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json('an error occurred');
+      });
+  });
 });
 
 // ----------------------- POSTS -------------------------------
@@ -41,6 +61,23 @@ router.get('/posts', (req, res) => {
     .catch((err) => {
       console.log(err);
       res.status(500).json({ message: 'an error occurred' });
+    });
+});
+
+// route to get a single post by post id
+// ----- for getting data to update post
+router.get('/posts/by-post/:postId', (req, res) => {
+  db.Post.findOne({
+    where: {
+      id: req.params.postId,
+    },
+  })
+    .then((post) => {
+      res.status(200).json(post);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json('an error occurred');
     });
 });
 
@@ -141,31 +178,84 @@ router.post('/posts/:userId', (req, res) => {
 // route for updated existing posts (PUT)
 // ----- user's can edit their own posts by their user id and post id
 router.put('/posts/:postId/:userId', (req, res) => {
-  db.Post.update(
-    {
-      name: req.body.name,
-      content: req.body.content,
-      size: req.body.size,
-      brand: req.body.brand,
-      type: req.body.type,
-      shoeCondition: req.body.shoeCondition,
-      value: req.body.value,
-      photoSrc: req.body.photoSrc,
-    },
-    {
-      where: {
-        id: req.params.postId,
-        UserId: req.params.userId,
+  // if no image change, just update post values in db
+  if (req.files.image === undefined) {
+    db.Post.update(
+      {
+        name: req.body.name,
+        content: req.body.content,
+        size: req.body.size,
+        brand: req.body.brand,
+        type: req.body.type,
+        shoeCondition: req.body.shoeCondition,
+        value: req.body.value,
       },
-    }
-  )
-    .then(() => {
-      res.status(200).json({ message: 'post updated successfully' });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ message: 'an error occurred' });
-    });
+      {
+        where: {
+          id: req.params.postId,
+          UserId: req.params.userId,
+        },
+      }
+    )
+      .then(() => {
+        db.Post.findAll({
+          where: {
+            UserId: req.params.userId,
+          },
+        })
+          .then((posts) => {
+            res.status(200).json(posts);
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json({ message: 'an error occured' });
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ message: 'an error occurred' });
+      });
+    return;
+  }
+  // if image was submitted, upload it to cloud, then handle db update
+  uploadPhoto(req.files.image).then((image) => {
+    db.Post.update(
+      {
+        name: req.body.name,
+        content: req.body.content,
+        size: req.body.size,
+        brand: req.body.brand,
+        type: req.body.type,
+        shoeCondition: req.body.shoeCondition,
+        value: req.body.value,
+        photoSrc: image,
+      },
+      {
+        where: {
+          id: req.params.postId,
+          UserId: req.params.userId,
+        },
+      }
+    )
+      .then(() => {
+        db.Post.findAll({
+          where: {
+            UserId: req.params.userId,
+          },
+        })
+          .then((posts) => {
+            res.status(200).json(posts);
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json({ message: 'an error occured' });
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ message: 'an error occurred' });
+      });
+  });
 });
 
 // route for deleting existing posts (DELETE)
@@ -413,24 +503,46 @@ router.post('/profiles/:userId', (req, res) => {
 // route for updating user's profile by id (PUT)
 // ----- this will be done on the user's bio page through a form
 router.put('/profiles/:userId', (req, res) => {
-  db.Profile.update(
+  db.User.update(
     {
-      bio: req.body.bio,
-      profileImg: req.body.profileImg,
-      preferred: req.body.preferred,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
     },
     {
       where: {
-        UserId: req.params.userId,
+        id: req.params.userId,
       },
     }
   )
     .then(() => {
-      res.status(200).json({ message: 'user profile updated' });
+      db.Profile.update(
+        {
+          bio: req.body.bio,
+          profileImg: req.body.profileImg,
+          preferred: req.body.preferred,
+        },
+        {
+          where: {
+            UserId: req.params.userId,
+          },
+        }
+      )
+        .then(() => {
+          res.status(200).json({ message: 'user profile updated' });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ message: 'an error occurred' });
+        });
     })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json({ message: 'an error occured' });
+      console.log(err.errors);
+      if (err.errors[0].message === 'Validation isEmail on email failed') {
+        res.status(500).json('enter valid email');
+      } else {
+        res.status(500).json({ message: 'an error occurred' });
+      }
     });
 });
 
