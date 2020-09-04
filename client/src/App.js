@@ -7,7 +7,7 @@ import {
   useLocation
 } from 'react-router-dom';
 
-import {useTransition, animated} from 'react-spring';
+import {useTransition, animated, config} from 'react-spring';
 import { AuthProvider, AuthContext } from './AuthContext';
 import Home from './pages/Home';
 import Signup from './pages/Signup';

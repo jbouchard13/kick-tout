@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
-import { Button, Container, Row, Col } from 'react-bootstrap';
+import {  Container, Row, Col } from 'react-bootstrap';
 import '../App.css';
 import '../components/Feed/feed.css';
 
@@ -41,20 +41,16 @@ function Feed(props) {
     <div className='position-absolute w-100'>
       <Navigation />
       <Container fluid>
-        <UserGreeting />
         <ToastContainer />
         <Row>
-          <Col sm={10}></Col>
+          <Col sm={10}><UserGreeting /></Col>
           <Col sm={2}>
             <Filter />
           </Col>
         </Row>
 
-        <Row>
-          <Col sm={3}>
-            {/* <FavoritesBar /> */}
-          </Col>
-          <Col sm={9}>
+        <Row className="justify-content-md-center">
+          <Col>
             <CardContainer fluid />
           </Col>
         </Row>

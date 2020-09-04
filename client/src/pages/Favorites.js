@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import CardDeck from 'react-bootstrap/CardDeck';
 import Navigation from '../components/Navigation/Navigation';
 import FavoritesBar from '../components/Feed/FavoritesBar';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import API from '../utils/API';
 import '../components/Feed/feed.css';
+import {  Container, Row, Col } from 'react-bootstrap';
 
 
 export default function MyPosts() {
@@ -41,11 +41,14 @@ export default function MyPosts() {
   return (
     <div className='position-absolute w-100'>
       <Navigation />
-      <h2>Your Favorites</h2>
-      <CardDeck>
-      <FavoritesBar />
-
-      </CardDeck>
-  </div>
+      <Container fluid>
+      <h2 className="page-header">My Favorites</h2>
+        <Row className="justify-content-md-center">
+          <Col>
+            <FavoritesBar fluid />
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }

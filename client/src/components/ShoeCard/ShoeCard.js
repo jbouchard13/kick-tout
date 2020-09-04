@@ -7,6 +7,7 @@ import API from '../../utils/API';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../Feed/feed.css';
 
 
 export class ShoeCard extends Component {
@@ -26,7 +27,7 @@ export class ShoeCard extends Component {
     return (
       <div>
         <Card className="shoeCard">
-          <Card.Img variant="top" src={this.props.photoSrc} />
+          <Card.Img variant="top" className="cardPhoto" src={this.props.photoSrc} />
           <Card.Body>
             <Card.Title>{this.props.name}</Card.Title>
           </Card.Body>
@@ -47,21 +48,21 @@ export class ShoeCard extends Component {
                 const postId = this.props.postId;
                 console.log(
                   'User ID: ' +
-                  this.currentUserId +
-                  'Post ID: ' +
-                  this.props.postId
+                    this.currentUserId +
+                    'Post ID: ' +
+                    this.props.postId
                 );
                 API.addFavorite(postId, userId).then((response) => {
                   toast.success('Saved!', {
                     autoClose: 1000,
                   });
                   setTimeout(() => {
-                    window.location.replace('/feed');
+                    
                   }, 1000);
                 })
-                  .catch((err) => {
-                    toast.error('An error occurred');
-                  });
+                .catch((err) => {
+                  toast.error('An error occurred');
+                });
               }}
             >
               <FontAwesomeIcon icon={faHeart} /> Favorite
