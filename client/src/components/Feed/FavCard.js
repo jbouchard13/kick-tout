@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card';
+import { Card } from 'react-bootstrap';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,6 +20,7 @@ export class FavCard extends Component {
                     <Card.Body>
                         <Card.Link href="#">Trade</Card.Link>
                         <Card.Link href="#">Buy</Card.Link>
+
                     </Card.Body>
                 </Card>
             </div>

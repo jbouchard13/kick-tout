@@ -23,7 +23,7 @@ const Members = props => {
     <Container className="signup">
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
-          <h1>Members Page</h1>
+          <h2 className="page-header">Members Page</h2>
           <Button
             className="m-1"
             onClick={() => {

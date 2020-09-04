@@ -133,6 +133,8 @@ export default function MyPosts() {
   return (
     <div>
       <Navigation />
+      <h2 className="page-header">My Posts</h2>
+      <p>Here you can keep keep track of, update, and delete your postings.</p>
       <ToastContainer />
       <CardDeck>
         {/* if user is editing the selected post (editingPost: true)*/}
