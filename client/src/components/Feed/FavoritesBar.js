@@ -3,8 +3,9 @@ import '../../App.css';
 import API from "../../utils/API";
 import FavCard from './FavCard';
 import axios from 'axios';
+import CardDeck from 'react-bootstrap/CardDeck';
 
-// const userId = 6
+
 export class FavoritesBar extends Component {
   constructor(props) {
     super(props)
@@ -23,17 +24,17 @@ export class FavoritesBar extends Component {
    
 
   render() {
-    const style = {
-    };
     return (
-      <div style={style}>
-        <h1>Favorites</h1>
+      <div>
+        <CardDeck>
         {this.state.favorites.map((favorite) => {
           console.log(favorite)
           return (
-            <FavCard id={favorite.id} userId={favorite.userId} photoSrc={favorite.photoSrc} />
+            <FavCard className ="favCard" id={favorite.id} userId={favorite.userId} photoSrc={favorite.photoSrc} />
           )
         })}
+        </CardDeck>
+
       </div>
     );
   }

@@ -12,7 +12,7 @@ export class FavCard extends Component {
         return (
             <div>
                 <Card className="favCard">
-                    <Card.Img variant="top" src={this.props.photoSrc} />
+                    <Card.Img className="cardPhoto" variant="top" src={this.props.photoSrc} />
                     <ul className="list-group list-group-flush">
                         <li href="#" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faUser} /> Seller Profile</li>
                     </ul>
