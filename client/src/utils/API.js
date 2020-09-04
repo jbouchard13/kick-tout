@@ -16,6 +16,11 @@ export default {
     return axios.get(`/api/posts/${userId}`);
   },
 
+  // path to get posts by post id
+  getPostsByPostId: (postId) => {
+    return axios.get(`/api/posts/by-post/${postId}`);
+  },
+
   // path to get posts by search
   getPostsByQuery: (query) => {
     return axios.get(`/api/posts/search/${query}`);
