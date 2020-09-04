@@ -20,19 +20,16 @@ export class FavoritesBar extends Component {
     });
   }
 
-    
-   
-
   render() {
     return (
       <div>
         <CardDeck>
-        {this.state.favorites.map((favorite) => {
-          console.log(favorite)
-          return (
-            <FavCard className ="favCard" id={favorite.id} userId={favorite.userId} photoSrc={favorite.photoSrc} />
-          )
-        })}
+          {this.state.favorites.map((favorite) => {
+            console.log(favorite)
+            return (
+              <FavCard className="favCard" id={favorite.id} userId={favorite.userId} photoSrc={favorite.photoSrc} />
+            )
+          })}
         </CardDeck>
 
       </div>
