@@ -5,6 +5,7 @@ import "../App.css";
 
 import ProfileContainer from '../components/Profile/ProfileContainer';
 import Navigation from '../components/Navigation/Navigation';
+import AbsoluteWrapper from '../components/Animation/AbsoluteWrapper';
 
 
 // import Navigation from '../components/Navigation/Navigation';
@@ -15,7 +16,7 @@ function Profile(props) {
   const { logout } = useContext(AuthContext);
 
   return (
-    <div>
+    <div className='position-absolute w-100'>
       <Navigation />
       <h1>Profile Page</h1>
       <Container fluid>
@@ -35,6 +36,7 @@ function Profile(props) {
       </Container>
       {/* <Footer /> */}
     </div>
+    
   );
 }
 

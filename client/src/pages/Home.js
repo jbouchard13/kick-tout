@@ -9,7 +9,7 @@ import ImgCarousel from '../components/Home/ImgCarousel';
 
 
 import LoginForm from '../components/Home/LoginForm';
-
+// import AbsoluteWrapper from '../components/Animation/AbsoluteWrapper';
 
 function Home(props) {
   const history = useHistory();
@@ -40,8 +40,10 @@ function Home(props) {
   // };
 
   return (
+    
     isAuth ? <Redirect to='/feed' />
             : 
+    <div className='position-absolute w-100'>
       <Container className="signup">
         <ToastContainer/>
         <Row>
@@ -73,6 +75,7 @@ function Home(props) {
           </Container>
         </Row>
       </Container>
+    </div>
   );
 }
 

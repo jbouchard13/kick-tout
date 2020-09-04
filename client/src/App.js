@@ -2,9 +2,12 @@ import React, { useContext } from 'react';
 import {
   Route,
   Switch,
-  BrowserRouter as Router,
+  BrowserRouter,
   Redirect,
+  useLocation
 } from 'react-router-dom';
+
+import {useTransition, animated} from 'react-spring';
 import { AuthProvider, AuthContext } from './AuthContext';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
@@ -20,6 +23,14 @@ import MyPosts from './pages/MyPosts';
 // router, but in the end we export App wrapped in the context provider
 
 function App() {
+
+  const location = useLocation();
+
+  const transitions = useTransition(location, location => location.pathname, {
+    from: {opacity: 0, transform: 'translate(100%, 0)'},
+    enter: {opacity: 1, transform: 'translate(0%, 0)'},
+    leave: {opacity: 0, transform: 'translate(-50%, 0)'}
+  });
   // Here we subscribe the authentication context using the useContext hook
   // we use isAuth to determine whether the user is logged in, and setIsAuth
   // to change their status on logout.
@@ -41,27 +52,36 @@ function App() {
     />
   );
 
-  return (
-    <Router>
-      <Switch>
-        <Route exact path='/' render={(props) => <Home {...props} />} />
-        <Route exact path='/signup' render={(props) => <Signup {...props} />} />
-        <PrivateRoute exact path='/feed' component={Feed} />
-        <PrivateRoute exact path='/profile' component={Profile} />
-        <PrivateRoute exact path='/create-post' component={CreatePost} />
-        <PrivateRoute exact path='/my-posts' component={MyPosts} />
+  return transitions.map(({item, props, key}) => (
+          <Switch location={item}>
+            <Route exact path='/' render={(props) => <Home {...props} />} />
+            <Route exact path='/signup' render={(props) => <Signup {...props} />} />
+          <animated.div key={key} style={props}>
+            <PrivateRoute exact path='/feed' component={Feed} />
+            <PrivateRoute exact path='/profile' component={Profile} />
+            <PrivateRoute exact path='/create-post' component={CreatePost} />
+            <PrivateRoute exact path='/my-posts' component={MyPosts} />
+          </animated.div>
+          </Switch>
         
-      </Switch>
-    </Router>
-  );
+  ))
 }
 
 // Here we export the final product of our app/context configuration, and
 // even though it is unnamed here, it will be imported as App in index.js
 export default () => {
-  return (
+  return(
     <AuthProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+    </BrowserRouter>
     </AuthProvider>
-  );
-};
+  )
+} 
+// => {
+//   return (
+//     <AuthProvider>
+//       <App />
+//     </AuthProvider>
+//   );
+// };

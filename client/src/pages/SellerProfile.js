@@ -10,7 +10,7 @@ function SellerProfile(props) {
   const { logout } = useContext(AuthContext);
 
   return (
-    <div>
+    <div className='position-absolute w-100'>
       <h1>Seller Profile</h1>
 
       <Container fluid>

@@ -8,6 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import API from '../utils/API';
 
+// import AbsoluteWrapper from '../components/Animation/AbsoluteWrapper';
+
 export default function MyPosts() {
   const [postsArray, setPostsArray] = useState([]);
   const [userId, setUserId] = useState('');
@@ -39,7 +41,7 @@ export default function MyPosts() {
   };
 
   return (
-    <>
+    <div className='position-absolute w-100'>
       <Navigation />
       <h2>Your posts</h2>
       <p>Here you can keep keep track of, update, and delete your postings.</p>
@@ -60,6 +62,6 @@ export default function MyPosts() {
           />
         ))}
       </CardDeck>
-    </>
+      </div>
   );
 }
