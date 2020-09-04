@@ -131,43 +131,45 @@ export default function MyPosts() {
   };
 
   return (
-    <div>
+    <>
       <Navigation />
       <ToastContainer />
-      <CardDeck>
-        {/* if user is editing the selected post (editingPost: true)*/}
-        {editingPost && (
-          <EditPostForm
-            type={editingForm.type}
-            name={editingForm.name}
-            size={editingForm.size}
-            brand={editingForm.brand}
-            shoeCondition={editingForm.shoeCondition}
-            value={editingForm.value}
-            handleEditOnChange={handleEditOnChange}
-            handleImageOnChange={handleImageOnChange}
-            handleEditSubmit={handleEditSubmit}
-            handleCancel={handleCancel}
-          />
-        )}
-        {/* if the user is looking at all of their posts (editingPost: false) */}
-        {!editingPost &&
-          postsArray.map((post) => (
-            <PostCard
-              key={post.id}
-              photoSrc={post.photoSrc}
-              name={post.name}
-              shoeCondition={post.shoeCondition}
-              content={post.content}
-              size={post.size}
-              value={post.value}
-              userId={post.UserId}
-              postId={post.id}
-              handleEdit={handleEdit}
-              handleDelete={handleDelete}
+      <div className='container'>
+        <CardDeck>
+          {/* if user is editing the selected post (editingPost: true)*/}
+          {editingPost && (
+            <EditPostForm
+              type={editingForm.type}
+              name={editingForm.name}
+              size={editingForm.size}
+              brand={editingForm.brand}
+              shoeCondition={editingForm.shoeCondition}
+              value={editingForm.value}
+              handleEditOnChange={handleEditOnChange}
+              handleImageOnChange={handleImageOnChange}
+              handleEditSubmit={handleEditSubmit}
+              handleCancel={handleCancel}
             />
-          ))}
-      </CardDeck>
-    </div>
+          )}
+          {/* if the user is looking at all of their posts (editingPost: false) */}
+          {!editingPost &&
+            postsArray.map((post) => (
+              <PostCard
+                key={post.id}
+                photoSrc={post.photoSrc}
+                name={post.name}
+                shoeCondition={post.shoeCondition}
+                content={post.content}
+                size={post.size}
+                value={post.value}
+                userId={post.UserId}
+                postId={post.id}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            ))}
+        </CardDeck>
+      </div>
+    </>
   );
 }
