@@ -10,18 +10,18 @@ export default class UserGreeting extends React.Component {
         Axios.get('/api/auth/user_data')
             .then(res => {
                 const userName = res.data.firstName;
-                this.setState({userName})
+                this.setState({ userName })
                 console.log(res.data.firstName);
             })
     }
 
     render() {
-        return(
+        return (
             <>
-            <h2 className="page-header">Welcome, {this.state.userName}!</h2>
+                <h2 className="page-header">Welcome, {this.state.userName}!</h2>
             </>
         );
     }
-  
+
 };
 
