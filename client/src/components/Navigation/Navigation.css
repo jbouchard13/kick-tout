@@ -1,3 +1,26 @@
 #basic-nav-dropdown {
     color: white !important;
     }
+
+#basic-nav-dropdown:hover {
+    text-shadow: 0 0 10px yellowgreen;
+    }
+
+#glow:hover {
+    text-shadow: 0 0 10px yellowgreen;
+    }
+
+/* .navbar-toggler-icon { */
+    /* border-color: white; */
+/* } */
+/*  */
+/* .navbar-toggler.navbar-toggler-icon { */
+    /* border-color: white; */
+/* } */
+
+
+.menu-item {
+    padding: 5px;
+    color: white;
+    background-color: black;
+}

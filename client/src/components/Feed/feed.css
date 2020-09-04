@@ -6,6 +6,9 @@
     border-color: darkgrey;
     box-shadow: 3px 5px 5px grey;
 }
+.cardPhoto {
+    height: 200px;
+}
 
 .favCard {
     width: 289px;
@@ -13,11 +16,15 @@
     /* margin: 5px; */
     border-color: darkgrey;
     box-shadow: 3px 5px 5px grey;
-    margin-bottom: 20px;
+    margin: 55px;
 
 }
 
 .filter {
     padding-top: 20px;
     /* padding-bottom: 20px; */
+}
+
+.page-header{
+    margin-top: 20px;
 }
