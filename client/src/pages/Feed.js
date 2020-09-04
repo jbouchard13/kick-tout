@@ -13,7 +13,7 @@ import Filter from '../components/Feed/Filter';
 import UserGreeting from '../components/Home/UserGreeting';
 
 import Navigation from '../components/Navigation/Navigation';
-// import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer/Footer';
 
 function Feed(props) {
   const history = useHistory();
@@ -53,7 +53,7 @@ function Feed(props) {
           </Col>
         </Row>
       </Container>
-      {/* <Footer />  {' '} */}
+      <Footer /> 
     </>
   );
 }
