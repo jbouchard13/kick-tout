@@ -11,7 +11,7 @@ function SellerProfile(props) {
 
   return (
     <div>
-      <h1>Seller Profile</h1>
+      <h2 className="page-header">Seller Profile</h2>
 
       <Container fluid>
         <Row>

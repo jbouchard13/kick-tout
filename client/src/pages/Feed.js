@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
-import {  Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import '../App.css';
 import '../components/Feed/feed.css';
 
@@ -9,12 +9,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import CardContainer from '../components/Feed/CardContainer';
-import FavoritesBar from '../components/Feed/FavoritesBar';
 import Filter from '../components/Feed/Filter';
 import UserGreeting from '../components/Home/UserGreeting';
 
 import Navigation from '../components/Navigation/Navigation';
-// import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer/Footer';
 
 function Feed(props) {
   const history = useHistory();
@@ -54,7 +53,7 @@ function Feed(props) {
           </Col>
         </Row>
       </Container>
-      {/* <Footer />  {' '} */}
+      <Footer /> 
     </>
   );
 }
