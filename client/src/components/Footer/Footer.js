@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { Navbar } from 'react-bootstrap';
 import '../Navigation/Navigation.css';
 
 export class Footer extends React.Component {
   render() {
     return (
       <div>
-        <Navbar sticky="bottom" bg="dark" variant="dark">
-          <Navbar.Brand id="footer" >
-            Kick-Tout 2020 
+        <Navbar className="footer" sticky="bottom" bg="dark" variant="dark">
+          <Navbar.Brand >
+            Kick-Tout 2020 ©
           </Navbar.Brand>
         </Navbar>
       </div>

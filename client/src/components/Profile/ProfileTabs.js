@@ -4,6 +4,7 @@ import API from '../../utils/API';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './profile.css';
 
 import EditProfile from './EditProfile';
 import ProfileInfo from './ProfileInfo';
@@ -14,10 +15,10 @@ export default function ProfileTabs() {
   };
 
   const imageStyle = {
-    borderRadius: '50%',
+    borderRadius: '60%',
     overflow: 'hidden',
     width: '200px',
-    height: '200px',
+
   };
 
   const [userData, setUserData] = useState({
@@ -127,6 +128,7 @@ export default function ProfileTabs() {
                 />
               </Col>
               <Form.File
+                className="profileUpload"
                 id='profileImageUpload'
                 label='Update Image'
                 onChange={imageOnChange}
