@@ -21,6 +21,8 @@ export default function EditPostForm(props) {
         >
           <option>Sell</option>
           <option>Trade</option>
+          <option>Trade or Sell</option>
+
         </Form.Control>
       </Form.Group>
 

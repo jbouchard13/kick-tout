@@ -5,7 +5,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import API from '../utils/API';
 import '../components/Feed/feed.css';
-import {  Container, Row, Col } from 'react-bootstrap';
+import "../App.css";
+
+import { Container, Row, Col } from 'react-bootstrap';
 
 
 export default function MyPosts() {
@@ -42,14 +44,14 @@ export default function MyPosts() {
     <>
       <Navigation />
       <Container fluid>
-      <h2 className="page-header">My Favorites</h2>
+        <h2 className="page-header">My Favorites</h2>
         <Row className="justify-content-md-center">
           <Col>
             <FavoritesBar fluid />
           </Col>
         </Row>
       </Container>
-   
+
     </>
   );
 }
