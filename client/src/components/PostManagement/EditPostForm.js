@@ -4,6 +4,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import API from '../../utils/API';
 
+import './postMgmt.css';
+
+
 export default function EditPostForm(props) {
   return (
     <Form className='form'>
@@ -33,7 +36,7 @@ export default function EditPostForm(props) {
       <Form.Group controlId='formGridName'>
         <Form.Label>Item Name</Form.Label>
         <Form.Control
-          type='text'
+          as='textarea'
           name='name'
           value={props.name}
           placeholder='Enter Item Name'
@@ -115,7 +118,7 @@ export default function EditPostForm(props) {
         <Form.Text>Please enter numbers only</Form.Text>
       </Form.Group>
 
-      <Button type='submit' variant='dark' onClick={props.handleEditSubmit}>
+      <Button className="button" type='submit' variant='dark' onClick={props.handleEditSubmit}>
         Submit edits
       </Button>
       <Button type='submit' variant='dark' onClick={props.handleCancel}>
