@@ -485,6 +485,7 @@ router.get('/profiles/:userId', (req, res) => {
             bio: profileData.bio,
             location: profileData.location,
             profileImg: profileData.profileImg,
+            userId: req.params.userId,
           });
         })
         .catch((err) => {

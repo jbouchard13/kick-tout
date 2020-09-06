@@ -1,10 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../AuthContext';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row, Button, Image } from 'react-bootstrap';
 import API from '../utils/API';
 import '../App.css';
 
-import ProfileContainer from '../components/Profile/ProfileContainer';
+import SellerProfileInfo from '../components/SellerProfile/SellerProfileInfo';
+import SellerPostsContainer from '../components/SellerProfile/SellerPostsContainer';
 
 function SellerProfile(props) {
   const { logout } = useContext(AuthContext);
@@ -31,7 +32,7 @@ function SellerProfile(props) {
           bio: profile.data.bio,
           location: profile.data.location,
           profileImg: profile.data.profileImg,
-          userId: props.sellerId,
+          userId: profile.data.userId,
         });
       })
       .catch((err) => {
@@ -41,23 +42,43 @@ function SellerProfile(props) {
 
   return (
     <div>
-      <h2 className='page-header'>
-        {profileData.firstName} {profileData.lastName}'s Profile
-      </h2>
-      {/* 
+      <Row>
+        <Col sm={6}>
+          <h2 className='page-header'>
+            {profileData.firstName} {profileData.lastName}'s Profile
+          </h2>
+        </Col>
+        <Col sm={6}>
+          <Button variant='dark' onClick={props.handleBackToFeed}>
+            View Feed
+          </Button>
+        </Col>
+      </Row>
+
       <Container fluid>
         <Row>
-          <Col sm={10}></Col>
-          <Col sm={2}></Col>
-        </Row>
-
-        <Row>
-          <Col sm={3}></Col>
+          <Col sm={3}>
+            <Image
+              style={{ width: '100%', height: '100%' }}
+              src={profileData.profileImg}
+            />
+          </Col>
           <Col sm={9}>
-            <ProfileContainer />
+            <SellerProfileInfo
+              firstName={profileData.firstName}
+              lastName={profileData.lastName}
+              email={profileData.email}
+              bio={profileData.bio}
+              location={profileData.location}
+            />
           </Col>
         </Row>
-      </Container> */}
+        <Row>
+          <Col>
+            <SellerPostsContainer userId={props.sellerId} />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

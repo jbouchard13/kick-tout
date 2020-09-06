@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import '../App.css';
 import '../components/Feed/feed.css';
 
@@ -55,14 +55,16 @@ function Feed(props) {
       <Navigation />
       <Container fluid>
         <ToastContainer />
-        <Row>
-          <Col sm={10}>
-            <UserGreeting />
-          </Col>
-          <Col sm={2}>
-            <Filter />
-          </Col>
-        </Row>
+        {!viewProfile && (
+          <Row>
+            <Col sm={10}>
+              <UserGreeting />
+            </Col>
+            <Col sm={2}>
+              <Filter />
+            </Col>
+          </Row>
+        )}
 
         <Row className='justify-content-md-center'>
           <Col>
