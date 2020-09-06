@@ -33,14 +33,15 @@ body {
 }
 
 .form {
+  margin-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.button {
-  background-color: black;
-}
+/* .button { */
+  /* background-color: black; */
+/* } */
 
 #postCard {
   width: 300px;
@@ -53,5 +54,9 @@ body {
 
 .page-header{
   margin-top: 20px;  
+  margin-left: 20px;
+}
+
+p {
   margin-left: 20px;
 }

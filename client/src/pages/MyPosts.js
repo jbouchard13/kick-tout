@@ -7,6 +7,8 @@ import Navigation from '../components/Navigation/Navigation';
 import PostCard from '../components/PostCard/PostCard';
 import EditPostForm from '../components/PostManagement/EditPostForm';
 import 'react-toastify/dist/ReactToastify.css';
+import "../App.css";
+
 import axios from 'axios';
 import API from '../utils/API';
 
@@ -157,6 +159,7 @@ export default function MyPosts() {
           {/* if the user is looking at all of their posts (editingPost: false) */}
           {!editingPost &&
             postsArray.map((post) => (
+
               <PostCard
                 className='editPost'
                 key={post.id}

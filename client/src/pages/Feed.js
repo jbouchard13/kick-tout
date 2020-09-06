@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import '../App.css';
+
 import '../components/Feed/feed.css';
 
 import { ToastContainer, toast } from 'react-toastify';
