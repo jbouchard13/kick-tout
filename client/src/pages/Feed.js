@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import '../App.css';
 import '../components/Feed/feed.css';
 
@@ -11,12 +11,27 @@ import 'react-toastify/dist/ReactToastify.css';
 import CardContainer from '../components/Feed/CardContainer';
 import Filter from '../components/Feed/Filter';
 import UserGreeting from '../components/Home/UserGreeting';
+import SellerProfile from '../pages/SellerProfile';
 
 import Navigation from '../components/Navigation/Navigation';
 import Footer from '../components/Footer/Footer';
 
 function Feed(props) {
   const history = useHistory();
+
+  // set a boolean state to control whether a profile is rendered or not
+  const [viewProfile, setViewProfile] = useState(false);
+  const [sellerId, setSellerId] = useState('');
+
+  const getSellerId = (e) => {
+    let id = e.target.dataset.userid;
+    setSellerId(id);
+    setViewProfile(true);
+  };
+
+  const handleBackToFeed = () => {
+    setViewProfile(false);
+  };
 
   const displayHistoryMessage = () => {
     if (
@@ -40,20 +55,30 @@ function Feed(props) {
       <Navigation />
       <Container fluid>
         <ToastContainer />
-        <Row>
-          <Col sm={10}><UserGreeting /></Col>
-          <Col sm={2}>
-            <Filter />
-          </Col>
-        </Row>
+        {!viewProfile && (
+          <Row>
+            <Col sm={10}>
+              <UserGreeting />
+            </Col>
+            <Col sm={2}>
+              <Filter />
+            </Col>
+          </Row>
+        )}
 
-        <Row className="justify-content-md-center">
+        <Row className='justify-content-md-center'>
           <Col>
-            <CardContainer fluid />
+            {!viewProfile && <CardContainer getSellerId={getSellerId} fluid />}
+            {viewProfile && (
+              <SellerProfile
+                handleBackToFeed={handleBackToFeed}
+                sellerId={sellerId}
+              />
+            )}
           </Col>
         </Row>
       </Container>
-      <Footer /> 
+      <Footer />
     </>
   );
 }

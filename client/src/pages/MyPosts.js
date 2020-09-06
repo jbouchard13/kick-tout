@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { Button, Form } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
-import { Col } from "react-bootstrap";
+import { Col } from 'react-bootstrap';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Navigation from '../components/Navigation/Navigation';
 import PostCard from '../components/PostCard/PostCard';
@@ -132,9 +132,9 @@ export default function MyPosts() {
   };
 
   return (
-    <div>
+    <>
       <Navigation />
-      <h2 className="page-header">My Posts</h2>
+      <h2 className='page-header'>My Posts</h2>
       <p>Here you can keep keep track of, update, and delete your postings.</p>
       <ToastContainer />
       <Col sm={12} lg={8}>
@@ -158,7 +158,7 @@ export default function MyPosts() {
           {!editingPost &&
             postsArray.map((post) => (
               <PostCard
-                className="editPost"
+                className='editPost'
                 key={post.id}
                 photoSrc={post.photoSrc}
                 name={post.name}
@@ -174,6 +174,6 @@ export default function MyPosts() {
             ))}
         </CardDeck>
       </Col>
-    </div>
+    </>
   );
 }

@@ -40,7 +40,13 @@ export class EditProfile extends Component {
 
           <Form.Group controlId='formGridAddress1'>
             <Form.Label>Location</Form.Label>
-            <Form.Control placeholder='Where ya from?' />
+            <Form.Control
+              name='location'
+              value={this.props.location}
+              type='text'
+              onChange={this.props.handleOnChange}
+              placeholder='Where ya from?'
+            />
           </Form.Group>
 
           <Form.Group controlId='exampleForm.ControlTextarea1'>
