@@ -7,6 +7,8 @@ import Navigation from '../components/Navigation/Navigation';
 import PostCard from '../components/PostCard/PostCard';
 import EditPostForm from '../components/PostManagement/EditPostForm';
 import 'react-toastify/dist/ReactToastify.css';
+import "../App.css";
+
 import axios from 'axios';
 import API from '../utils/API';
 
@@ -157,23 +159,22 @@ export default function MyPosts() {
           {/* if the user is looking at all of their posts (editingPost: false) */}
           {!editingPost &&
             postsArray.map((post) => (
-              <PostCard
-                className="editPost"
-                key={post.id}
-                photoSrc={post.photoSrc}
-                name={post.name}
-                shoeCondition={post.shoeCondition}
-                content={post.content}
-                size={post.size}
-                value={post.value}
-                userId={post.UserId}
-                postId={post.id}
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
+                <PostCard
+                  key={post.id}
+                  photoSrc={post.photoSrc}
+                  name={post.name}
+                  shoeCondition={post.shoeCondition}
+                  content={post.content}
+                  size={post.size}
+                  value={post.value}
+                  userId={post.UserId}
+                  postId={post.id}
+                  handleEdit={handleEdit}
+                  handleDelete={handleDelete}
+                />
             ))}
         </CardDeck>
-      </Col>
+        </Col>
     </div>
   );
 }

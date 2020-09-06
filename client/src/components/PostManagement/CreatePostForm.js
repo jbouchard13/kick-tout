@@ -7,7 +7,6 @@ import API from '../../utils/API';
 
 import './postMgmt.css';
 
-
 export default function CreatePostForm() {
   // had to separate out all of the state items for some reason
   // not sure why but it works now, code isn't very dry because of it though
@@ -246,7 +245,7 @@ export default function CreatePostForm() {
           </Form.Group>
 
           <Button
-            type='submit'
+            as='submit'
             variant='dark'
             onClick={(e) => {
               onFormSubmit(e);
