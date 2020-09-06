@@ -10,7 +10,7 @@ import './postMgmt.css';
 export default function CreatePostForm() {
   // had to separate out all of the state items for some reason
   // not sure why but it works now, code isn't very dry because of it though
-  const [type, setType] = useState('Buy');
+  const [type, setType] = useState('Sell');
   const [name, setName] = useState('');
   const [size, setSize] = useState('4');
   const [brand, setBrand] = useState('');
@@ -252,7 +252,7 @@ export default function CreatePostForm() {
             }}
           >
             Create new post
-        </Button>
+          </Button>
         </Form>
       </Col>
     </div>

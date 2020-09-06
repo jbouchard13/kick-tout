@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Col } from 'react-bootstrap';
 
-export class ProfileInfo extends Component {
+export class SellerProfileInfo extends Component {
   render() {
     return (
       <div>
@@ -15,14 +15,15 @@ export class ProfileInfo extends Component {
               <Form.Label>Last Name: {this.props.lastName}</Form.Label>
             </Form.Group>
           </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} controlId='formGridEmailAddress'>
+              <Form.Label>Email: {this.props.email}</Form.Label>
+            </Form.Group>
 
-          <Form.Group controlId='formGridEmailAddress'>
-            <Form.Label>Email: {this.props.email}</Form.Label>
-          </Form.Group>
-
-          <Form.Group controlId='formGridAddress1'>
-            <Form.Label>Location: {this.props.location}</Form.Label>
-          </Form.Group>
+            <Form.Group as={Col} controlId='formGridAddress1'>
+              <Form.Label>Location: {this.props.location}</Form.Label>
+            </Form.Group>
+          </Form.Row>
 
           <Form.Group controlId='exampleForm.ControlTextarea1'>
             <Form.Label>About Me: {this.props.bio}</Form.Label>
@@ -33,4 +34,4 @@ export class ProfileInfo extends Component {
   }
 }
 
-export default ProfileInfo;
+export default SellerProfileInfo;

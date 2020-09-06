@@ -466,13 +466,32 @@ router.delete('/collections/:collectionId/:userId', (req, res) => {
 
 // route for getting user's profile info by id (GET)
 router.get('/profiles/:userId', (req, res) => {
-  db.Profile.findAll({
+  db.Profile.findOne({
     where: {
       UserId: req.params.userId,
     },
   })
     .then((profileData) => {
-      res.status(200).json(profileData);
+      db.User.findOne({
+        where: {
+          id: req.params.userId,
+        },
+      })
+        .then((userData) => {
+          res.status(200).json({
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            email: userData.email,
+            bio: profileData.bio,
+            location: profileData.location,
+            profileImg: profileData.profileImg,
+            userId: req.params.userId,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ message: 'an error occurred' });
+        });
     })
     .catch((err) => {
       console.log(err);
@@ -488,7 +507,7 @@ router.post('/profiles/:userId', (req, res) => {
   db.Profile.create({
     bio: '',
     profileImg: '../assets/images/profile-img.png',
-    preferred: '',
+    location: '',
     UserId: req.params.userId,
   })
     .then(() => {
@@ -520,7 +539,7 @@ router.put('/profiles/:userId', (req, res) => {
         {
           bio: req.body.bio,
           profileImg: req.body.profileImg,
-          preferred: req.body.preferred,
+          location: req.body.location,
         },
         {
           where: {

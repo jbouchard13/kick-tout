@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { Button, Form } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
-import { Col } from "react-bootstrap";
+import { Col } from 'react-bootstrap';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Navigation from '../components/Navigation/Navigation';
 import PostCard from '../components/PostCard/PostCard';
@@ -134,9 +134,9 @@ export default function MyPosts() {
   };
 
   return (
-    <div>
+    <>
       <Navigation />
-      <h2 className="page-header">My Posts</h2>
+      <h2 className='page-header'>My Posts</h2>
       <p>Here you can keep keep track of, update, and delete your postings.</p>
       <ToastContainer />
       <Col sm={12} lg={8}>
@@ -159,22 +159,24 @@ export default function MyPosts() {
           {/* if the user is looking at all of their posts (editingPost: false) */}
           {!editingPost &&
             postsArray.map((post) => (
-                <PostCard
-                  key={post.id}
-                  photoSrc={post.photoSrc}
-                  name={post.name}
-                  shoeCondition={post.shoeCondition}
-                  content={post.content}
-                  size={post.size}
-                  value={post.value}
-                  userId={post.UserId}
-                  postId={post.id}
-                  handleEdit={handleEdit}
-                  handleDelete={handleDelete}
-                />
+
+              <PostCard
+                className='editPost'
+                key={post.id}
+                photoSrc={post.photoSrc}
+                name={post.name}
+                shoeCondition={post.shoeCondition}
+                content={post.content}
+                size={post.size}
+                value={post.value}
+                userId={post.UserId}
+                postId={post.id}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
             ))}
         </CardDeck>
-        </Col>
-    </div>
+      </Col>
+    </>
   );
 }
