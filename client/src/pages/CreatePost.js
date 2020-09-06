@@ -14,7 +14,7 @@ export default function CreatePost() {
     <div>
       <Navigation />
       <h2 className="page-header">Create a new post</h2>
-      <Col sm={10}>
+      <Col sm={12} lg={8}>
         <CreatePostForm className="createForm" />
       </Col>
     </div>

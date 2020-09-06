@@ -105,7 +105,7 @@ const Signup = (props) => {
     <Form onSubmit={handleFormSubmit}>
       <ToastContainer />
       <Form.Group controlId='inputFirstName'>
-        <Form.Label className={firstNameColor}>FirstName</Form.Label>
+        <Form.Label className={firstNameColor}>First Name</Form.Label>
         <Form.Control
           name='firstNameInput'
           type='text'
@@ -115,7 +115,7 @@ const Signup = (props) => {
         />
       </Form.Group>
       <Form.Group controlId='inputLastName'>
-        <Form.Label className={lastNameColor}>LastName</Form.Label>
+        <Form.Label className={lastNameColor}>Last Name</Form.Label>
         <Form.Control
           name='lastNameInput'
           type='text'
@@ -125,7 +125,7 @@ const Signup = (props) => {
         />
       </Form.Group>
       <Form.Group controlId='emailInput'>
-        <Form.Label className={emailColor}>Email address</Form.Label>
+        <Form.Label className={emailColor}>Email Address</Form.Label>
         <Form.Control
           name='emailInput'
           type='email'

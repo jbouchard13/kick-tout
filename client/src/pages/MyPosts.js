@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { Button, Form } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
+import { Col } from "react-bootstrap";
 import CardDeck from 'react-bootstrap/CardDeck';
 import Navigation from '../components/Navigation/Navigation';
 import PostCard from '../components/PostCard/PostCard';
@@ -136,7 +137,11 @@ export default function MyPosts() {
       <h2 className="page-header">My Posts</h2>
       <p>Here you can keep keep track of, update, and delete your postings.</p>
       <ToastContainer />
+<<<<<<< HEAD
       <div className='container'>
+=======
+      <Col sm={12} lg={8}>
+>>>>>>> 34d7b1b0eac6520dc7c13d2343884c0c38d4850f
         <CardDeck>
           {/* if user is editing the selected post (editingPost: true)*/}
           {editingPost && (
@@ -157,6 +162,10 @@ export default function MyPosts() {
           {!editingPost &&
             postsArray.map((post) => (
               <PostCard
+<<<<<<< HEAD
+=======
+                className="editPost"
+>>>>>>> 34d7b1b0eac6520dc7c13d2343884c0c38d4850f
                 key={post.id}
                 photoSrc={post.photoSrc}
                 name={post.name}
@@ -171,7 +180,12 @@ export default function MyPosts() {
               />
             ))}
         </CardDeck>
+<<<<<<< HEAD
       </div>
     </>
+=======
+      </Col>
+    </div>
+>>>>>>> 34d7b1b0eac6520dc7c13d2343884c0c38d4850f
   );
 }

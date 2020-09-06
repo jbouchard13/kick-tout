@@ -25,6 +25,6 @@
     background-color: black;
 }
 
-#footer{
-    text-align: center;
+.footer {
+    margin-top: 15px;
 }
