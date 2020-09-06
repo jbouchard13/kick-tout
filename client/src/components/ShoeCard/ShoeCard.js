@@ -52,8 +52,9 @@ export class ShoeCard extends Component {
             </li>
 
             <li
-              href={this.props.userId}
               className='list-group-item list-group-item-action'
+              onClick={this.props.getSellerId}
+              data-userid={this.props.userId}
             >
               <FontAwesomeIcon icon={faUser} /> Seller Profile
             </li>

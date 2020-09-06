@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
-export default function CardContainer() {
+export default function CardContainer(props) {
   // set up state for post data to be inserted into from backend
   const [postState, setPostState] = useState({
     // set state as an empty array. this way we can map over the returned data to generate shoe cards
@@ -59,6 +59,7 @@ export default function CardContainer() {
             userId={post.UserId}
             postId={post.id}
             handleFavorite={handleFavorite}
+            getSellerId={props.getSellerId}
           />
         ))}
       </CardDeck>

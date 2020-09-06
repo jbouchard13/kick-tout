@@ -36,6 +36,7 @@ export default function ProfileTabs() {
           firstName: user.data.firstName,
           lastName: user.data.lastName,
           email: user.data.email,
+          location: user.data.location,
           bio: profile.data[0].bio,
           profileImg: profile.data[0].profileImg,
           userId: user.data.id,
@@ -141,6 +142,7 @@ export default function ProfileTabs() {
                   lastName={userData.lastName}
                   email={userData.email}
                   bio={userData.bio}
+                  location={userData.location}
                 />
               </Tab.Pane>
               <Tab.Pane eventKey='editprofile'>
@@ -149,6 +151,7 @@ export default function ProfileTabs() {
                   lastName={userData.lastName}
                   email={userData.email}
                   bio={userData.bio}
+                  location={userData.location}
                   handleOnChange={handleOnChange}
                   handleSubmit={handleSubmit}
                 />

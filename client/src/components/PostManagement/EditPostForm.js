@@ -16,7 +16,6 @@ export default function EditPostForm(props) {
           as='select'
           onChange={props.handleEditOnChange}
         >
-          <option>Buy</option>
           <option>Sell</option>
           <option>Trade</option>
         </Form.Control>

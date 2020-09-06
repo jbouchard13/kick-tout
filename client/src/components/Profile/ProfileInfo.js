@@ -16,8 +16,12 @@ export class ProfileInfo extends Component {
             </Form.Group>
           </Form.Row>
 
-          <Form.Group controlId='formGridAddress1'>
+          <Form.Group controlId='formGridEmailAddress'>
             <Form.Label>Email: {this.props.email}</Form.Label>
+          </Form.Group>
+
+          <Form.Group controlId='formGridAddress1'>
+            <Form.Label>Location: {this.props.location}</Form.Label>
           </Form.Group>
 
           <Form.Group controlId='exampleForm.ControlTextarea1'>
