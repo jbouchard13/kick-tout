@@ -18,13 +18,13 @@ export default function ProfileTabs() {
     borderRadius: '60%',
     overflow: 'hidden',
     width: '200px',
-
   };
 
   const [userData, setUserData] = useState({
     firstName: '',
     lastName: '',
     email: '',
+    location: '',
     userId: '',
     bio: '',
     profileImg: '',
@@ -37,12 +37,12 @@ export default function ProfileTabs() {
           firstName: user.data.firstName,
           lastName: user.data.lastName,
           email: user.data.email,
-          location: user.data.location,
-          bio: profile.data[0].bio,
-          profileImg: profile.data[0].profileImg,
+          location: profile.data.location,
+          bio: profile.data.bio,
+          profileImg: profile.data.profileImg,
           userId: user.data.id,
         });
-        console.log(user.data, profile.data[0]);
+        console.log(user.data, profile.data);
       });
     });
   }, []);
@@ -129,7 +129,7 @@ export default function ProfileTabs() {
                 />
               </Col>
               <Form.File
-                className="profileUpload"
+                className='profileUpload'
                 id='profileImageUpload'
                 label='Update Image'
                 onChange={imageOnChange}
