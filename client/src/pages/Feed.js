@@ -6,34 +6,15 @@ import '../App.css';
 
 import '../components/Feed/feed.css';
 
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import CardContainer from '../components/Feed/CardContainer';
-import Filter from '../components/Feed/Filter';
-import UserGreeting from '../components/Home/UserGreeting';
-import SellerProfile from '../pages/SellerProfile';
-
+import FeedWrapper from '../components/Feed/FeedWrapper';
 import Navigation from '../components/Navigation/Navigation';
 import Footer from '../components/Footer/Footer';
 
 function Feed(props) {
   const history = useHistory();
-
-  // set a boolean state to control whether a profile is rendered or not
-  const [viewProfile, setViewProfile] = useState(false);
-  const [sellerId, setSellerId] = useState('');
-
-  const getSellerId = (e) => {
-    let id = e.target.dataset.userid;
-    setSellerId(id);
-    setViewProfile(true);
-  };
-
-  const handleBackToFeed = () => {
-    setViewProfile(false);
-  };
 
   const displayHistoryMessage = () => {
     if (
@@ -57,30 +38,9 @@ function Feed(props) {
       <Navigation />
       <Container fluid>
         <ToastContainer />
-        {!viewProfile && (
-          <Row>
-            <Col sm={10}>
-              <UserGreeting />
-            </Col>
-            <Col sm={2}>
-              <Filter />
-            </Col>
-          </Row>
-        )}
-
-        <Row className='justify-content-md-center'>
-          <Col>
-            {!viewProfile && <CardContainer getSellerId={getSellerId} fluid />}
-            {viewProfile && (
-              <SellerProfile
-                handleBackToFeed={handleBackToFeed}
-                sellerId={sellerId}
-              />
-            )}
-          </Col>
-        </Row>
+        <FeedWrapper />
       </Container>
-      <Footer className="footer" />
+      <Footer className='footer' />
     </>
   );
 }
