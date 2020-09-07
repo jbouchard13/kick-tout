@@ -43,10 +43,10 @@ body {
   /* background-color: black; */
 /* } */
 
-#postCard {
-  width: 300px;
-  height: 600px;
-  margin: 55px;
+.postCard {
+  width: 250px;
+  height: 430px;
+  margin: 20px;
   /* align-content: center; */
   border-color: darkgrey;
   box-shadow: 3px 5px 5px grey;
@@ -59,4 +59,8 @@ body {
 
 p {
   margin-left: 20px;
+}
+
+.footer {
+  margin-top: 15px;
 }

@@ -4,7 +4,7 @@ import { Card, Button, Col } from 'react-bootstrap';
 export default function PostCard(props) {
   return (
 
-    <Col sm={4}>
+    <Col sm={12} md={6} lg={3}>
       <Card className="postCard">
         <Card.Img variant='top' src={props.photoSrc} />
         <Card.Body>
@@ -12,12 +12,12 @@ export default function PostCard(props) {
         </Card.Body>
         <ul className='list-group list-group-flush'>
           <li className='list-group-item'>
-            <Button data-postid={props.postId} onClick={props.handleEdit}>
+            <Button className='btn btn-dark' data-postid={props.postId} onClick={props.handleEdit}>
               Edit
           </Button>
           </li>
           <li className='list-group-item'>
-            <Button data-postid={props.postId} onClick={props.handleDelete}>
+            <Button className='btn btn-dark' data-postid={props.postId} onClick={props.handleDelete}>
               Delete
           </Button>
           </li>
