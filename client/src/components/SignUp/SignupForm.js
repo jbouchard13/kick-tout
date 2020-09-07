@@ -89,7 +89,6 @@ const Signup = (props) => {
   const postNewUser = (newUser) => {
     Axios.post('/api/auth/signup', newUser)
       .then((createdUser) => {
-        console.log(createdUser.data);
         history.push('/', {
           message: 'Account Successfully Created!',
         });
@@ -147,7 +146,7 @@ const Signup = (props) => {
           onChange={handleInputChange}
         />
       </Form.Group>
-      <Button variant='primary' type='submit' variant="dark">
+      <Button variant='primary' type='submit' variant='dark'>
         Submit
       </Button>
       <Button
@@ -156,7 +155,8 @@ const Signup = (props) => {
           e.preventDefault();
           props.history.push('/');
         }}
-        variant="dark">
+        variant='dark'
+      >
         Home
       </Button>
     </Form>
