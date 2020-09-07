@@ -1,4 +1,7 @@
-/* .createForm { */
-/* margin: 100rem; */
-/* padding: 50rem; */
-/* } */
+.form {
+    margin-left: 30px;
+}
+
+.button {
+    margin-right: 10px;
+}

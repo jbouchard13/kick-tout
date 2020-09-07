@@ -4,6 +4,7 @@ import API from '../../utils/API';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './profile.css';
 
 import EditProfile from './EditProfile';
 import ProfileInfo from './ProfileInfo';
@@ -14,16 +15,16 @@ export default function ProfileTabs() {
   };
 
   const imageStyle = {
-    borderRadius: '50%',
+    borderRadius: '60%',
     overflow: 'hidden',
     width: '200px',
-    height: '200px',
   };
 
   const [userData, setUserData] = useState({
     firstName: '',
     lastName: '',
     email: '',
+    location: '',
     userId: '',
     bio: '',
     profileImg: '',
@@ -36,11 +37,12 @@ export default function ProfileTabs() {
           firstName: user.data.firstName,
           lastName: user.data.lastName,
           email: user.data.email,
-          bio: profile.data[0].bio,
-          profileImg: profile.data[0].profileImg,
+          location: profile.data.location,
+          bio: profile.data.bio,
+          profileImg: profile.data.profileImg,
           userId: user.data.id,
         });
-        console.log(user.data, profile.data[0]);
+        console.log(user.data, profile.data);
       });
     });
   }, []);
@@ -127,6 +129,7 @@ export default function ProfileTabs() {
                 />
               </Col>
               <Form.File
+                className='profileUpload'
                 id='profileImageUpload'
                 label='Update Image'
                 onChange={imageOnChange}
@@ -135,20 +138,24 @@ export default function ProfileTabs() {
           </Col>
           <Col sm={9}>
             <Tab.Content>
-              <Tab.Pane eventKey='yourprofile'>
+              <Tab.Pane
+                eventKey='yourprofile'>
                 <ProfileInfo
                   firstName={userData.firstName}
                   lastName={userData.lastName}
                   email={userData.email}
                   bio={userData.bio}
+                  location={userData.location}
                 />
               </Tab.Pane>
-              <Tab.Pane eventKey='editprofile'>
+              <Tab.Pane
+                eventKey='editprofile'>
                 <EditProfile
                   firstName={userData.firstName}
                   lastName={userData.lastName}
                   email={userData.email}
                   bio={userData.bio}
+                  location={userData.location}
                   handleOnChange={handleOnChange}
                   handleSubmit={handleSubmit}
                 />

@@ -33,19 +33,20 @@ body {
 }
 
 .form {
+  margin-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.button {
-  background-color: black;
-}
+/* .button { */
+  /* background-color: black; */
+/* } */
 
-#postCard {
-  width: 300px;
-  height: 600px;
-  margin: 55px;
+.postCard {
+  width: 250px;
+  height: 430px;
+  margin: 20px;
   /* align-content: center; */
   border-color: darkgrey;
   box-shadow: 3px 5px 5px grey;
@@ -54,4 +55,12 @@ body {
 .page-header{
   margin-top: 20px;  
   margin-left: 20px;
+}
+
+p {
+  margin-left: 20px;
+}
+
+.footer {
+  margin-top: 15px;
 }

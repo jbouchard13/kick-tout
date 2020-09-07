@@ -5,10 +5,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import API from '../../utils/API';
 
+import './postMgmt.css';
+
 export default function CreatePostForm() {
   // had to separate out all of the state items for some reason
   // not sure why but it works now, code isn't very dry because of it though
-  const [type, setType] = useState('Buy');
+  const [type, setType] = useState('Sell');
   const [name, setName] = useState('');
   const [size, setSize] = useState('4');
   const [brand, setBrand] = useState('');
@@ -133,6 +135,7 @@ export default function CreatePostForm() {
             >
               <option>Sell</option>
               <option>Trade</option>
+              <option>Trade or Sell</option>
             </Form.Control>
           </Form.Group>
 
@@ -149,7 +152,7 @@ export default function CreatePostForm() {
           <Form.Group controlId='formGridName'>
             <Form.Label>Item Name</Form.Label>
             <Form.Control
-              type='text'
+              as='textarea'
               name='name'
               value={name}
               placeholder='Enter Item Name'
@@ -242,14 +245,14 @@ export default function CreatePostForm() {
           </Form.Group>
 
           <Button
-            type='submit'
+            as='submit'
             variant='dark'
             onClick={(e) => {
               onFormSubmit(e);
             }}
           >
             Create new post
-        </Button>
+          </Button>
         </Form>
       </Col>
     </div>

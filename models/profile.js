@@ -15,7 +15,9 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
     // user's preferred items, can be null
-    preferred: {
+    // run below code in MySQL to fix table without having to drop everything
+    // ALTER TABLE profiles RENAME COLUMN preferred TO location;
+    location: {
       type: DataTypes.TEXT,
     },
   });

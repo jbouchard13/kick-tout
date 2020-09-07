@@ -21,13 +21,13 @@ VALUES
 ('testin', 'testify', 'email4@email.com', 'password', '121212', '121212'),
 ('test', 'name', 'email5@email.com', 'password', '121212', '121212');
 
-INSERT INTO profiles (bio, profileImg, preferred, createdAt, updatedAt, userId)
+INSERT INTO profiles (bio, profileImg, location, createdAt, updatedAt, userId)
 VALUES 
-('bio stuff', '../assets/images/profile-img.png', 'preferred stuff', '121212', '121212', 1),
-('bio stuff', '../assets/images/profile-img.png', 'preferred stuff', '121212', '121212', 2),
-('bio stuff', '../assets/images/profile-img.png', 'preferred stuff', '121212', '121212', 3),
-('bio stuff', '../assets/images/profile-img.png', 'preferred stuff', '121212', '121212', 4),
-('bio stuff', '../assets/images/profile-img.png', 'preferred stuff', '121212', '121212', 5);
+('bio stuff', '../assets/images/profile-img.png', 'some place, usa', '121212', '121212', 1),
+('bio stuff', '../assets/images/profile-img.png', 'some place, usa', '121212', '121212', 2),
+('bio stuff', '../assets/images/profile-img.png', 'some place, usa', '121212', '121212', 3),
+('bio stuff', '../assets/images/profile-img.png', 'some place, usa', '121212', '121212', 4),
+('bio stuff', '../assets/images/profile-img.png', 'some place, usa', '121212', '121212', 5);
 
 INSERT INTO posts (name, content, size, brand, type, shoeCondition, value, photoSrc, createdAt, updatedAt, userId)
 VALUES

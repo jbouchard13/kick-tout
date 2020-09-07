@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Route,
   Switch,
@@ -16,7 +16,6 @@ import Profile from './pages/Profile';
 import CreatePost from './pages/CreatePost';
 import MyPosts from './pages/MyPosts';
 import Favorites from './pages/Favorites';
-
 
 // import Chat from './components/Chat/Chat';
 
@@ -37,7 +36,6 @@ function App() {
   // Here we subscribe the authentication context using the useContext hook
   // we use isAuth to determine whether the user is logged in, and setIsAuth
   // to change their status on logout.
-
   const { isAuth, setIsAuth } = useContext(AuthContext);
   console.log('App auth: ', isAuth);
 
