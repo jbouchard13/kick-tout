@@ -18,7 +18,7 @@ function Profile(props) {
   return (
     <div className='position-absolute w-100'>
       <Navigation />
-      <h1>Profile Page</h1>
+      <h2 className="page-header">Profile Page</h2>
       <Container fluid>
         <Row>
           <Col sm={10}></Col>

@@ -4,10 +4,10 @@ import {
   Switch,
   BrowserRouter,
   Redirect,
-  useLocation
+  // useLocation
 } from 'react-router-dom';
 
-import {useTransition, animated, config} from 'react-spring';
+// import {useTransition, animated, config} from 'react-spring';
 import { AuthProvider, AuthContext } from './AuthContext';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
@@ -26,13 +26,14 @@ import Favorites from './pages/Favorites';
 
 function App() {
 
-  const location = useLocation();
+  // const location = useLocation();
 
-  const transitions = useTransition(location, location => location.pathname, {
-    from: {opacity: 0, transform: 'translate(100%, 0)'},
-    enter: {opacity: 1, transform: 'translate(0%, 0)'},
-    leave: {opacity: 0, transform: 'translate(-50%, 0)'}
-  });
+  // const transitions = useTransition(location, location => location.pathname, {
+  //   initial: {opacity: 0, transform: 'translate(100%, 0)'},
+  //   from: {opacity: 0, transform: 'translate(100%, 0)'},
+  //   enter: {opacity: 1, transform: 'translate(0%, 0)'},
+  //   leave: {opacity: 0, transform: 'translate(-50%, 0)'},
+  // });
   // Here we subscribe the authentication context using the useContext hook
   // we use isAuth to determine whether the user is logged in, and setIsAuth
   // to change their status on logout.
@@ -54,20 +55,21 @@ function App() {
     />
   );
 
-  return transitions.map(({item, props, key}) => (
-          <Switch location={item}>
+  return (
+    // transitions.map(({item, props, key}) => (
+          <Switch>
             <Route exact path='/' render={(props) => <Home {...props} />} />
             <Route exact path='/signup' render={(props) => <Signup {...props} />} />
-          <animated.div key={key} style={props}>
+          {/* <animated.div key={key} style={props}> */},
             <PrivateRoute exact path='/feed' component={Feed} />
             <PrivateRoute exact path='/profile' component={Profile} />
             <PrivateRoute exact path='/create-post' component={CreatePost} />
             <PrivateRoute exact path='/my-posts' component={MyPosts} />
             <PrivateRoute exact path='/favorites' component={Favorites} />
-          </animated.div>
+          {/* </animated.div> */}
           </Switch>
         
-  ))
+  )
 }
 
 // Here we export the final product of our app/context configuration, and

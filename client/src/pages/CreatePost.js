@@ -14,7 +14,7 @@ export default function CreatePost() {
   return (
     <div className='position-absolute w-100'>
       <Navigation />
-      <h1>Create a new post</h1>
+      <h2 className="page-header">Create a new post</h2>
       <Col sm={10}>
         <CreatePostForm className="createForm" />
       </Col>

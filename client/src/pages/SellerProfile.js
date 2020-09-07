@@ -12,22 +12,24 @@ function SellerProfile(props) {
   return (
     <div className='position-absolute w-100'>
       <h1>Seller Profile</h1>
+        <div>
+          <h2 className="page-header">Seller Profile</h2>
+        <Container fluid>
+          <Row>
+            <Col sm={10}></Col>
+            <Col sm={2}>
+            </Col>
+          </Row>
 
-      <Container fluid>
-        <Row>
-          <Col sm={10}></Col>
-          <Col sm={2}>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col sm={3}>
-          </Col>
-          <Col sm={9}>
-            <ProfileContainer />
-          </Col>
-        </Row>
-      </Container>
+          <Row>
+            <Col sm={3}>
+            </Col>
+            <Col sm={9}>
+              <ProfileContainer />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   )
 }
