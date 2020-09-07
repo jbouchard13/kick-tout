@@ -139,7 +139,7 @@ export default function MyPosts() {
       <h2 className='page-header'>My Posts</h2>
       <p>Here you can keep keep track of, update, and delete your postings.</p>
       <ToastContainer />
-      <Col sm={12} lg={8}>
+      <Col >
         <CardDeck>
           {/* if user is editing the selected post (editingPost: true)*/}
           {editingPost && (
