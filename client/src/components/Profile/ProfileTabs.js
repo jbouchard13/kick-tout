@@ -141,7 +141,8 @@ export default function ProfileTabs() {
           </Col>
           <Col sm={9}>
             <Tab.Content>
-              <Tab.Pane eventKey='yourprofile'>
+              <Tab.Pane
+                eventKey='yourprofile'>
                 <ProfileInfo
                   firstName={userData.firstName}
                   lastName={userData.lastName}
@@ -150,7 +151,8 @@ export default function ProfileTabs() {
                   location={userData.location}
                 />
               </Tab.Pane>
-              <Tab.Pane eventKey='editprofile'>
+              <Tab.Pane
+                eventKey='editprofile'>
                 <EditProfile
                   firstName={userData.firstName}
                   lastName={userData.lastName}

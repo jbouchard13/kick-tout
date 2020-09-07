@@ -8,3 +8,11 @@
     margin-bottom: 15px;
 }
 
+.nav-link.active {
+    color: white !important;
+    background-color: black!important;
+}
+
+:link {
+    color: black;
+}
