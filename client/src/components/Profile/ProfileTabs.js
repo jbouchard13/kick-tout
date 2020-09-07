@@ -60,7 +60,10 @@ export default function ProfileTabs() {
         toast.success('Image uploaded successfully');
       })
       .catch((err) => {
-        toast.error('Error while updating image');
+        // if error is because file was not an image
+        if (err.response.data.message === 'Invalid image file') {
+          toast.error(err.response.data.message);
+        } else toast.error('Error uploading image');
       });
   };
 

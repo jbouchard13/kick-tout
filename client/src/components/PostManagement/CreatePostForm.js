@@ -66,7 +66,10 @@ export default function CreatePostForm() {
         }, 2000);
       })
       .catch((err) => {
-        toast.error('An error occurred');
+        // if error is because of file not being an image
+        if (err.response.data.message === 'Invalid image file') {
+          toast.error(err.response.data.message);
+        } else toast.error('An error occurred');
       });
   };
 

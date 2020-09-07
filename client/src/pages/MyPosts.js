@@ -7,7 +7,7 @@ import Navigation from '../components/Navigation/Navigation';
 import PostCard from '../components/PostCard/PostCard';
 import EditPostForm from '../components/PostManagement/EditPostForm';
 import 'react-toastify/dist/ReactToastify.css';
-import "../App.css";
+import '../App.css';
 
 import axios from 'axios';
 import API from '../utils/API';
@@ -100,8 +100,11 @@ export default function MyPosts() {
         setEditingPost(false);
         toast.success('Post updated successfully');
       })
-      .catch(() => {
-        toast.error('Error updating post');
+      .catch((err) => {
+        // checks if the error response is because of incorrect file uploaded
+        if (err.response.data.message === 'Invalid image file') {
+          toast.error(err.response.data.message);
+        } else toast.error('Error updating post');
       });
   };
 
@@ -159,7 +162,6 @@ export default function MyPosts() {
           {/* if the user is looking at all of their posts (editingPost: false) */}
           {!editingPost &&
             postsArray.map((post) => (
-
               <PostCard
                 className='editPost'
                 key={post.id}
