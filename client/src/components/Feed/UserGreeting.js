@@ -20,7 +20,7 @@ export default class UserGreeting extends React.Component {
     render() {
         return (
             <>
-                <h2 className="page-header">Welcome, {this.state.userName}!</h2>
+                <h2 className="page-header">Welcome to your Feed Page {this.state.userName}! </h2>
             </>
         );
     }

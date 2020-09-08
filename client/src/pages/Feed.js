@@ -6,7 +6,6 @@ import '../App.css';
 
 import '../components/Feed/feed.css';
 
-import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -18,7 +17,8 @@ import SellerProfile from '../pages/SellerProfile';
 import Navigation from '../components/Navigation/Navigation';
 import Footer from '../components/Footer/Footer';
 import { urlencoded } from 'body-parser';
-import bostonPic from '../../public/assets/images/bostonPic.jpg';
+
+
 
 function Feed(props) {
   const history = useHistory();
@@ -56,15 +56,16 @@ function Feed(props) {
 
   return (
     <>
-      <Navigation />
-      <Parallax pages={1} scrolling={true} horizontal ref={ref => (this.parallax = ref)}>
-        <ParallaxLayer offset={0} speed = {0} style={{ backgroundImage: url("../../public/assets/images/bostonPic.jpg"), backgroundsSize: 'cover' }} >
-          <Container fluid>
+      <div className="feedBody">
+        <Navigation />
+          <Container className="fluid">
             <ToastContainer />
             {!viewProfile && (
-              <Row>
+              <Row className="mt-3">
                 <Col sm={10}>
-                  <UserGreeting />
+                <div className="greetBgd">
+                <UserGreeting className="float-right" />
+                </div>
                 </Col>
                 <Col sm={2}>
                   <Filter />
@@ -73,7 +74,7 @@ function Feed(props) {
             )}
 
             <Row className='justify-content-md-center'>
-              <Col>
+              <Col className="pb-5">
                 {!viewProfile && <CardContainer getSellerId={getSellerId} fluid />}
                 {viewProfile && (
                   <SellerProfile
@@ -84,10 +85,10 @@ function Feed(props) {
               </Col>
             </Row>
           </Container>
-        </ParallaxLayer>
-      </Parallax>
+         
       <Footer className="footer" />
-    </>
+      </div>
+      </>
   );
 }
 

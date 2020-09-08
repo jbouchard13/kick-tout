@@ -41,7 +41,7 @@ export default function MyPosts() {
   };
 
   return (
-    <div className='position-absolute w-100'>
+    <div>
       <Navigation />
       <Container fluid>
         <h2 className="page-header">My Favorites</h2>

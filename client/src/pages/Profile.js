@@ -5,7 +5,7 @@ import "../App.css";
 
 import ProfileContainer from '../components/Profile/ProfileContainer';
 import Navigation from '../components/Navigation/Navigation';
-import AbsoluteWrapper from '../components/Animation/AbsoluteWrapper';
+import AbsoluteWrapper from '../components/Animation/ParallaxWrapper';
 
 
 // import Navigation from '../components/Navigation/Navigation';
