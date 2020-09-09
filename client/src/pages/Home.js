@@ -73,7 +73,6 @@ function Home(props) {
           </Container>
         </Row>
       </Container>
-    </div>
   );
 }
 
