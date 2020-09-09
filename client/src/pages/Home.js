@@ -2,11 +2,10 @@ import React, { useContext, useEffect } from "react";
 import { Redirect, useHistory } from 'react-router-dom';
 import { AuthContext } from "../AuthContext";
 import "../App.css";
-import {ToastContainer, toast} from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Container, Row, Col, Figure } from "react-bootstrap";
 import ImgCarousel from '../components/Home/ImgCarousel';
-
 
 import LoginForm from '../components/Home/LoginForm';
 // import AbsoluteWrapper from '../components/Animation/AbsoluteWrapper';
@@ -19,7 +18,7 @@ function Home(props) {
       history.location.state.hasOwnProperty('message')
     ) {
       console.log("saved")
-       toast.success(history.location.state.message);
+      toast.success(history.location.state.message);
     }
   }
 
@@ -42,10 +41,9 @@ function Home(props) {
   return (
     
     isAuth ? <Redirect to='/feed' />
-            : 
-    <div className='position-absolute w-100'>
+      :
       <Container className="signup">
-        <ToastContainer/>
+        <ToastContainer />
         <Row>
           <Col md={{ span: 8, offset: 2 }}>
             <Figure>
