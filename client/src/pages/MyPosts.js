@@ -12,6 +12,8 @@ import "../App.css";
 import axios from 'axios';
 import API from '../utils/API';
 
+// import AbsoluteWrapper from '../components/Animation/AbsoluteWrapper';
+
 export default function MyPosts() {
   const [postsArray, setPostsArray] = useState([]);
   const [userId, setUserId] = useState('');

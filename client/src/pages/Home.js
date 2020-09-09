@@ -8,7 +8,7 @@ import { Container, Row, Col, Figure } from "react-bootstrap";
 import ImgCarousel from '../components/Home/ImgCarousel';
 
 import LoginForm from '../components/Home/LoginForm';
-
+// import AbsoluteWrapper from '../components/Animation/AbsoluteWrapper';
 
 function Home(props) {
   const history = useHistory();
@@ -39,6 +39,7 @@ function Home(props) {
   // };
 
   return (
+    
     isAuth ? <Redirect to='/feed' />
       :
       <Container className="signup">

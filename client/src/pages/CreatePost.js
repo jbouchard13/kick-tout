@@ -5,6 +5,7 @@ import { Col } from 'react-bootstrap';
 import CreatePostForm from '../components/PostManagement/CreatePostForm';
 import Navigation from '../components/Navigation/Navigation';
 
+
 import '../components/PostManagement/postMgmt.css';
 
 export default function CreatePost() {
