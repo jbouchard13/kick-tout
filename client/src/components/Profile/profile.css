@@ -10,9 +10,13 @@
 
 .nav-link.active {
     color: white !important;
-    background-color: black!important;
+    background-color: rgba(0, 0, 0, 0.788)!important;
 }
 
 :link {
     color: black;
 }
+
+a:hover {
+    color: orange;
+  }

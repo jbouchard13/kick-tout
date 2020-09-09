@@ -1,6 +1,8 @@
-body {
+
+html, body {
 	color: black;
   font-family: 'Montserrat', sans-serif;
+  height: 100%;
 }
 
 .App {
@@ -62,5 +64,5 @@ p {
 }
 
 .footer {
-  margin-top: 15px;
+  margin-top: 25px;
 }
