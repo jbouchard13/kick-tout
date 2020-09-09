@@ -17,18 +17,11 @@ export class ShoeCard extends Component {
     //this.currentUserId = 0;
   }
 
-  // componentDidMount() {
-  //   axios.get('/api/auth/user_data').then((response) => {
-  //     console.log(response.data.id);
-  //     this.currentUserId = response.data.id;
-  //   });
-  // }
-
   render() {
     return (
       <div>
         <Card className='shoeCard'>
-          <Card.Text className="mx-auto"><img src={pinPic} style={{backgroundColor: "#fdfd96", height: "50px", width: "75px", padding: '0'}}></img></Card.Text>
+          <Card.Text className="mx-auto"><img src={pinPic} style={{backgroundColor: "#fcfba7", height: "50px", width: "75px", padding: '0'}}></img></Card.Text>
           <Card.Img
             variant='top'
             className='cardPhoto'
@@ -38,33 +31,33 @@ export class ShoeCard extends Component {
             <Card.Title>{this.props.name}</Card.Title>
           </Card.Body>
           <ul className='list-group list-group-flush'>
-            <li className='list-group-item bg-transparent border-info'>
+            <li className='list-group-item bg-transparent' style={{borderStyle: "solid", borderColor: "#6fa8f2", borderWidth: "2.5px, 0px"}}>
               Condition: {this.props.shoeCondition}
             </li>
-            <li className='list-group-item bg-transparent border-info'>Size: {this.props.size}</li>
-            <li className='list-group-item bg-transparent border-info'>
+            <li className='list-group-item bg-transparent' style={{borderStyle: "solid", borderColor: "#6fa8f2", borderWidth: "2.5px, 0px"}}>Size: {this.props.size}</li>
+            <li className='list-group-item bg-transparent' style={{borderStyle: "solid", borderColor: "#6fa8f2", borderWidth: "2.5px, 0px"}}>
               Estimated Value: ${this.props.value}
             </li>
             <li
-              className='list-group-item list-group-item-action border-info'
+              className='list-group-item list-group-item-action'
               //Click event to collect the user ID and post ID of Favorited item and push into the Favorites record
               onClick={this.props.handleFavorite}
               data-postid={this.props.postId}
-              style={{backgroundColor: "#fdfd96"}}
+              style={{backgroundColor: "#fcfba7", borderStyle: "solid", borderColor: "#6fa8f2", borderWidth: "2.5px, 0px", cursor: "pointer"}}
             >
               <FontAwesomeIcon icon={faHeart} /> Favorite
             </li>
 
             <li
-              className='list-group-item list-group-item-action border-info'
+              className='list-group-item list-group-item-action'
               onClick={this.props.getSellerId}
               data-userid={this.props.userId}
-              style={{backgroundColor: "#fdfd96"}}
+              style={{backgroundColor: "#fcfba7", borderStyle: "solid", borderColor: "#6fa8f2", borderWidth: "2.5px, 0px", cursor: "pointer"}}
             >
               <FontAwesomeIcon icon={faUser} /> Seller Profile
             </li>
           </ul>
-          <Card.Body className="border-info" style={{backgroundColor: "#fdfd96"}}>
+          <Card.Body style={{backgroundColor: "#fcfba7"}}>
             <Card.Link href='#'>Trade</Card.Link>
             <Card.Link href='#'>Buy</Card.Link>
           </Card.Body>

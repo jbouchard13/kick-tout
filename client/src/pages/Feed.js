@@ -62,14 +62,14 @@ function Feed(props) {
             <ToastContainer />
             {!viewProfile && (
               <Row className="mt-3">
-                <Col sm={10}>
+                <Col sm={12}>
                 <div className="greetBgd">
-                <UserGreeting className="float-right" />
+                <UserGreeting />
                 </div>
                 </Col>
-                <Col sm={2}>
+                {/* <Col sm={2}>
                   <Filter />
-                </Col>
+                </Col> */}
               </Row>
             )}
 

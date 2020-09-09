@@ -21,7 +21,8 @@
     border-color: darkgrey;
     box-shadow: 3px 5px 5px grey;
     opacity: 1;
-    background-color: #fdfd96;
+    background-color: #fcfba7;
+    /* #fdfd96; */
     
 }
 
@@ -47,5 +48,9 @@
 .filter {
     padding-top: 20px;
     /* padding-bottom: 20px; */
+}
+
+.cursor {
+    cursor: pointer;
 }
 
