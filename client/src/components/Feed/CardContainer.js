@@ -18,6 +18,7 @@ export default function CardContainer(props) {
   useEffect(() => {
     API.getAllPosts().then((posts) => {
       // set the state's postsArray to the results of the api call
+      console.log(posts.data);
       setPostState({ postsArray: posts.data });
     });
     // get current user's id
@@ -49,6 +50,7 @@ export default function CardContainer(props) {
       <CardDeck>
         {postState.postsArray.map((post) => (
           <ShoeCard
+            key={post.id}
             className='shoeCard'
             photoSrc={post.photoSrc}
             name={post.name}

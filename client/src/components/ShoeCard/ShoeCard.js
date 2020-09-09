@@ -60,8 +60,11 @@ export class ShoeCard extends Component {
             </li>
           </ul>
           <Card.Body>
-            <Card.Link href='#'>Trade</Card.Link>
-            <Card.Link href='#'>Buy</Card.Link>
+            <Card.Link
+              href={`mailto:${this.props.email}? subject=${this.props.name}`}
+            >
+              Contact Poster
+            </Card.Link>
           </Card.Body>
         </Card>
       </div>

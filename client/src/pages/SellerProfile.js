@@ -50,7 +50,7 @@ function SellerProfile(props) {
         </Col>
         <Col sm={6}>
           <Button variant='dark' onClick={props.handleBackToFeed}>
-            View Feed
+            Go Back
           </Button>
         </Col>
       </Row>
@@ -75,7 +75,11 @@ function SellerProfile(props) {
         </Row>
         <Row>
           <Col>
-            <SellerPostsContainer userId={props.sellerId} />
+            <SellerPostsContainer
+              email={profileData.email}
+              userId={props.sellerId}
+              firstName={profileData.firstName}
+            />
           </Col>
         </Row>
       </Container>
