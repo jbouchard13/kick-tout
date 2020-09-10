@@ -6,6 +6,7 @@ import { Container, Row, Col, Figure } from "react-bootstrap";
 
 function Signup(props) {
   return (
+    <div>
     <Container className="signup">
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
@@ -32,6 +33,7 @@ function Signup(props) {
         </Container>
       </Row>
     </Container>
+    </div>
   );
 }
 

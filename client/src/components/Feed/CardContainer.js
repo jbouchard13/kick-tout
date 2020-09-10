@@ -47,7 +47,7 @@ export default function CardContainer(props) {
 
   return (
     <div>
-      <CardDeck>
+      <CardDeck className="mx-auto">
         {postState.postsArray.map((post) => (
           <ShoeCard
             key={post.id}

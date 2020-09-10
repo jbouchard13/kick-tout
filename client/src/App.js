@@ -4,7 +4,10 @@ import {
   Switch,
   BrowserRouter as Router,
   Redirect,
+  // useLocation
 } from 'react-router-dom';
+
+// import {useTransition, animated, config} from 'react-spring';
 import { AuthProvider, AuthContext } from './AuthContext';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
@@ -21,9 +24,7 @@ import Favorites from './pages/Favorites';
 // router, but in the end we export App wrapped in the context provider
 
 function App() {
-  // Here we subscribe the authentication context using the useContext hook
-  // we use isAuth to determine whether the user is logged in, and setIsAuth
-  // to change their status on logout.
+
   const { isAuth, setIsAuth } = useContext(AuthContext);
   console.log('App auth: ', isAuth);
 
@@ -42,28 +43,27 @@ function App() {
   );
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/' render={(props) => <Home {...props} />} />
-        <Route exact path='/signup' render={(props) => <Signup {...props} />} />
-        <PrivateRoute exact path='/feed' component={Feed} />
-        <PrivateRoute exact path='/profile' component={Profile} />
-        <PrivateRoute exact path='/create-post' component={CreatePost} />
-        <PrivateRoute exact path='/my-posts' component={MyPosts} />
-        <PrivateRoute exact path='/favorites' component={Favorites} />
-
-        {/* <PrivateRoute exact path="/chat" component={Chat} /> */}
-      </Switch>
-    </Router>
-  );
+        <Router>
+          <Switch>
+            <Route exact path='/' render={(props) => <Home {...props} />} />
+            <Route exact path='/signup' render={(props) => <Signup {...props} />} />
+            <PrivateRoute exact path='/feed' component={Feed} />
+            <PrivateRoute exact path='/profile' component={Profile} />
+            <PrivateRoute exact path='/create-post' component={CreatePost} />
+            <PrivateRoute exact path='/my-posts' component={MyPosts} />
+            <PrivateRoute exact path='/favorites' component={Favorites} />
+          </Switch>
+        </Router>
+        
+  )
 }
 
 // Here we export the final product of our app/context configuration, and
 // even though it is unnamed here, it will be imported as App in index.js
 export default () => {
-  return (
+  return(
     <AuthProvider>
-      <App />
+        <App />
     </AuthProvider>
-  );
-};
+  )
+} 

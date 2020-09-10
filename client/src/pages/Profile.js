@@ -7,6 +7,7 @@ import ProfileContainer from '../components/Profile/ProfileContainer';
 import Navigation from '../components/Navigation/Navigation';
 
 
+
 // import Navigation from '../components/Navigation/Navigation';
 // import Footer from '../components/Footer/Footer';
 
@@ -35,6 +36,7 @@ function Profile(props) {
       </Container>
       {/* <Footer /> */}
     </div>
+    
   );
 }
 

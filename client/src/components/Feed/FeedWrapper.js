@@ -4,7 +4,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 
 import CardContainer from '../Feed/CardContainer';
 import Filter from '../Feed/Filter';
-import UserGreeting from '../Home/UserGreeting';
+import UserGreeting from '../Feed/UserGreeting';
 import SellerProfile from '../../pages/SellerProfile';
 
 function FeedWrapper(props) {

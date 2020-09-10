@@ -9,23 +9,29 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../Feed/feed.css';
 
+import pinPic from '../../images/pinTack.png';
+
 export class ShoeCard extends Component {
   constructor(props) {
     super(props);
     //this.currentUserId = 0;
   }
 
-  // componentDidMount() {
-  //   axios.get('/api/auth/user_data').then((response) => {
-  //     console.log(response.data.id);
-  //     this.currentUserId = response.data.id;
-  //   });
-  // }
-
   render() {
     return (
       <div>
         <Card className='shoeCard'>
+          <Card.Text className='mx-auto'>
+            <img
+              src={pinPic}
+              style={{
+                backgroundColor: '#fcfba7',
+                height: '50px',
+                width: '75px',
+                padding: '0',
+              }}
+            ></img>
+          </Card.Text>
           <Card.Img
             variant='top'
             className='cardPhoto'
@@ -35,11 +41,34 @@ export class ShoeCard extends Component {
             <Card.Title>{this.props.name}</Card.Title>
           </Card.Body>
           <ul className='list-group list-group-flush'>
-            <li className='list-group-item'>
+            <li
+              className='list-group-item bg-transparent'
+              style={{
+                borderStyle: 'solid',
+                borderColor: '#6fa8f2',
+                borderWidth: '2.5px, 0px',
+              }}
+            >
               Condition: {this.props.shoeCondition}
             </li>
-            <li className='list-group-item'>Size: {this.props.size}</li>
-            <li className='list-group-item'>
+            <li
+              className='list-group-item bg-transparent'
+              style={{
+                borderStyle: 'solid',
+                borderColor: '#6fa8f2',
+                borderWidth: '2.5px, 0px',
+              }}
+            >
+              Size: {this.props.size}
+            </li>
+            <li
+              className='list-group-item bg-transparent'
+              style={{
+                borderStyle: 'solid',
+                borderColor: '#6fa8f2',
+                borderWidth: '2.5px, 0px',
+              }}
+            >
               Estimated Value: ${this.props.value}
             </li>
             <li
@@ -47,6 +76,13 @@ export class ShoeCard extends Component {
               //Click event to collect the user ID and post ID of Favorited item and push into the Favorites record
               onClick={this.props.handleFavorite}
               data-postid={this.props.postId}
+              style={{
+                backgroundColor: '#fcfba7',
+                borderStyle: 'solid',
+                borderColor: '#6fa8f2',
+                borderWidth: '2.5px, 0px',
+                cursor: 'pointer',
+              }}
             >
               <FontAwesomeIcon icon={faHeart} /> Favorite
             </li>
@@ -55,11 +91,18 @@ export class ShoeCard extends Component {
               className='list-group-item list-group-item-action'
               onClick={this.props.getSellerId}
               data-userid={this.props.userId}
+              style={{
+                backgroundColor: '#fcfba7',
+                borderStyle: 'solid',
+                borderColor: '#6fa8f2',
+                borderWidth: '2.5px, 0px',
+                cursor: 'pointer',
+              }}
             >
               <FontAwesomeIcon icon={faUser} /> Seller Profile
             </li>
           </ul>
-          <Card.Body>
+          <Card.Body style={{ backgroundColor: '#fcfba7' }}>
             <Card.Link
               href={`mailto:${this.props.email}? subject=${this.props.name}`}
             >

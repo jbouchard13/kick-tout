@@ -41,7 +41,7 @@ export default function MyPosts() {
   };
 
   return (
-    <>
+    <div>
       <Navigation />
       <Container fluid>
         <h2 className="page-header">My Favorites</h2>
@@ -51,7 +51,6 @@ export default function MyPosts() {
           </Col>
         </Row>
       </Container>
-
-    </>
+    </div>
   );
 }
