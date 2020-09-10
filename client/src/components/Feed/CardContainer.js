@@ -78,7 +78,7 @@ export default function CardContainer(props) {
 
   return (
     <div>
-      <Form className='form'>
+      <Form className='form' onSubmit={handleSearch}>
         <Row>
           <Col md={4}></Col>
           <Col md={4}>

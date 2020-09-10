@@ -1,15 +1,15 @@
-
-html, body {
-	color: black;
+html,
+body {
+  color: black;
   font-family: 'Montserrat', sans-serif;
   height: 100%;
 }
 
 .App {
-	text-align: center;
-	display: flex;
-	min-height: 100vh;
-	align-items: center;
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
 }
 
 .signup {
@@ -42,7 +42,7 @@ html, body {
 }
 
 /* .button { */
-  /* background-color: black; */
+/* background-color: black; */
 /* } */
 
 .postCard {
@@ -54,8 +54,8 @@ html, body {
   box-shadow: 3px 5px 5px grey;
 }
 
-.page-header{
-  margin-top: 20px;  
+.page-header {
+  margin-top: 20px;
   margin-left: 160px;
 }
 
