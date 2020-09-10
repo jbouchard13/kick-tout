@@ -24,6 +24,7 @@ export default function SellerPostsContainer(props) {
     <CardDeck>
       {sellerPosts.map((post) => (
         <SellerPostCard
+          key={post.id}
           firstName={props.firstName}
           name={post.name}
           photoSrc={post.photoSrc}

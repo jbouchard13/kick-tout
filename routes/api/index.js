@@ -106,6 +106,7 @@ router.get('/posts/:userId', (req, res) => {
 // ----- will return all posts that fit the searched criteria and will contain the user id
 // ----- unsure if this will actually be implemented
 router.get('/posts/search/:query', (req, res) => {
+  const resultsArray = [];
   db.Post.findAll({
     where: {
       name: {
@@ -115,8 +116,24 @@ router.get('/posts/search/:query', (req, res) => {
       },
     },
   })
-    .then((results) => {
-      res.status(200).json(results);
+    .then((nameResults) => {
+      nameResults.forEach((result) => {
+        resultsArray.push(result);
+      });
+      db.Post.findAll({
+        where: {
+          brand: {
+            [Op.substring]: req.params.query,
+          },
+        },
+      }).then((brandResults) => {
+        brandResults.forEach((result) => {
+          resultsArray.push(result);
+        });
+        console.log(resultsArray);
+        res.status(200).json(resultsArray);
+      });
+      // res.status(200).json(nameResults);
     })
     .catch((err) => {
       console.log(err);

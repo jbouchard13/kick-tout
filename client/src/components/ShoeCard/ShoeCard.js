@@ -35,12 +35,26 @@ export class ShoeCard extends Component {
           <Card.Img
             variant='top'
             className='cardPhoto'
+            style={{
+              height: '200px',
+            }}
             src={this.props.photoSrc}
           />
           <Card.Body>
             <Card.Title>{this.props.name}</Card.Title>
           </Card.Body>
           <ul className='list-group list-group-flush'>
+            <li
+              className='list-group-item bg-transparent'
+              style={{
+                borderStyle: 'solid',
+                borderColor: '#6fa8f2',
+                borderWidth: '2.5px, 0px',
+              }}
+            >
+              Brand: {this.props.brand}
+            </li>
+
             <li
               className='list-group-item bg-transparent'
               style={{
@@ -102,13 +116,13 @@ export class ShoeCard extends Component {
               <FontAwesomeIcon icon={faUser} /> Seller Profile
             </li>
           </ul>
-          <Card.Body style={{ backgroundColor: '#fcfba7' }}>
+          {/* <Card.Body style={{ backgroundColor: '#fcfba7' }}>
             <Card.Link
               href={`mailto:${this.props.email}? subject=${this.props.name}`}
             >
               Contact Poster
             </Card.Link>
-          </Card.Body>
+          </Card.Body> */}
         </Card>
       </div>
     );

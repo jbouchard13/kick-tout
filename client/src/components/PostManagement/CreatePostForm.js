@@ -22,9 +22,7 @@ export default function CreatePostForm() {
   // when component mounts it calls for the user data to get the user id
   useEffect(() => {
     axios.get('/api/auth/user_data').then((response) => {
-      console.log(response.data);
       setUserId(response.data.id);
-      console.log(UserId);
     });
   }, []);
 
@@ -78,47 +76,40 @@ export default function CreatePostForm() {
     let value = e.target.value;
 
     setType(value);
-    console.log(type);
   };
 
   const nameOnChange = (e) => {
     let value = e.target.value;
 
     setName(value);
-    console.log(name);
   };
 
   const sizeOnChange = (e) => {
     let value = e.target.value;
 
     setSize(value);
-    console.log(size);
   };
 
   const brandOnChange = (e) => {
     let value = e.target.value;
 
     setBrand(value);
-    console.log(brand);
   };
 
   const conditionOnChange = (e) => {
     let value = e.target.value;
 
     setShoeCondition(value);
-    console.log(shoeCondition);
   };
 
   const valueOnChange = (e) => {
     let inputValue = e.target.value;
 
     setValue(inputValue);
-    console.log(value);
   };
 
   const imageOnChange = (e) => {
     setImage(e.target.files[0]);
-    console.log(image);
   };
 
   return (
