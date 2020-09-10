@@ -2,6 +2,11 @@
     /* margin-left: 15px; */
     /* margin-bottom: 15px; */
 /* } */
+.html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 .profileUpload {
     margin-left: 15px;
@@ -20,3 +25,25 @@
 a:hover {
     color: orange;
   }
+
+  .profileBody {
+    margin: 0;
+    height: 100vh;
+    background-image: url("../../images/basementPic.jpg");
+    background-position: center center;
+    background-size: cover; 
+
+}
+
+.profileCard {
+    align-content: center; 
+    border-color: darkgrey;
+    box-shadow: 3px 5px 5px grey;
+    opacity: 1; 
+    background-color: white; 
+}
+
+.profilePadding {
+    padding-bottom: 1000px;
+
+}

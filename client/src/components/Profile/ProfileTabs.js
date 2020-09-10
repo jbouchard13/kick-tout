@@ -42,7 +42,6 @@ export default function ProfileTabs() {
           profileImg: profile.data.profileImg,
           userId: user.data.id,
         });
-        console.log(user.data, profile.data);
       });
     });
   }, []);
@@ -60,7 +59,10 @@ export default function ProfileTabs() {
         toast.success('Image uploaded successfully');
       })
       .catch((err) => {
-        toast.error('Error while updating image');
+        // if error is because file was not an image
+        if (err.response.data.message === 'Invalid image file') {
+          toast.error(err.response.data.message);
+        } else toast.error('Error uploading image');
       });
   };
 
@@ -138,8 +140,7 @@ export default function ProfileTabs() {
           </Col>
           <Col sm={9}>
             <Tab.Content>
-              <Tab.Pane
-                eventKey='yourprofile'>
+              <Tab.Pane eventKey='yourprofile'>
                 <ProfileInfo
                   firstName={userData.firstName}
                   lastName={userData.lastName}
@@ -148,8 +149,7 @@ export default function ProfileTabs() {
                   location={userData.location}
                 />
               </Tab.Pane>
-              <Tab.Pane
-                eventKey='editprofile'>
+              <Tab.Pane eventKey='editprofile'>
                 <EditProfile
                   firstName={userData.firstName}
                   lastName={userData.lastName}

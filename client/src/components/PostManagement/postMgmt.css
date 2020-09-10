@@ -5,3 +5,24 @@
 .button {
     margin-right: 10px;
 }
+
+#postcontainer {
+    background-color: white;
+    border-radius: 1%;
+    width: 65%;
+  }
+
+  .postBody {
+    margin: 0;
+    height: 100vh;
+    background-image: url("../../images/rainbowRoom.jpg");
+    background-repeat: repeat-y;
+    background-position: absolute;
+    background-size: cover;
+}
+
+.post-page-header {
+    margin-top: 20px;  
+    margin-left: 160px;
+    color: white;
+  }
