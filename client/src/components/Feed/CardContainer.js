@@ -46,7 +46,7 @@ export default function CardContainer(props) {
 
   return (
     <div>
-      <CardDeck className="mx-auto">
+      <CardDeck className="justify-content-center">
         {postState.postsArray.map((post) => (
           <ShoeCard
             className='shoeCard'

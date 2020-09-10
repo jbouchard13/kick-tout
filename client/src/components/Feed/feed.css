@@ -1,4 +1,4 @@
-.html {
+html {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -19,8 +19,7 @@
     margin: 55px;
     /* align-content: center; */
     border-color: darkgrey;
-    box-shadow: 3px 5px 5px grey;
-    opacity: 1;
+    box-shadow: 3px 5px 5px black;
     background-color: #fcfba7;
     /* #fdfd96; */
     
@@ -33,7 +32,8 @@
     position: relative;
     display: inline-block;
     height: auto;
-    width: 90%;
+    width: 100%;
+    padding-bottom: 2rem;
 }
 
 .favCard {

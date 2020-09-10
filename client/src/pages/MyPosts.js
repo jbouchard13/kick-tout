@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 // import { Button, Form } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
-import { Col } from 'react-bootstrap';
+import { Col, Container } from 'react-bootstrap';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Navigation from '../components/Navigation/Navigation';
 import PostCard from '../components/PostCard/PostCard';
 import EditPostForm from '../components/PostManagement/EditPostForm';
 import 'react-toastify/dist/ReactToastify.css';
 import "../App.css";
+import "../components/Navigation/Navigation.css";
+import Footer from '../components/Footer/Footer';
 
 import axios from 'axios';
 import API from '../utils/API';
@@ -137,11 +139,12 @@ export default function MyPosts() {
 
   return (
     <>
+    <div className="mypostBgd">
       <Navigation />
       <h2 className='page-header'>My Posts</h2>
       <p>Here you can keep keep track of, update, and delete your postings.</p>
       <ToastContainer />
-      <Col >
+      <Container className="mypostBody justify-content-center">
         <CardDeck>
           {/* if user is editing the selected post (editingPost: true)*/}
           {editingPost && (
@@ -178,7 +181,11 @@ export default function MyPosts() {
               />
             ))}
         </CardDeck>
-      </Col>
+      </Container>
+      {/* please dont delete, removes white space */}
+      <div className="pb-5"></div>
+      </div>
+      <Footer className="footer"/>
     </>
   );
 }

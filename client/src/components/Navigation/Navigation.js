@@ -9,7 +9,7 @@ export class Navigation extends React.Component {
   render() {
     return (
       <div>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar className="navGlow" collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Navbar.Brand as={Link} to='/'>
             <img
               className='logo'
