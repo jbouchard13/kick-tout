@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CardDeck from 'react-bootstrap/CardDeck';
+import { CardDeck, Form, Col, Row, Button } from 'react-bootstrap';
 import ShoeCard from '../ShoeCard/ShoeCard';
 import API from '../../utils/API';
 import { ToastContainer, toast } from 'react-toastify';
@@ -14,18 +14,50 @@ export default function CardContainer(props) {
   });
   const [userId, setUserId] = useState('');
 
+  // set up state to handle user's search terms
+  const [search, setSearch] = useState('');
+
   // useEffect hook used to gather post data when the container component first mounts to the page
   useEffect(() => {
     API.getAllPosts().then((posts) => {
       // set the state's postsArray to the results of the api call
+      // console.log(posts.data);
       setPostState({ postsArray: posts.data });
     });
     // get current user's id
     axios.get('/api/auth/user_data').then((response) => {
-      console.log(response.data.id);
+      // console.log(response.data.id);
       setUserId(response.data.id);
     });
   }, []);
+
+  const handleSearchInputChange = (e) => {
+    let value = e.target.value;
+    setSearch(value);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    API.getPostsByQuery(search)
+      .then((posts) => {
+        if (posts.data.length === 0) {
+          toast.error('No results found');
+        } else {
+          setPostState({ postsArray: posts.data });
+        }
+      })
+      .catch(() => {
+        toast.error('Error while searching');
+      });
+  };
+
+  const handleClearSearch = (e) => {
+    e.preventDefault();
+    API.getAllPosts().then((posts) => {
+      setSearch('');
+      setPostState({ postsArray: posts.data });
+    });
+  };
 
   const handleFavorite = (e) => {
     const postId = e.target.dataset.postid;
@@ -46,12 +78,36 @@ export default function CardContainer(props) {
 
   return (
     <div>
-      <CardDeck className="mx-auto">
+      <Form className='form'>
+        <Row>
+          <Col md={4}></Col>
+          <Col md={4}>
+            <Form.Control
+              name='search'
+              value={search}
+              type='text'
+              onChange={handleSearchInputChange}
+            />
+          </Col>
+          <Col md={4}>
+            <Button as='submit' variant='dark' onClick={handleSearch}>
+              Search
+            </Button>
+
+            <Button as='submit' variant='dark' onClick={handleClearSearch}>
+              Clear
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+      <CardDeck className='mx-auto'>
         {postState.postsArray.map((post) => (
           <ShoeCard
+            key={post.id}
             className='shoeCard'
             photoSrc={post.photoSrc}
             name={post.name}
+            brand={post.brand}
             shoeCondition={post.shoeCondition}
             content={post.content}
             size={post.size}

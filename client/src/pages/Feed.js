@@ -9,6 +9,7 @@ import '../components/Feed/feed.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import FeedWrapper from '../components/Feed/FeedWrapper';
 import CardContainer from '../components/Feed/CardContainer';
 import Filter from '../components/Feed/Filter';
 import UserGreeting from '../components/Feed/UserGreeting';
@@ -18,12 +19,7 @@ import Navigation from '../components/Navigation/Navigation';
 import Footer from '../components/Footer/Footer';
 import { urlencoded } from 'body-parser';
 
-
-
 function Feed(props) {
-  const history = useHistory();
-
-  // set a boolean state to control whether a profile is rendered or not
   const [viewProfile, setViewProfile] = useState(false);
   const [sellerId, setSellerId] = useState('');
 
@@ -36,6 +32,8 @@ function Feed(props) {
   const handleBackToFeed = () => {
     setViewProfile(false);
   };
+
+  const history = useHistory();
 
   const displayHistoryMessage = () => {
     if (
@@ -56,39 +54,48 @@ function Feed(props) {
 
   return (
     <>
-      <div className="feedBody">
+      {/* <Navigation />
+      <Container fluid>
+        <ToastContainer />
+        <FeedWrapper />
+      </Container>
+      <Footer className='footer' />
+    </> */}
+      <div className='feedBody'>
         <Navigation />
-          <Container className="fluid">
-            <ToastContainer />
-            {!viewProfile && (
-              <Row className="mt-3">
-                <Col sm={12}>
-                <div className="greetBgd">
-                <UserGreeting />
+        <Container className='fluid'>
+          <ToastContainer />
+          {!viewProfile && (
+            <Row className='mt-3'>
+              <Col sm={12}>
+                <div className='greetBgd'>
+                  <UserGreeting />
                 </div>
-                </Col>
-                {/* <Col sm={2}>
+              </Col>
+              {/* <Col sm={2}>
                   <Filter />
                 </Col> */}
-              </Row>
-            )}
-
-            <Row className='justify-content-md-center'>
-              <Col className="pb-5">
-                {!viewProfile && <CardContainer getSellerId={getSellerId} fluid />}
-                {viewProfile && (
-                  <SellerProfile
-                    handleBackToFeed={handleBackToFeed}
-                    sellerId={sellerId}
-                  />
-                )}
-              </Col>
             </Row>
-          </Container>
-         
-      <Footer className="footer" />
+          )}
+
+          <Row className='justify-content-md-center'>
+            <Col className='pb-5'>
+              {!viewProfile && (
+                <CardContainer getSellerId={getSellerId} fluid />
+              )}
+              {viewProfile && (
+                <SellerProfile
+                  handleBackToFeed={handleBackToFeed}
+                  sellerId={sellerId}
+                />
+              )}
+            </Col>
+          </Row>
+        </Container>
+
+        <Footer className='footer' />
       </div>
-      </>
+    </>
   );
 }
 

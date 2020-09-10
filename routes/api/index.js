@@ -19,34 +19,38 @@ const uploadPhoto = (image) => {
     cloudinary.uploader.upload(image.path, (err, imageResult) => {
       if (err) {
         reject(err);
-      }
-      resolve(imageResult.secure_url);
+      } else resolve(imageResult.secure_url);
     });
   });
 };
 
 router.post('/upload/:userId', (req, res) => {
   console.log(req.files.image);
-  uploadPhoto(req.files.image).then((image) => {
-    console.log(image);
-    db.Profile.update(
-      {
-        profileImg: image,
-      },
-      {
-        where: {
-          UserId: req.params.userId,
+  uploadPhoto(req.files.image)
+    .then((image) => {
+      console.log(image);
+      db.Profile.update(
+        {
+          profileImg: image,
         },
-      }
-    )
-      .then(() => {
-        res.status(200).json(image);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json('an error occurred');
-      });
-  });
+        {
+          where: {
+            UserId: req.params.userId,
+          },
+        }
+      )
+        .then(() => {
+          res.status(200).json(image);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // ----------------------- POSTS -------------------------------
@@ -102,6 +106,7 @@ router.get('/posts/:userId', (req, res) => {
 // ----- will return all posts that fit the searched criteria and will contain the user id
 // ----- unsure if this will actually be implemented
 router.get('/posts/search/:query', (req, res) => {
+  const resultsArray = [];
   db.Post.findAll({
     where: {
       name: {
@@ -111,8 +116,24 @@ router.get('/posts/search/:query', (req, res) => {
       },
     },
   })
-    .then((results) => {
-      res.status(200).json(results);
+    .then((nameResults) => {
+      nameResults.forEach((result) => {
+        resultsArray.push(result);
+      });
+      db.Post.findAll({
+        where: {
+          brand: {
+            [Op.substring]: req.params.query,
+          },
+        },
+      }).then((brandResults) => {
+        brandResults.forEach((result) => {
+          resultsArray.push(result);
+        });
+        console.log(resultsArray);
+        res.status(200).json(resultsArray);
+      });
+      // res.status(200).json(nameResults);
     })
     .catch((err) => {
       console.log(err);
@@ -166,12 +187,12 @@ router.post('/posts/:userId', (req, res) => {
         })
         .catch((err) => {
           console.log(err);
-          res.status(500).json({ message: 'an error occurred' });
+          res.status(500).json('an error occurred');
         });
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: 'error with image upload' });
+      res.status(500).json(err);
     });
 });
 
@@ -218,44 +239,49 @@ router.put('/posts/:postId/:userId', (req, res) => {
     return;
   }
   // if image was submitted, upload it to cloud, then handle db update
-  uploadPhoto(req.files.image).then((image) => {
-    db.Post.update(
-      {
-        name: req.body.name,
-        content: req.body.content,
-        size: req.body.size,
-        brand: req.body.brand,
-        type: req.body.type,
-        shoeCondition: req.body.shoeCondition,
-        value: req.body.value,
-        photoSrc: image,
-      },
-      {
-        where: {
-          id: req.params.postId,
-          UserId: req.params.userId,
+  uploadPhoto(req.files.image)
+    .then((image) => {
+      db.Post.update(
+        {
+          name: req.body.name,
+          content: req.body.content,
+          size: req.body.size,
+          brand: req.body.brand,
+          type: req.body.type,
+          shoeCondition: req.body.shoeCondition,
+          value: req.body.value,
+          photoSrc: image,
         },
-      }
-    )
-      .then(() => {
-        db.Post.findAll({
+        {
           where: {
+            id: req.params.postId,
             UserId: req.params.userId,
           },
-        })
-          .then((posts) => {
-            res.status(200).json(posts);
+        }
+      )
+        .then(() => {
+          db.Post.findAll({
+            where: {
+              UserId: req.params.userId,
+            },
           })
-          .catch((err) => {
-            console.log(err);
-            res.status(500).json({ message: 'an error occured' });
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({ message: 'an error occurred' });
-      });
-  });
+            .then((posts) => {
+              res.status(200).json(posts);
+            })
+            .catch((err) => {
+              console.log(err);
+              res.status(500).json({ message: 'an error occured' });
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ message: 'an error occurred' });
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // route for deleting existing posts (DELETE)
