@@ -16,9 +16,11 @@ function Profile(props) {
   const { logout } = useContext(AuthContext);
 
   return (
+    <div>
     <div className="profileBody">
       <Navigation />
       <h2 className="page-header">Profile Page</h2>
+      <div classname= "profilePadding">
       <Container className="fluid">
         <Row>
           <Col sm={10}></Col>
@@ -36,9 +38,10 @@ function Profile(props) {
           </Col>
         </Row>
       </Container>
-      {/* <Footer /> */}
+      </div>
     </div>
-    
+    {/* <Footer /> */}
+    </div>
   );
 }
 
