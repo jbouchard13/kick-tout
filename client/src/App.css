@@ -3,6 +3,10 @@ body {
   color: black;
   font-family: 'Montserrat', sans-serif;
   height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .App {
@@ -41,22 +45,19 @@ body {
   padding-bottom: 10px;
 }
 
-/* .button { */
-/* background-color: black; */
-/* } */
-
 .postCard {
-  width: 250px;
-  height: 430px;
+  width: auto;
+  height: auto;
   margin: 20px;
   /* align-content: center; */
-  border-color: darkgrey;
-  box-shadow: 3px 5px 5px grey;
+  border-color: grey;
+  background-color: #fcfba7;
+  box-shadow: 3px 5px 5px black;
 }
 
 .page-header {
-  margin-top: 20px;
-  margin-left: 160px;
+  /* margin-top: 20px;   */
+  margin-left: 15rem;
 }
 
 p {
@@ -64,5 +65,25 @@ p {
 }
 
 .footer {
-  margin-top: 25px;
+  margin-top: 0;
+}
+
+.mypostBody {
+  background-image: url('./images/realCork.jpg');
+  background-position: center center;
+  background-repeat: repeat-y;
+  border: 3px solid #483c32;
+  box-shadow: 0 0 0 11px rgb(180, 130, 90), 0 0 30px rgba(0, 0, 0, 0.8) inset;
+  outline: 2px solid #333;
+  margin-bottom: 70px;
+}
+
+.mypostBgd {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+  background-image: url('./images/brickWall.jpg');
+  background-repeat: repeat-y;
+  background-position: center center;
+  background-size: cover;
 }
