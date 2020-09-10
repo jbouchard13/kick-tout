@@ -18,6 +18,7 @@ import SellerProfile from '../pages/SellerProfile';
 import Navigation from '../components/Navigation/Navigation';
 import Footer from '../components/Footer/Footer';
 import { urlencoded } from 'body-parser';
+import pinPic from '../images/pinTack.png';
 
 function Feed(props) {
   const [viewProfile, setViewProfile] = useState(false);
@@ -63,37 +64,41 @@ function Feed(props) {
     </> */}
       <div className='feedBody'>
         <Navigation />
-        <Container className='fluid'>
-          <ToastContainer />
-          {!viewProfile && (
-            <Row className='mt-3'>
-              <Col sm={12}>
-                <div className='greetBgd'>
-                  <UserGreeting />
-                </div>
-              </Col>
-              {/* <Col sm={2}>
+
+          <Container className="fluid">
+            <ToastContainer />
+            {!viewProfile && (
+              <Row className="mt-3">
+                
+                {/* <Col sm={2}>
                   <Filter />
                 </Col> */}
+              </Row>
+            )}
+
+            <Row className='mypostBody justify-content-center mt-5'>
+              <Col className="pb-5 mb-5">
+              <Col sm={12}>
+                <div className="greetBgd justify-content-center mt-3">
+                  <img className="mx-auto d-block" src={pinPic} style={{backgroundColor: "transparent", height: "50px", width: "75px", padding: '0'}}></img>
+                <UserGreeting className />
+                </div>
+              </Col>
+                {!viewProfile && <CardContainer getSellerId={getSellerId} fluid />}
+                {viewProfile && (
+                  <SellerProfile
+                    handleBackToFeed={handleBackToFeed}
+                    sellerId={sellerId}
+                  />
+                )}
+              </Col>
             </Row>
-          )}
+          </Container>
+         
+      <Footer className="footer" />
+        {/* please dont delete, removes white space */}
+        <div className="pb-5"></div>
 
-          <Row className='justify-content-md-center'>
-            <Col className='pb-5'>
-              {!viewProfile && (
-                <CardContainer getSellerId={getSellerId} fluid />
-              )}
-              {viewProfile && (
-                <SellerProfile
-                  handleBackToFeed={handleBackToFeed}
-                  sellerId={sellerId}
-                />
-              )}
-            </Col>
-          </Row>
-        </Container>
-
-        <Footer className='footer' />
       </div>
     </>
   );

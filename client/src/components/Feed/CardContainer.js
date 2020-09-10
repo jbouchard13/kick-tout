@@ -78,6 +78,9 @@ export default function CardContainer(props) {
 
   return (
     <div>
+
+      
+
       <Form className='form'>
         <Row>
           <Col md={4}></Col>
@@ -100,7 +103,8 @@ export default function CardContainer(props) {
           </Col>
         </Row>
       </Form>
-      <CardDeck className='mx-auto'>
+      <CardDeck className="justify-content-center">
+
         {postState.postsArray.map((post) => (
           <ShoeCard
             key={post.id}
