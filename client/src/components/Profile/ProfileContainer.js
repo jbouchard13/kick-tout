@@ -6,8 +6,9 @@ import ProfileTabs from "./ProfileTabs"
 export default function ProfileContainer() {
 
     return (
-        <div>
+        <div className= 'profileCard'>
             <ProfileTabs />
         </div>
+        
     );
 }

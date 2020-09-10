@@ -20,3 +20,19 @@
 a:hover {
     color: orange;
   }
+
+  .profileBody {
+    margin: 0;
+    height: 100%;
+    background-image: url("../../images/basementPic.jpg");
+    /*background-position: absolute;*/
+    /*background-size: fill; */
+}
+
+.profileCard {
+    align-content: center; 
+    border-color: darkgrey;
+    box-shadow: 3px 5px 5px grey;
+    opacity: 1; 
+    background-color: white; 
+}
