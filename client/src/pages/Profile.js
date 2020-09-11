@@ -19,7 +19,7 @@ function Profile(props) {
     <div>
     <div className="profileBody">
       <Navigation />
-      <h2 className="page-header">Profile Page</h2>
+      <h2 className="profile-header">Profile Page</h2>
       <div classname= "profilePadding">
       <Container className="fluid">
         <Row>
