@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
+import pinPic from '../../images/pinTack.png';
+
 export class SellerPostCard extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,7 @@ export class SellerPostCard extends Component {
     return (
       <div>
         <Card className='favCard'>
+          <Card.Text className="mx-auto"><img src={pinPic} style={{backgroundColor: "#fcfba7", height: "auto", width: "75px", padding: '0'}}></img></Card.Text>
           <Card.Img
             className='cardPhoto'
             variant='top'

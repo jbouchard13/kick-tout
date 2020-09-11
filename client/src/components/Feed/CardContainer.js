@@ -78,15 +78,8 @@ export default function CardContainer(props) {
 
   return (
     <div>
-<<<<<<< HEAD
-      <Form className='form' onSubmit={handleSearch}>
-=======
-
-      
-
-      <Form className='form' style={{margin: '0 auto', width: "80%", paddingLeft: "8rem"}}>
->>>>>>> 9f8834adb60cc8cb08b4856321deb52eac9d5acb
-        <Row>
+      <Form className='form' onSubmit={handleSearch} style={{margin: '0 auto', width: "80%", paddingLeft: "9rem", paddingBottom: "0"}}>
+        <Row className="mt-4">
           <Col md={6}>
             <Form.Control
               name='search'
