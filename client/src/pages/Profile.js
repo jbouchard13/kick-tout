@@ -14,26 +14,27 @@ function Profile(props) {
 
   return (
     <div>
-      <div className='profileBody'>
-        <Navigation />
-        <h2 className='page-header'>Profile Page</h2>
-        <div classname='profilePadding'>
-          <Container className='fluid'>
-            <Row>
-              <Col sm={10}></Col>
-              <Col sm={2}></Col>
-            </Row>
+    <div className="profileBody">
+      <Navigation />
+      <h2 className="profile-header">Profile Page</h2>
+      <div classname= "profilePadding">
+      <Container className="fluid">
+        <Row>
+          <Col sm={10}></Col>
+          <Col sm={2}>
+          </Col>
+        </Row>
 
-            <Row>
-              <Col sm={3}></Col>
-              <Col sm={9}>
-                <div className='pb-5'>
-                  <ProfileContainer />
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
+        <Row>
+          <Col sm={3}>
+          </Col>
+          <Col sm={9}>
+          <div className="pb-5">
+            <ProfileContainer />
+            </div>
+          </Col>
+        </Row>
+      </Container>
       </div>
       {/* <Footer /> */}
     </div>
