@@ -21,7 +21,7 @@ export class ShoeCard extends Component {
     return (
       <div>
         <Card className='shoeCard'>
-          <Card.Text className="mx-auto"><img src={pinPic} style={{backgroundColor: "#fcfba7", height: "50px", width: "75px", padding: '0'}}></img></Card.Text>
+          <Card.Text className="mx-auto"><img src={pinPic} style={{backgroundColor: "#fcfba7", height: "auto", width: "75px", padding: '0'}}></img></Card.Text>
           <Card.Img
             variant='top'
             className='cardPhoto'

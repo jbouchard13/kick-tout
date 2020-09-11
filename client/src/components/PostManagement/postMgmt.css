@@ -1,7 +1,28 @@
-.form {
-    margin-left: 30px;
+.editPostForm {
+   margin: 0 auto;
+   width: 60%;
+   background-color: #fcfba7;
+   border-radius: .25rem;
+   box-shadow: -3px 1px 5px grey;
+}
+
+.formRow1 {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #6fa8f2;
+    padding-top: .5rem;
+}
+
+.formRow2 {
+    border-bottom: 1px solid;
+    border-color: #6fa8f2;
+    margin-top: .5rem;
 }
 
 .button {
     margin-right: 10px;
+}
+
+.buttonSpacing {
+    padding-top: .7rem;
 }

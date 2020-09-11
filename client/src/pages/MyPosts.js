@@ -141,10 +141,12 @@ export default function MyPosts() {
     <>
     <div className="mypostBgd">
       <Navigation />
+      <div className="postHeaderBgd mt-5 mb-5">
       <h2 className='page-header'>My Posts</h2>
       <p>Here you can keep keep track of, update, and delete your postings.</p>
-      <ToastContainer />
+      </div>
       <Container className="mypostBody justify-content-center">
+      <ToastContainer />
         <CardDeck>
           {/* if user is editing the selected post (editingPost: true)*/}
           {editingPost && (

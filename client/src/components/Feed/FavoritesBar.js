@@ -23,7 +23,7 @@ export class FavoritesBar extends Component {
   render() {
     return (
       <div>
-        <CardDeck>
+        <CardDeck className="justify-content-center">
           {this.state.favorites.map((favorite) => {
             console.log(favorite)
             return (
