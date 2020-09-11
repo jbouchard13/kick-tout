@@ -9,6 +9,7 @@ import '../components/Feed/feed.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import FeedWrapper from '../components/Feed/FeedWrapper';
 import CardContainer from '../components/Feed/CardContainer';
 import Filter from '../components/Feed/Filter';
 import UserGreeting from '../components/Feed/UserGreeting';
@@ -19,12 +20,7 @@ import Footer from '../components/Footer/Footer';
 import { urlencoded } from 'body-parser';
 import pinPic from '../images/greenPin.png';
 
-
-
 function Feed(props) {
-  const history = useHistory();
-
-  // set a boolean state to control whether a profile is rendered or not
   const [viewProfile, setViewProfile] = useState(false);
   const [sellerId, setSellerId] = useState('');
 
@@ -37,6 +33,8 @@ function Feed(props) {
   const handleBackToFeed = () => {
     setViewProfile(false);
   };
+
+  const history = useHistory();
 
   const displayHistoryMessage = () => {
     if (
@@ -57,8 +55,16 @@ function Feed(props) {
 
   return (
     <>
-      <div className="feedBody">
+      {/* <Navigation />
+      <Container fluid>
+        <ToastContainer />
+        <FeedWrapper />
+      </Container>
+      <Footer className='footer' />
+    </> */}
+      <div className='feedBody'>
         <Navigation />
+
           <Container className="fluid">
             <ToastContainer />
             {!viewProfile && (
@@ -92,8 +98,9 @@ function Feed(props) {
       <Footer className="footer" />
         {/* please dont delete, removes white space */}
         <div className="pb-5"></div>
+
       </div>
-      </>
+    </>
   );
 }
 

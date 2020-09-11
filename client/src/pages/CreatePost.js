@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthContext';
-import { Col } from 'react-bootstrap';
+import { Col, Row, Container } from 'react-bootstrap';
 
 import CreatePostForm from '../components/PostManagement/CreatePostForm';
 import Navigation from '../components/Navigation/Navigation';
@@ -12,12 +12,20 @@ export default function CreatePost() {
   const { logout } = useContext(AuthContext);
 
   return (
-    <div>
+    <div className="postBody">
       <Navigation />
-      <h2 className="page-header">Create a new post</h2>
-      <Col sm={12} lg={8}>
-        <CreatePostForm className="createForm" />
-      </Col>
+      <h2 className="post-page-header">Create a new post</h2>
+      <Container className="fluid" id="postcontainer">
+        <Row className='justify-content-md-center'>
+          <Col className="pb-5">
+            <CreatePostForm className="createForm" />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
+
+
+
+
