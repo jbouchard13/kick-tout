@@ -1,25 +1,39 @@
-# **React Project 3**
+# **Kick-Tout React Project**
 
-## A full-stack application template complete with passport local strategy authentication
-### **Stack:**
-* node and express 
-* sequelize ORM
-* passport js authentication
+[![GitHub repo size](https://img.shields.io/github/repo-size/jbouchard13/project-3)](https://shields.io/)
+
+
+## Application Walkthrough
+<!-- ![Budget Tracker](./public/img/backOnline.jpg) -->
+
+## Table of Contents:
+* [Description](#Description)
+* [Built With](#Built-With)
+* [Usage](#Usage)
+* [Contributors](#Contributors)
+* [Link to Page](#Link-to-Page)
+
+## Description
+An online bonanza where shoe lovers can buy, sell, and trade consignment shoes. Users can search through a feed of shoes available to find their perfect style, while sellers can post their kicks and wait for someone to offer a trade or asking price. 
+
+## Built With
+* React
+* Sequilize ORM
+* Passport js Authentication
 * create-react-app
+* Node.js
+    * express
+* Deployed in Heroku
 
-### **How to Use This Template**
-* click "use template" next to the clone button, this will create a new repository on *your* github account
-* clone the repository down to your machine
-* create a mySql database named as you like
-* run &nbsp; `npm install`
-* run &nbsp; `touch .env` &nbsp;in the root of your repository
-* open the .env file
-* add the four environmental variables that will be used to connect to the database:
-    <br/>       `DB_PASSWORD=yourpassword`
-    <br/>       `DB_HOST=127.0.0.1`
-    <br/>       `DB_USER=root`
-    <br/>       `DB_NAME=yourDBname`
+## Usage
+The user is able to login and create a profile. Create a shoe post, and search for shoes you're interested in. Once you find the right shoe, you can contact other users to trade/buy shoes.
 
-* In development, the server and client are started separately.
-* run &nbsp; `npm start` in the root of the project to start the server
-* run &nbsp; `npm start` in the root of the client folder to start the client
+## Contributors
+* **John Bouchard** - [jbouchard13](https://github.com/jbouchard13)
+* **Hannah Perreault** - [hannahperreault](https://github.com/hannahperreault)
+* **Michael Veiga** - [Michael-Veiga](https://github.com/Michael-Veiga)
+* **Megan Pardy-Gokcu** - [megan-pg](https://github.com/megan-pg)
+* **Karla McLeod** - [kmcleod81](https://github.com/kmcleod81)
+
+## Link to Page
+* https://pure-cove-78553.herokuapp.com/

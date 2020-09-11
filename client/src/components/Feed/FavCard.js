@@ -31,7 +31,7 @@ export class FavCard extends Component {
               onClick={this.props.handleViewProfile}
               data-userid={this.props.userId}
               className='list-group-item list-group-item-action'
-              style={{backgroundColor: "#fcfba7"}}
+              style={{backgroundColor: "#fcfba7", cursor: 'pointer'}}
             >
               <FontAwesomeIcon icon={faUser} /> Seller Profile
             </li>

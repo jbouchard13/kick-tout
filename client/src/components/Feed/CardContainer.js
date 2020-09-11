@@ -78,10 +78,16 @@ export default function CardContainer(props) {
 
   return (
     <div>
+<<<<<<< HEAD
       <Form className='form' onSubmit={handleSearch}>
+=======
+
+      
+
+      <Form className='form' style={{margin: '0 auto', width: "80%", paddingLeft: "8rem"}}>
+>>>>>>> 9f8834adb60cc8cb08b4856321deb52eac9d5acb
         <Row>
-          <Col md={4}></Col>
-          <Col md={4}>
+          <Col md={6}>
             <Form.Control
               name='search'
               value={search}
@@ -89,8 +95,8 @@ export default function CardContainer(props) {
               onChange={handleSearchInputChange}
             />
           </Col>
-          <Col md={4}>
-            <Button as='submit' variant='dark' onClick={handleSearch}>
+          <Col md={3}>
+            <Button className="mr-2" as='submit' variant='dark' onClick={handleSearch}>
               Search
             </Button>
 
