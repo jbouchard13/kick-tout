@@ -56,7 +56,7 @@ function SellerProfile(props) {
       </Row>
 
       <Container fluid>
-        <Row>
+        <Row className='white-background'>
           <Col sm={3}>
             <Image
               style={{ width: '100%', height: '100%' }}

@@ -132,3 +132,7 @@ p {
   padding-bottom: 4.6rem;
   padding-top: 4.6rem;
 }
+
+.white-background {
+  background-color: white;
+}
