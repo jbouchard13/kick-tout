@@ -65,40 +65,50 @@ function Feed(props) {
       <div className='feedBody'>
         <Navigation />
 
-          <Container className="fluid">
-            <ToastContainer />
-            {!viewProfile && (
-              <Row className="mt-3">
-                
-                {/* <Col sm={2}>
+        <Container className='fluid'>
+          <ToastContainer />
+          {!viewProfile && (
+            <Row className='mt-3'>
+              {/* <Col sm={2}>
                   <Filter />
                 </Col> */}
-              </Row>
-            )}
-
-            <Row className='mypostBody justify-content-center mt-5'>
-              <Col className="pb-5 mb-5">
-              <Col sm={12}>
-                <div className="greetBgd justify-content-center my-3">
-                  <img className="mx-auto d-block" src={pinPic} style={{backgroundColor: "transparent", height: "auto", width: "75px", padding: '0'}}></img>
-                <UserGreeting className />
-                </div>
-              </Col>
-                {!viewProfile && <CardContainer getSellerId={getSellerId} fluid />}
-                {viewProfile && (
-                  <SellerProfile
-                    handleBackToFeed={handleBackToFeed}
-                    sellerId={sellerId}
-                  />
-                )}
-              </Col>
             </Row>
-          </Container>
-         
-      <Footer className="footer" />
-        {/* please dont delete, removes white space */}
-        <div className="pb-5"></div>
+          )}
 
+          <Row className='mypostBody justify-content-center mt-5'>
+            <Col className='pb-5 mb-5'>
+              <Col sm={12}></Col>
+              {!viewProfile && (
+                <>
+                  <div className='greetBgd justify-content-center mt-3'>
+                    <img
+                      className='mx-auto d-block'
+                      src={pinPic}
+                      style={{
+                        backgroundColor: 'transparent',
+                        height: 'auto',
+                        width: '75px',
+                        padding: '0',
+                      }}
+                    ></img>
+                    <UserGreeting className />
+                  </div>
+                  <CardContainer getSellerId={getSellerId} fluid />
+                </>
+              )}
+              {viewProfile && (
+                <SellerProfile
+                  handleBackToFeed={handleBackToFeed}
+                  sellerId={sellerId}
+                />
+              )}
+            </Col>
+          </Row>
+        </Container>
+
+        <Footer className='footer' />
+        {/* please dont delete, removes white space */}
+        <div className='pb-5'></div>
       </div>
     </>
   );

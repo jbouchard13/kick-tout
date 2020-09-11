@@ -1,19 +1,19 @@
-
-html, body {
-	color: black;
+html,
+body {
+  color: black;
   font-family: 'Montserrat', sans-serif;
   height: 100%;
   min-height: 100%;
   margin: 0;
   padding: 0;
-  width: 100%
+  width: 100%;
 }
 
 .App {
-	text-align: center;
-	display: flex;
-	min-height: 100vh;
-	align-items: center;
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
 }
 
 .signup {
@@ -45,7 +45,6 @@ html, body {
   padding-bottom: 10px;
 }
 
-
 .postCard {
   width: auto;
   height: auto;
@@ -65,7 +64,7 @@ html, body {
   box-shadow: 3px 5px 5px black;
 }
 
-.page-header{
+.page-header {
   /* margin-top: 20px;   */
   text-align: center;
 }
@@ -82,10 +81,9 @@ p {
   background-image: url('./images/realCork.jpg');
   background-position: center center;
   background-repeat: repeat-y;
-  border: 3px solid #483C32;
-  box-shadow: 0 0 0 11px rgb(180, 130, 90),
-	  0 0 30px rgba(0,0,0,0.8) inset;
-	outline: 2px solid #333;
+  border: 3px solid #483c32;
+  box-shadow: 0 0 0 11px rgb(180, 130, 90), 0 0 30px rgba(0, 0, 0, 0.8) inset;
+  outline: 2px solid #333;
   margin-bottom: 70px;
 }
 
@@ -93,7 +91,7 @@ p {
   margin: 0;
   height: 100%;
   min-height: 100%;
-  background-image: url("./images/spiralGraf.jpg");
+  background-image: url('./images/spiralGraf.jpg');
   background-repeat: repeat-y;
   background-position: center center;
   background-size: cover;
@@ -103,14 +101,14 @@ p {
   margin: 0;
   height: 100%;
   min-height: 100%;
-  background-image: url("./images/brickWall.jpg");
+  background-image: url('./images/brickWall.jpg');
   background-repeat: repeat-y;
   background-position: center center;
   background-size: cover;
 }
 
 .postHeaderBgd {
-  background-image: url("./images/silverPlate.png");
+  background-image: url('./images/silverPlate.png');
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
@@ -123,7 +121,7 @@ p {
 }
 
 .favHeaderBgd {
-  background-image: url("./images/goldPlaque.png");
+  background-image: url('./images/goldPlaque.png');
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
@@ -133,4 +131,8 @@ p {
   text-align: center;
   padding-bottom: 4.6rem;
   padding-top: 4.6rem;
+}
+
+.white-background {
+  background-color: white;
 }
