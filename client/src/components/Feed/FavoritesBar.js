@@ -37,19 +37,8 @@ export class FavoritesBar extends Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
-        <CardDeck className="justify-content-center">
-          {this.state.favorites.map((favorite) => {
-            console.log(favorite)
-            return (
-              <FavCard className="favCard" id={favorite.id} userId={favorite.userId} photoSrc={favorite.photoSrc} />
-            )
-          })}
-        </CardDeck>
-
-=======
         {!this.state.viewProfile && (
-          <CardDeck>
+          <CardDeck className="justify-content-center">
             {this.state.favorites.map((favorite) => {
               return (
                 <FavCard
@@ -71,7 +60,6 @@ export class FavoritesBar extends Component {
             handleBackToFeed={this.handleBackToFavs}
           />
         )}
->>>>>>> 9479c43941c567a7571c344749f111f09a75553d
       </div>
     );
   }
