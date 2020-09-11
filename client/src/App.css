@@ -56,9 +56,18 @@ html, body {
   box-shadow: 3px 5px 5px black;
 }
 
+.favCard {
+  width: auto;
+  height: auto;
+  margin: 20px;
+  border-color: grey;
+  background-color: #fcfba7;
+  box-shadow: 3px 5px 5px black;
+}
+
 .page-header{
   /* margin-top: 20px;   */
-  margin-left: 15rem;
+  text-align: center;
 }
 
 p {
@@ -80,6 +89,16 @@ p {
   margin-bottom: 70px;
 }
 
+.myFavBgd {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+  background-image: url("./images/spiralGraf.jpg");
+  background-repeat: repeat-y;
+  background-position: center center;
+  background-size: cover;
+}
+
 .mypostBgd {
   margin: 0;
   height: 100%;
@@ -88,4 +107,30 @@ p {
   background-repeat: repeat-y;
   background-position: center center;
   background-size: cover;
+}
+
+.postHeaderBgd {
+  background-image: url("./images/silverPlate.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 3.4rem;
+  padding-top: 3.4rem;
+}
+
+.favHeaderBgd {
+  background-image: url("./images/goldPlaque.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 4.6rem;
+  padding-top: 4.6rem;
 }

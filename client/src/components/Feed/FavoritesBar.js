@@ -38,7 +38,7 @@ export class FavoritesBar extends Component {
     return (
       <div>
         {!this.state.viewProfile && (
-          <CardDeck>
+          <CardDeck className="justify-content-center">
             {this.state.favorites.map((favorite) => {
               return (
                 <FavCard
