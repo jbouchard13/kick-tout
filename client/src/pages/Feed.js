@@ -18,7 +18,7 @@ import SellerProfile from '../pages/SellerProfile';
 import Navigation from '../components/Navigation/Navigation';
 import Footer from '../components/Footer/Footer';
 import { urlencoded } from 'body-parser';
-import pinPic from '../images/pinTack.png';
+import pinPic from '../images/greenPin.png';
 
 function Feed(props) {
   const [viewProfile, setViewProfile] = useState(false);
@@ -80,7 +80,7 @@ function Feed(props) {
               <Col className="pb-5 mb-5">
               <Col sm={12}>
                 <div className="greetBgd justify-content-center mt-3">
-                  <img className="mx-auto d-block" src={pinPic} style={{backgroundColor: "transparent", height: "50px", width: "75px", padding: '0'}}></img>
+                  <img className="mx-auto d-block" src={pinPic} style={{backgroundColor: "transparent", height: "auto", width: "75px", padding: '0'}}></img>
                 <UserGreeting className />
                 </div>
               </Col>

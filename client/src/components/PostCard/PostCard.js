@@ -9,7 +9,7 @@ export default function PostCard(props) {
 
     <Col className="mb-5" sm={12} md={6} lg={3}>
       <Card className="postCard">
-      <Card.Text className="mx-auto"><img src={pinPic} style={{backgroundColor: "#fcfba7", height: "50px", width: "75px", padding: '0'}}></img></Card.Text>
+      <Card.Text className="mx-auto"><img src={pinPic} style={{backgroundColor: "#fcfba7", height: "auto", width: "75px", padding: '0'}}></img></Card.Text>
         <Card.Img variant='top' src={props.photoSrc} />
         <Card.Body>
           <Card.Text className="font-weight-bolder">{props.name}</Card.Text>

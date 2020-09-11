@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation/Navigation';
+import Footer from '../components/Footer/Footer';
 import FavoritesBar from '../components/Feed/FavoritesBar';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -41,16 +42,22 @@ export default function MyPosts() {
   };
 
   return (
-    <div>
+    <>
+    <div className="myFavBgd">
       <Navigation />
-      <Container fluid>
+      <div className="favHeaderBgd my-5">
         <h2 className="page-header">My Favorites</h2>
-        <Row className="justify-content-md-center">
+        </div>
+      <Container className="mypostBody justify-content-center mt-3 pb-5">
+        <Row>
           <Col>
-            <FavoritesBar fluid />
+            <FavoritesBar />
           </Col>
         </Row>
       </Container>
-    </div>
+      <div className="pb-5"></div>
+      </div>
+      <Footer className="footer"/>
+    </>
   );
 }
