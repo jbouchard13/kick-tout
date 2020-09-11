@@ -79,7 +79,7 @@ function Feed(props) {
             <Row className='mypostBody justify-content-center mt-5'>
               <Col className="pb-5 mb-5">
               <Col sm={12}>
-                <div className="greetBgd justify-content-center mt-3">
+                <div className="greetBgd justify-content-center my-3">
                   <img className="mx-auto d-block" src={pinPic} style={{backgroundColor: "transparent", height: "auto", width: "75px", padding: '0'}}></img>
                 <UserGreeting className />
                 </div>
