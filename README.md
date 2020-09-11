@@ -7,11 +7,11 @@
 <!-- ![Budget Tracker](./public/img/backOnline.jpg) -->
 
 ## Table of Contents:
-* [Description](##Description)
-* [Built With](##Built-With)
-* [Usage](##Usage)
-* [Contributors](##Contributors)
-* [Link to Page](##Link-to-Page)
+* [Description](#Description)
+* [Built With](#Built-With)
+* [Usage](#Usage)
+* [Contributors](#Contributors)
+* [Link to Page](#Link-to-Page)
 
 ## Description
 An online bonanza where shoe lovers can buy, sell, and trade consignment shoes. Users can search through a feed of shoes available to find their perfect style, while sellers can post their kicks and wait for someone to offer a trade or asking price. 
