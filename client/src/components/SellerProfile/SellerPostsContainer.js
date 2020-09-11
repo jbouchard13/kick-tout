@@ -21,7 +21,7 @@ export default function SellerPostsContainer(props) {
   }, []);
 
   return (
-    <CardDeck>
+    <CardDeck className="justify-content-around">
       {sellerPosts.map((post) => (
         <SellerPostCard
           key={post.id}
