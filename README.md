@@ -4,7 +4,7 @@
 
 
 ## Application Walkthrough
-<!-- ![Budget Tracker](./public/img/backOnline.jpg) -->
+![Budget Tracker](./public/assets/images/ktWalkthrough.gif)
 
 ## Table of Contents:
 * [Description](#Description)
@@ -18,12 +18,15 @@ An online bonanza where shoe lovers can buy, sell, and trade consignment shoes. 
 
 ## Built With
 * React
+* Bootstrap
+* Axios
 * Sequilize ORM
 * Passport js Authentication
 * create-react-app
 * Node.js
     * express
 * Deployed in Heroku
+
 
 ## Usage
 The user is able to login and create a profile. Create a shoe post, and search for shoes you're interested in. Once you find the right shoe, you can contact other users to trade/buy shoes.
@@ -36,4 +39,4 @@ The user is able to login and create a profile. Create a shoe post, and search f
 * **Karla McLeod** - [kmcleod81](https://github.com/kmcleod81)
 
 ## Link to Page
-* https://pure-cove-78553.herokuapp.com/
+* https://kicktout.herokuapp.com/
