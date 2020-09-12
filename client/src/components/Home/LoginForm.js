@@ -69,7 +69,12 @@ const LoginForm = (props) => {
           onChange={handleInputChange}
         />
       </Form.Group>
-      <Button className='m-1' variant='primary' type='submit' variant='dark'>
+      <Button
+        className='m-1'
+        variant='primary'
+        type='submit'
+        variant='dark'
+      >
         Submit
       </Button>
       <Button
