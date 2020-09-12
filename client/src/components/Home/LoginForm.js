@@ -75,7 +75,7 @@ const LoginForm = (props) => {
         type='submit'
         variant='dark'
       >
-        Submit
+        Login
       </Button>
       <Button
         className='m-1'
