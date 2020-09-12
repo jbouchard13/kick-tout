@@ -2,9 +2,8 @@
 
 [![GitHub repo size](https://img.shields.io/github/repo-size/jbouchard13/project-3)](https://shields.io/)
 
-
 ## Application Walkthrough
-![Budget Tracker](./public/assets/images/ktWalkthrough.gif)
+![walkthrough](./client/public/assets/images/walkthrough.gif)
 
 ## Table of Contents:
 * [Description](#Description)
@@ -26,7 +25,6 @@ An online bonanza where shoe lovers can buy, sell, and trade consignment shoes. 
 * Node.js
     * express
 * Deployed in Heroku
-
 
 ## Usage
 The user is able to login and create a profile. Create a shoe post, and search for shoes you're interested in. Once you find the right shoe, you can contact other users to trade/buy shoes.
