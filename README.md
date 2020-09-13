@@ -2,9 +2,8 @@
 
 [![GitHub repo size](https://img.shields.io/github/repo-size/jbouchard13/project-3)](https://shields.io/)
 
-
 ## Application Walkthrough
-<!-- ![Budget Tracker](./public/img/backOnline.jpg) -->
+![walkthrough](./client/public/assets/images/walkthrough.gif)
 
 ## Table of Contents:
 * [Description](#Description)
@@ -18,6 +17,8 @@ An online bonanza where shoe lovers can buy, sell, and trade consignment shoes. 
 
 ## Built With
 * React
+* Bootstrap
+* Axios
 * Sequilize ORM
 * Passport js Authentication
 * create-react-app
@@ -36,4 +37,4 @@ The user is able to login and create a profile. Create a shoe post, and search f
 * **Karla McLeod** - [kmcleod81](https://github.com/kmcleod81)
 
 ## Link to Page
-* https://pure-cove-78553.herokuapp.com/
+* https://kicktout.herokuapp.com/

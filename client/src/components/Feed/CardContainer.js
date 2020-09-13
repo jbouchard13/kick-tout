@@ -81,9 +81,14 @@ export default function CardContainer(props) {
       <Form
         className='form'
         onSubmit={handleSearch}
-        style={{ margin: '0 auto', width: '80%', paddingLeft: '8rem' }}
+        style={{
+          margin: '0 auto',
+          width: '80%',
+          paddingLeft: '9rem',
+          paddingBottom: '0',
+        }}
       >
-        <Row>
+        <Row className='mt-4'>
           <Col md={6}>
             <Form.Control
               name='search'

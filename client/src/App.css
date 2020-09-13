@@ -69,6 +69,11 @@ body {
   text-align: center;
 }
 
+.profileHeader {
+  text-align: center;
+  margin-top: -15px;
+}
+
 p {
   margin-left: 20px;
 }
@@ -135,4 +140,23 @@ p {
 
 .white-background {
   background-color: white;
+}
+
+.sellerProfForm {
+  margin: 0 auto;
+   width: 60%;
+   background-color: #fcfba7;
+   border-radius: .25rem;
+   box-shadow: -3px 1px 5px grey;
+}
+
+.sellerHeaderBgd {
+  background-image: url("./images/yellowPaper.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    height: auto;
+    width: 100%;
+    padding-bottom: .5rem;
 }

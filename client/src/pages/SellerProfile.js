@@ -7,6 +7,9 @@ import '../App.css';
 import SellerProfileInfo from '../components/SellerProfile/SellerProfileInfo';
 import SellerPostsContainer from '../components/SellerProfile/SellerPostsContainer';
 
+import pinPic from '../images/greenPin.png';
+import redPin from '../images/pinTack.png';
+
 function SellerProfile(props) {
   const { logout } = useContext(AuthContext);
 
@@ -42,24 +45,42 @@ function SellerProfile(props) {
 
   return (
     <div>
-      <Row>
-        <Col sm={6}>
-          <h2 className='page-header'>
+      <Row className="sellerHeaderBgd mt-4">
+      <img className='mx-auto d-block' src={pinPic} 
+      style={{
+        backgroundColor: 'transparent', 
+        height: 'auto', 
+         width: '75px',
+        padding: '0',
+        }}
+        ></img>
+        <Col sm={12}>
+          <h2 className='profileHeader'>
             {profileData.firstName} {profileData.lastName}'s Profile
           </h2>
         </Col>
-        <Col sm={6}>
+        <Col className="float-right" sm={3}>
           <Button variant='dark' onClick={props.handleBackToFeed}>
             Go Back
           </Button>
         </Col>
       </Row>
 
-      <Container fluid>
-        <Row className='white-background'>
+      <Container className="fluid mt-5">
+        <Row style={{backgroundColor: "#fcfba7", paddingBottom: "3.5rem"}}>
+        <Col sm={12} style={{borderBottom: '1px solid #6fa8f2'}}>
+        <img className='mx-auto d-block' src={redPin} 
+        style={{
+        backgroundColor: 'transparent', 
+        height: 'auto', 
+         width: '75px',
+        padding: '0',
+        }}
+        ></img>
+        </Col>
           <Col sm={3}>
             <Image
-              style={{ width: '100%', height: '100%' }}
+              style={{ width: '100%', height: '100%', backgroundColor:"#fcfba7"}}
               src={profileData.profileImg}
             />
           </Col>

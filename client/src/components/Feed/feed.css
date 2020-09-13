@@ -33,7 +33,7 @@ html {
     display: inline-block;
     height: auto;
     width: 100%;
-    padding-bottom: 3.4rem;
+    padding-bottom: 3rem;
 }
 
 .favCard {
@@ -53,4 +53,6 @@ html {
 .cursor {
     cursor: pointer;
 }
+
+
 

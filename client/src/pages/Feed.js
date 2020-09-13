@@ -77,7 +77,7 @@ function Feed(props) {
 
           <Row className='mypostBody justify-content-center mt-5'>
             <Col className='pb-5 mb-5'>
-              <Col sm={12}></Col>
+              {/* <Col sm={12}></Col> */}
               {!viewProfile && (
                 <>
                   <div className='greetBgd justify-content-center mt-3'>
@@ -89,11 +89,20 @@ function Feed(props) {
                         height: 'auto',
                         width: '75px',
                         padding: '0',
+                        marginBottom: '-10px',
                       }}
                     ></img>
-                    <UserGreeting className />
+                    <UserGreeting />
+                    <Col sm={12}>
+                    <ul className="text-center my-4">
+                      <li className="">Here you can view listed postings.</li>
+                      <li className="mt-2">Click on the Favorite button to save a post to your favorites page.</li>
+                      <li className="mt-2">If you'd like to make a purchase, click on the seller profile to contact the poster.</li>
+                      <li className="mt-2">Use the search bar to look for shoes by brand name.</li>
+                    </ul>
+                    </Col>
                   </div>
-                  <CardContainer getSellerId={getSellerId} fluid />
+                  <CardContainer getSellerId={getSellerId} classNmae="fluid" />
                 </>
               )}
               {viewProfile && (

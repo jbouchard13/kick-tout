@@ -47,6 +47,7 @@ export default function MyPosts() {
       <Navigation />
       <div className="favHeaderBgd my-5">
         <h2 className="page-header">My Favorites</h2>
+        <p>Here you can view your saved favorites</p>
         </div>
       <Container className="mypostBody justify-content-center mt-3 pb-5">
         <Row>
