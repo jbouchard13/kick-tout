@@ -83,6 +83,7 @@ p {
 }
 
 .mypostBody {
+  min-height: 100vh;
   background-image: url('./images/realCork.jpg');
   background-position: center center;
   background-repeat: repeat-y;
