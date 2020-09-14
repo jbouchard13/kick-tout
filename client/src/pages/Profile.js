@@ -7,7 +7,7 @@ import ProfileContainer from '../components/Profile/ProfileContainer';
 import Navigation from '../components/Navigation/Navigation';
 
 // import Navigation from '../components/Navigation/Navigation';
-// import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer/Footer';
 
 function Profile(props) {
   const { logout } = useContext(AuthContext);
@@ -16,26 +16,22 @@ function Profile(props) {
     <div>
       <div className='profileBody'>
         <Navigation />
-        <h2 className='profile-header'>Profile Page</h2>
+        <h2 className='profHeader'>Profile Page</h2>
         <div classname='profilePadding'>
           <Container className='fluid'>
             <Row>
-              <Col sm={10}></Col>
-              <Col sm={2}></Col>
-            </Row>
-
-            <Row>
-              <Col sm={3}></Col>
-              <Col sm={9}>
-                <div className='pb-5'>
-                  <ProfileContainer />
+              <Col sm={1}></Col>
+              <Col sm={10}>
+                <div className='pb-5 mx-auto'>
+                  <ProfileContainer/>
                 </div>
               </Col>
+              <Col sm={1}></Col>
             </Row>
           </Container>
         </div>
-        {/* <Footer /> */}
       </div>
+      <Footer />
     </div>
   );
 }

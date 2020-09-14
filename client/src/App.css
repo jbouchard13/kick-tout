@@ -69,6 +69,13 @@ body {
   text-align: center;
 }
 
+.profHeader {
+  text-align: center;
+  color: white;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
 .profileHeader {
   text-align: center;
   margin-top: -15px;

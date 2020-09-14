@@ -117,8 +117,8 @@ export default function CreatePostForm() {
       <Col sm={10}>
         <Form className='form'>
           <ToastContainer position='top-right' />
-          <Form.Group controlId='formGridPostType'>
-            <Form.Label>Post Type</Form.Label>
+          <Form.Group controlId='formGridPostType justify-content-center'>
+            <Form.Label className="mt-3">Post Type</Form.Label>
             <Form.Control
               name='type'
               value={type}

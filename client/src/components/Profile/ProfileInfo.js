@@ -5,7 +5,7 @@ export class ProfileInfo extends Component {
   render() {
     return (
       <div>
-        <Form className='form'>
+        <Form className='form mt-4'>
           <Form.Row>
             <Form.Group as={Col} controlId='formGridEmail'>
               <Form.Label>First Name: {this.props.firstName}</Form.Label>
