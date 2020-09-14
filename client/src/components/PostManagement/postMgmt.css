@@ -43,8 +43,9 @@
 }
 
 .post-page-header {
-    margin-top: 20px;  
-    margin-left: 160px;
+    text-align: center;
+    margin: 0 auto;
+    width: 60%;
     color: white;
   }
 
